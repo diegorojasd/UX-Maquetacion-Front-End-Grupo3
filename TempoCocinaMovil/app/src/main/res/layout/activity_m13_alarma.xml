@@ -51,6 +51,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardReceta"
         android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.9"
         android:layout_height="355dp"
         app:cardCornerRadius="@dimen/radius_card"
         app:cardElevation="0dp"
@@ -404,7 +405,8 @@
     <!-- SIGUIENTE PROCESO -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardSiguienteProceso"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.9"
         android:layout_height="84dp"
         android:layout_marginTop="@dimen/space_16"
         app:cardCornerRadius="16dp"
@@ -463,7 +465,8 @@
     <!-- BOTONES DE ACCIÓN -->
     <Button
         android:id="@+id/btnDetener"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.9"
         android:layout_height="56dp"
         android:layout_marginTop="@dimen/space_16"
         android:text="Detener alarma"
@@ -478,7 +481,8 @@
 
     <Button
         android:id="@+id/btnPosponer"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.9"
         android:layout_height="56dp"
         android:layout_marginTop="@dimen/space_8"
         android:text="Posponer 2 min"
@@ -494,7 +498,8 @@
 
     <TextView
         android:id="@+id/colaAlarmas"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.9"
         android:layout_height="wrap_content"
         android:text="VER COLA DE ALARMAS (3 ACTIVAS)"
         android:textColor="@color/text_primary"
