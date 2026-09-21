@@ -1,0 +1,18 @@
+// Cross-cutting mixins — CLAUDE.md §4 reserves Sass for mixins and
+// breakpoints only; color, spacing and radii stay as CSS custom
+// properties in `_tokens.scss`.
+
+/// Focus-visible halo shared by every interactive component (CLAUDE.md §8).
+@mixin tc-focus-ring {
+  outline: 3px solid var(--tc-focus-ring);
+  outline-offset: 2px;
+}
+
+/// Reference viewport is 1280px; screens must still hold up at 1440 and
+/// degrade without breaking down to 1024 (CLAUDE.md §7). Mobile is out of
+/// scope, so no small-screen breakpoints are defined here.
+@mixin tc-below($max-width) {
+  @media (max-width: $max-width) {
+    @content;
+  }
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <!--
+    Icon sprite — TEMPO COCINA (CLAUDE.md §6)
+    Extracted from the Figma mockups, not redrawn. Kebab-case names match
+    the catalog. Colors default to `currentColor` so `shared/ui/icon`
+    controls tint via CSS — except `tc-icon-timer-brand`, the brand
+    isotype, which is one of the two icons the catalog names as keeping
+    its own fill (brand timer, alarm variants).
+  -->
+
+  <symbol id="tc-icon-timer-brand" viewBox="0 0 32 32" fill="none">
+    <path d="M3.66683 12H7.66683M2.3335 16H9.00016M4.3335 20H7.66683" stroke="#ED532A" stroke-width="1.66667" stroke-linecap="round"/>
+    <path d="M9 16.0003C9 21.1515 13.1821 25.3337 18.3333 25.3337C23.4845 25.3337 27.6667 21.1515 27.6667 16.0003C27.6667 10.8491 23.4845 6.66699 18.3333 6.66699C13.1821 6.66699 9 10.8491 9 16.0003Z" fill="white"/>
+    <path d="M9 16.0003C9 21.1515 13.1821 25.3337 18.3333 25.3337C23.4845 25.3337 27.6667 21.1515 27.6667 16.0003C27.6667 10.8491 23.4845 6.66699 18.3333 6.66699C13.1821 6.66699 9 10.8491 9 16.0003V16.0003" stroke="#1D434B" stroke-width="2.33333"/>
+    <path d="M25.6665 8.66667L30.3332 4" stroke="#1D434B" stroke-width="2.33333" stroke-linecap="round"/>
+    <path d="M16.6665 15.9997C16.6665 16.9195 17.4133 17.6663 18.3332 17.6663C19.253 17.6663 19.9998 16.9195 19.9998 15.9997C19.9998 15.0798 19.253 14.333 18.3332 14.333C17.4133 14.333 16.6665 15.0798 16.6665 15.9997Z" fill="#ED532A"/>
+    <path d="M18.3335 16.0003V10.667M18.3335 16.0003L21.6668 14.0003" stroke="#ED532A" stroke-width="1.46667" stroke-linecap="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-shield" viewBox="0 0 14 14" fill="none">
+    <path d="M7 1.71777C8.37476 2.9513 10.1827 3.58906 12.0272 3.49111C12.1724 4.05344 12.25 4.64261 12.25 5.25044C12.25 8.51244 10.0193 11.2529 7 12.0299C3.98067 11.2529 1.75 8.51186 1.75 5.25044C1.74952 4.65693 1.8244 4.06576 1.97284 3.49111C3.81728 3.58906 5.62524 2.9513 7 1.71777Z" stroke="currentColor" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-phone" viewBox="0 0 14 14" fill="none">
+    <path d="M7 10.5H7.00583M4.66667 12.25H9.33333C9.97723 12.25 10.5 11.7272 10.5 11.0833V2.91667C10.5 2.27277 9.97723 1.75 9.33333 1.75H4.66667C4.02277 1.75 3.5 2.27277 3.5 2.91667V11.0833C3.5 11.7272 4.02277 12.25 4.66667 12.25Z" stroke="currentColor" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+</svg>
