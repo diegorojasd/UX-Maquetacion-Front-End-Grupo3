@@ -76,7 +76,7 @@
 
                 <!-- Modo cocina -->
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="20dp"
@@ -113,7 +113,7 @@
 
                     </LinearLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
                 <!-- Espacio -->
 
@@ -124,7 +124,7 @@
 
                 <!-- Inmediato -->
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="20dp"
@@ -163,7 +163,7 @@
 
                     </LinearLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -201,7 +201,7 @@
 
             <!-- TEMPORIZADOR -->
 
-            <com.google.android.material.card.MaterialCardView
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="98dp"
                 android:layout_marginTop="18dp"
@@ -258,7 +258,7 @@
 
                 </LinearLayout>
 
-            </com.google.android.material.card.MaterialCardView>
+            </androidx.cardview.widget.CardView>
 
             <!-- LINEA DIVISORIA -->
 
@@ -278,7 +278,7 @@
 
                 <!-- ESTACION -->
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="54dp"
                     android:layout_weight="1"
@@ -333,12 +333,12 @@
 
                     </LinearLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
 
                 <!-- RECETA -->
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="54dp"
                     android:layout_weight="1"
@@ -393,7 +393,7 @@
 
                     </LinearLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -487,10 +487,10 @@
         android:textStyle="bold"
         android:fontFamily="@font/roboto_bold"
         android:background="@drawable/bg_btn_posponer"
+        android:backgroundTint="@null"
         app:layout_constraintTop_toBottomOf="@id/btnDetener"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-
 
     <TextView
         android:id="@+id/colaAlarmas"
@@ -506,9 +506,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center" />
-
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
