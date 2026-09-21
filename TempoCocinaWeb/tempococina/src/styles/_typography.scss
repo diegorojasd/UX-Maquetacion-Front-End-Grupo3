@@ -1,13 +1,21 @@
-// Type system — TEMPO COCINA (CLAUDE.md §5)
+// Type system — TEMPO COCINA
 //
-// Single family, Roboto, weights Black/Bold/Medium/Regular, loaded via
-// Google Fonts in `index.html` with `display=swap`. The PDF does not name
-// the monospace family used for the `Data` style — Roboto Mono is used
-// and recorded here as the assumption CLAUDE.md §5 asks to declare.
+// Single family, Roboto, loaded via Google Fonts in `index.html` with
+// `display=swap`. The PDF does not name the monospace family used by the
+// `Data` style — Roboto Mono is used, the substitution CLAUDE.md §5 asks
+// to record.
+//
+// IMPORTANT — values come from the Figma frames, not from the table in
+// CLAUDE.md §5. §1 states that table was *inferred* from the screens, and
+// it disagrees with the file on nearly every style. Each mixin notes the
+// inferred value it supersedes. Confirmed with the user before building
+// W-06; see docs/screens/W-06.md.
 //
 // A component never sets a raw `font-size`; it includes one of these
 // mixins (or uses the matching utility class below) instead.
 
+/// Pairing code. Not present in W-06 — the only style still carrying the
+/// CLAUDE.md §5 value, unverified against Figma.
 @mixin tc-text-display {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
@@ -17,69 +25,215 @@
   font-variant-numeric: tabular-nums;
 }
 
+/// Screen title. CLAUDE.md §5 inferred 34/40, Black, −0.5.
 @mixin tc-text-h1 {
   font-family: 'Roboto', sans-serif;
-  font-weight: 900;
-  font-size: 2.125rem; // 34px
-  line-height: 2.5rem; // 40px
-  letter-spacing: -0.5px;
+  font-weight: 800;
+  font-size: 1.875rem; // 30px
+  line-height: 2.25rem; // 36px
+  letter-spacing: -0.75px;
 }
 
+/// Panel and large-card title. CLAUDE.md §5 inferred 24/32, Bold, −0.2.
 @mixin tc-text-h2 {
   font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem; // 24px
-  line-height: 2rem; // 32px
-  letter-spacing: -0.2px;
+  font-weight: 800;
+  font-size: 1.125rem; // 18px
+  line-height: 1.75rem; // 28px
+  letter-spacing: -0.45px;
 }
 
+/// Card and highlighted-row title. CLAUDE.md §5 inferred 18/26, Bold.
 @mixin tc-text-h3 {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  font-size: 1.125rem; // 18px
-  line-height: 1.625rem; // 26px
-}
-
-@mixin tc-text-body {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-size: 0.9375rem; // 15px
-  line-height: 1.5rem; // 24px
-}
-
-@mixin tc-text-body-s {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 400;
-  font-size: 0.8125rem; // 13px
+  font-size: 0.875rem; // 14px
   line-height: 1.25rem; // 20px
 }
 
-/// Uppercase here is visual only (CLAUDE.md §5): keep source text in
-/// normal case and let `text-transform` do the casing, so screen readers
-/// don't spell out the caption letter by letter.
+/// Descriptive running text. CLAUDE.md §5 inferred 15/24.
+@mixin tc-text-body {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem; // 14px
+  line-height: 1.421875rem; // 22.75px
+}
+
+/// Metadata, helper text, chip labels. CLAUDE.md §5 inferred 13/20.
+@mixin tc-text-body-s {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+}
+
+/// Body S with the looser leading the step instructions use.
+@mixin tc-text-body-s-loose {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.75rem; // 12px
+  line-height: 1.21875rem; // 19.5px
+}
+
+/// Labels and badges. Uppercase here is visual only (CLAUDE.md §5): keep
+/// source text in normal case and let `text-transform` do the casing, so
+/// screen readers don't spell the label out letter by letter.
+/// CLAUDE.md §5 inferred 11/16, Medium, +1.2.
 @mixin tc-text-caption {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem; // 11px
+  line-height: 1.03125rem; // 16.5px
+  letter-spacing: 0.55px;
+  text-transform: uppercase;
+}
+
+/// The larger caption used by section eyebrows and the image badge.
+@mixin tc-text-caption-lg {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/// Step metadata ("Objetivo térmico: 200°C") — caption size, sentence case.
+@mixin tc-text-meta {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.6875rem; // 11px
+  line-height: 1.03125rem; // 16.5px
+}
+
+/// Button label. CLAUDE.md §5 inferred 15/20, +0.3.
+@mixin tc-text-button {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.875rem; // 14px
+  line-height: 1.25rem; // 20px
+  letter-spacing: 0.35px;
+}
+
+/// Compact button label (secondary actions in a control bar).
+@mixin tc-text-button-s {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+  letter-spacing: 0.3px;
+}
+
+/// Compact button label, uppercase — the critical CTA (CLAUDE.md §5).
+@mixin tc-text-button-s-caps {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+// ---------------------------------------------------------------------
+// Component styles observed in the mockups
+//
+// Sizes the §5 table does not name but that the frames use consistently.
+// They live here so no component sets a raw `font-size` (CLAUDE.md §11).
+// ---------------------------------------------------------------------
+
+/// Numeric value on a metric tile ("45", "4").
+@mixin tc-text-metric-value {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem; // 20px
+  line-height: 1.75rem; // 28px
+  font-variant-numeric: tabular-nums;
+}
+
+/// Textual value on a metric tile ("Media") — set smaller than a number.
+@mixin tc-text-metric-value-sm {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 1rem; // 16px
+  line-height: 1.5rem; // 24px
+}
+
+/// Metric unit ("min", "alarmas") and checklist item names.
+@mixin tc-text-unit {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem; // 14px
+  line-height: 1.25rem; // 20px
+}
+
+/// Neutral chip label.
+@mixin tc-text-chip {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+}
+
+/// Chip label carrying more weight (active equipment, counters).
+@mixin tc-text-chip-strong {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+}
+
+/// Step ordinals and timer badges — counts, so tabular figures
+/// (CLAUDE.md §8).
+@mixin tc-text-badge-num {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+  font-variant-numeric: tabular-nums;
+}
+
+/// Footer seal labels — caption size, sentence case, a touch heavier.
+@mixin tc-text-meta-strong {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 0.6875rem; // 11px
   line-height: 1rem; // 16px
-  letter-spacing: 1.2px;
+}
+
+// ---------------------------------------------------------------------
+// Brand lockup
+//
+// The wordmark is a logotype, not body copy: it keeps the Montserrat
+// face and the fixed proportions of the Figma brand mark instead of
+// following the Roboto ramp. Kept here so no component sets a raw
+// `font-size` (CLAUDE.md §11). Recorded as an assumption in the Paso 2
+// report.
+// ---------------------------------------------------------------------
+
+@mixin tc-text-wordmark-primary {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 0.75rem; // 12px
+  line-height: 1;
+  letter-spacing: -0.3px;
   text-transform: uppercase;
 }
 
-@mixin tc-text-button {
-  font-family: 'Roboto', sans-serif;
+@mixin tc-text-wordmark-secondary {
+  font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  font-size: 0.9375rem; // 15px
-  line-height: 1.25rem; // 20px
-  letter-spacing: 0.3px;
+  font-size: 0.5625rem; // 9px
+  line-height: 1;
+  letter-spacing: 0.45px;
+  text-transform: uppercase;
 }
 
+/// IDs, timers, clock values. CLAUDE.md §5 inferred 14/20, +0.5.
 @mixin tc-text-data {
   font-family: 'Roboto Mono', monospace;
-  font-weight: 400;
-  font-size: 0.875rem; // 14px
-  line-height: 1.25rem; // 20px
-  letter-spacing: 0.5px;
+  font-weight: 500;
+  font-size: 0.6875rem; // 11px
+  line-height: 1.03125rem; // 16.5px
   font-variant-numeric: tabular-nums;
 }
 
@@ -101,11 +255,26 @@
 .tc-text-body-s {
   @include tc-text-body-s;
 }
+.tc-text-body-s-loose {
+  @include tc-text-body-s-loose;
+}
 .tc-text-caption {
   @include tc-text-caption;
 }
+.tc-text-caption-lg {
+  @include tc-text-caption-lg;
+}
+.tc-text-meta {
+  @include tc-text-meta;
+}
 .tc-text-button {
   @include tc-text-button;
+}
+.tc-text-button-s {
+  @include tc-text-button-s;
+}
+.tc-text-button-s-caps {
+  @include tc-text-button-s-caps;
 }
 .tc-text-data {
   @include tc-text-data;

@@ -10,9 +10,8 @@ import { Icon } from '../../../shared/ui/icon/icon';
  * Both seal icons use fixed colors in the source (`shield` teal,
  * `phone` orange) instead of inheriting the label's text color — kept as
  * designed via per-icon color, not by baking the color into the sprite.
- * The label and copyright greys (`#475569`, `#94A3B8`) are not among the
- * 17 documented tokens; approximated to `--tc-text-secondary` here and
- * flagged as an assumption (same family as W-06 discrepancy D1).
+ * The label and copyright greys sit outside the 17 documented tokens and
+ * use the extended palette (docs/screens/W-06.md, discrepancy D1).
  */
 @Component({
   selector: 'tc-footer',
@@ -38,10 +37,19 @@ import { Icon } from '../../../shared/ui/icon/icon';
     </footer>
   `,
   styles: `
+    @use 'typography' as *;
+
+    // Pushes the footer to the bottom of the shell's flex column when the
+    // routed screen is shorter than the viewport.
+    :host {
+      display: block;
+      margin-top: auto;
+    }
+
     .tc-footer {
       background: var(--tc-surface);
       border-top: 1px solid var(--tc-border);
-      padding: var(--tc-space-16) var(--tc-space-32);
+      padding: var(--tc-space-16) var(--tc-space-48);
     }
 
     .tc-footer__row {
@@ -50,7 +58,7 @@ import { Icon } from '../../../shared/ui/icon/icon';
       justify-content: space-between;
       flex-wrap: wrap;
       gap: var(--tc-space-16);
-      max-width: 1200px;
+      max-width: 1560px;
       margin-inline: auto;
     }
 
@@ -64,14 +72,12 @@ import { Icon } from '../../../shared/ui/icon/icon';
     }
 
     .tc-footer__seal {
+      @include tc-text-meta-strong;
+
       display: flex;
       align-items: center;
       gap: var(--tc-space-8);
-      color: var(--tc-text-secondary);
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-      font-size: 0.6875rem; // 11px, matches Caption size without the uppercase tracking
-      line-height: 1rem;
+      color: var(--tc-text-muted);
     }
 
     .tc-footer__seal--shield {
@@ -79,7 +85,7 @@ import { Icon } from '../../../shared/ui/icon/icon';
     }
 
     .tc-footer__seal--shield span {
-      color: var(--tc-text-secondary);
+      color: var(--tc-text-muted);
     }
 
     .tc-footer__seal--phone {
@@ -87,16 +93,14 @@ import { Icon } from '../../../shared/ui/icon/icon';
     }
 
     .tc-footer__seal--phone span {
-      color: var(--tc-text-secondary);
+      color: var(--tc-text-muted);
     }
 
     .tc-footer__copyright {
+      @include tc-text-meta;
+
       margin: 0;
-      color: var(--tc-text-secondary);
-      font-family: 'Roboto', sans-serif;
-      font-weight: 400;
-      font-size: 0.6875rem;
-      line-height: 1rem;
+      color: var(--tc-text-tertiary);
       text-align: right;
     }
   `,

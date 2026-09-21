@@ -41,6 +41,25 @@
   --tc-critical-ink: #9a2f12;
 
   // ---------------------------------------------------------------------
+  // Primitives — EXTENDED
+  //
+  // Present in the Figma mockups but absent from the 17-token table in
+  // CLAUDE.md §4. Kept at their exact values because §1 states the design
+  // system was *inferred* from the screens, so the file is the source of
+  // truth for geometry and color. Documented as discrepancy D1/D2/D3 in
+  // docs/screens/W-06.md. Delete this block if the 17-token table is ever
+  // declared authoritative over the mockups.
+  // ---------------------------------------------------------------------
+  --tc-slate-25: #f8fafc;
+  --tc-slate-400: #94a3b8;
+  --tc-slate-600: #475569;
+  --tc-slate-700: #334155;
+  --tc-slate-900: #0f172a;
+  --tc-grey-500: #6b7078;
+  --tc-teal-500: #0d9488;
+  --tc-ink-950: #020617;
+
+  // ---------------------------------------------------------------------
   // Semantic — brand & accent
   // ---------------------------------------------------------------------
   --tc-primary: var(--tc-teal-800);
@@ -89,6 +108,18 @@
   --tc-focus-ring: var(--tc-secondary-soft);
 
   // ---------------------------------------------------------------------
+  // Semantic — EXTENDED (maps the extended primitives to their role)
+  // ---------------------------------------------------------------------
+  --tc-text-strong: var(--tc-slate-900); // step titles, metric values
+  --tc-text-control: var(--tc-slate-700); // control labels, chip text
+  --tc-text-muted: var(--tc-slate-600); // step descriptions, footer seals
+  --tc-text-tertiary: var(--tc-slate-400); // eyebrows, metric labels, copyright
+  --tc-text-nav: var(--tc-grey-500); // "Volver" back link
+  --tc-surface-subtle: var(--tc-slate-25); // metric tiles, checklist rows
+  --tc-accent-servings: var(--tc-teal-500); // "Porciones" metric icon
+  --tc-scrim: var(--tc-ink-950); // gradient over cover photography
+
+  // ---------------------------------------------------------------------
   // Spacing scale — base 4 (CLAUDE.md §7)
   // ---------------------------------------------------------------------
   --tc-space-4: 0.25rem;
@@ -102,7 +133,10 @@
   // ---------------------------------------------------------------------
   // Radii (CLAUDE.md §7) — picked the upper bound of each documented range
   // ---------------------------------------------------------------------
+  --tc-radius-xs: 4px; // EXTENDED — checkboxes and inline note chips
+  --tc-radius-sm: 6px; // EXTENDED — lower bound of the chip/badge range
   --tc-radius-chip: 8px;
+  --tc-radius-pill: 9999px;
   --tc-radius-field: 8px;
   --tc-radius-button: 12px;
   --tc-radius-card: 16px;
