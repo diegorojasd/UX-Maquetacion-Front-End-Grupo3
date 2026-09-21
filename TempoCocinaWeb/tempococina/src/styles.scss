@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+// Global styles — TEMPO COCINA
+@use 'tokens';
+@use 'mixins' as *;
+@use 'typography' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  background: var(--tc-background);
+  color: var(--tc-text-body);
+  @include tc-text-body;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+

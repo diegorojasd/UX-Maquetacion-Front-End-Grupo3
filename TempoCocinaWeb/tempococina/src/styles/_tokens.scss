@@ -1,0 +1,110 @@
+// Design tokens — TEMPO COCINA
+//
+// Two levels, per CLAUDE.md §4:
+//   1. Primitives — the raw palette, named by hue/step.
+//   2. Semantic   — what components actually reference (`--tc-*` roles).
+// Colors are CSS custom properties (not Sass variables) so components can
+// read them at runtime and so `color-mix()` can build tints where the
+// system does not define an explicit value.
+
+:root {
+  // ---------------------------------------------------------------------
+  // Primitives
+  // ---------------------------------------------------------------------
+  --tc-teal-900: #0f2b31;
+  --tc-teal-800: #1d434b;
+
+  --tc-orange-600: #ed532a;
+  --tc-orange-200: #fddccf;
+  --tc-orange-50: #fff5f1;
+
+  --tc-slate-50: #f7f9fb;
+  --tc-slate-100: #f1f5f9;
+  --tc-slate-200: #e2e8f0;
+  --tc-slate-300: #cbd5e1;
+  --tc-slate-500: #64748b;
+  --tc-slate-800: #1e293b;
+  --tc-white: #ffffff;
+
+  --tc-green-100: #d1fae5;
+  --tc-green-500: #10b981;
+  --tc-green-700: #047857;
+
+  --tc-amber-200: #fde68a;
+  --tc-amber-500: #f59e0b;
+  --tc-amber-800: #92400e;
+
+  --tc-rose-100: #ffe4e6;
+  --tc-rose-600: #e11d48;
+  --tc-rose-700: #be123c;
+
+  --tc-critical-ink: #9a2f12;
+
+  // ---------------------------------------------------------------------
+  // Semantic — brand & accent
+  // ---------------------------------------------------------------------
+  --tc-primary: var(--tc-teal-800);
+  --tc-primary-deep: var(--tc-teal-900);
+  --tc-secondary: var(--tc-orange-600);
+  --tc-secondary-soft: var(--tc-orange-200);
+  --tc-secondary-wash: var(--tc-orange-50);
+
+  // ---------------------------------------------------------------------
+  // Semantic — neutrals & text
+  // ---------------------------------------------------------------------
+  --tc-background: var(--tc-slate-50);
+  --tc-surface: var(--tc-white);
+  --tc-surface-alt: var(--tc-slate-100);
+  --tc-border: var(--tc-slate-200);
+  --tc-text-primary: var(--tc-teal-800);
+  --tc-text-body: var(--tc-slate-800);
+  --tc-text-secondary: var(--tc-slate-500);
+  --tc-text-disabled: var(--tc-slate-300);
+
+  // ---------------------------------------------------------------------
+  // Semantic — feedback (color · text · background per state)
+  // ---------------------------------------------------------------------
+  --tc-success: var(--tc-green-500);
+  --tc-success-text: var(--tc-green-700);
+  --tc-success-bg: var(--tc-green-100);
+
+  --tc-warning: var(--tc-amber-500);
+  --tc-warning-text: var(--tc-amber-800);
+  --tc-warning-bg: var(--tc-amber-200);
+
+  --tc-error: var(--tc-rose-600);
+  --tc-error-text: var(--tc-rose-700);
+  --tc-error-bg: var(--tc-rose-100);
+
+  --tc-critical: var(--tc-orange-600);
+  --tc-critical-text: var(--tc-critical-ink);
+  --tc-critical-bg: var(--tc-orange-50);
+
+  // ---------------------------------------------------------------------
+  // Semantic — derived roles (named for where they apply, not their hue)
+  // ---------------------------------------------------------------------
+  --tc-on-primary: var(--tc-white);
+  --tc-on-secondary: var(--tc-white);
+  --tc-surface-header: var(--tc-primary-deep);
+  --tc-focus-ring: var(--tc-secondary-soft);
+
+  // ---------------------------------------------------------------------
+  // Spacing scale — base 4 (CLAUDE.md §7)
+  // ---------------------------------------------------------------------
+  --tc-space-4: 0.25rem;
+  --tc-space-8: 0.5rem;
+  --tc-space-12: 0.75rem;
+  --tc-space-16: 1rem;
+  --tc-space-24: 1.5rem;
+  --tc-space-32: 2rem;
+  --tc-space-48: 3rem;
+
+  // ---------------------------------------------------------------------
+  // Radii (CLAUDE.md §7) — picked the upper bound of each documented range
+  // ---------------------------------------------------------------------
+  --tc-radius-chip: 8px;
+  --tc-radius-field: 8px;
+  --tc-radius-button: 12px;
+  --tc-radius-card: 16px;
+  --tc-radius-modal: 20px;
+}
