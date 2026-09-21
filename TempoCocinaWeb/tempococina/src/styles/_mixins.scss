@@ -16,3 +16,12 @@
     @content;
   }
 }
+
+/// Card and panel surface. A shadow never replaces the border
+/// (CLAUDE.md §7) — elevation 1 always ships with its 1px stroke.
+@mixin tc-card-surface {
+  background: var(--tc-surface);
+  border: 1px solid color-mix(in srgb, var(--tc-border) 90%, transparent);
+  border-radius: var(--tc-radius-card);
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+}

@@ -28,6 +28,8 @@ import { Icon } from '../../../shared/ui/icon/icon';
     </header>
   `,
   styles: `
+    @use 'typography' as *;
+
     .tc-appbar {
       display: flex;
       align-items: center;
@@ -49,24 +51,17 @@ import { Icon } from '../../../shared/ui/icon/icon';
       line-height: 1;
     }
 
-    .tc-appbar__wordmark-line {
-      font-family: 'Montserrat', sans-serif;
-      text-transform: uppercase;
-    }
-
     .tc-appbar__wordmark-line--tempo {
-      font-weight: 800;
-      font-size: 0.75rem; // 12px — brand lockup, not a type-ramp style
-      letter-spacing: -0.3px;
+      @include tc-text-wordmark-primary;
+
       color: var(--tc-primary);
     }
 
     .tc-appbar__wordmark-line--cocina {
-      font-weight: 700;
-      font-size: 0.5625rem; // 9px — brand lockup, not a type-ramp style
-      letter-spacing: 0.45px;
+      @include tc-text-wordmark-secondary;
+
+      margin-top: var(--tc-space-4);
       color: var(--tc-secondary);
-      margin-top: 2px;
     }
   `,
 })
