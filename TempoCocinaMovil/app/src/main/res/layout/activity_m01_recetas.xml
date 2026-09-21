@@ -58,7 +58,8 @@
         <!-- Tarjeta de receta activa -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardReceta"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
             android:layout_height="wrap_content"
             app:cardCornerRadius="@dimen/radius_card"
             app:cardElevation="0dp"
@@ -166,7 +167,8 @@
         <!-- Aviso sobre los tiempos configurados -->
         <LinearLayout
             android:id="@+id/avisoTiempos"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/space_16"
             android:layout_marginEnd="@dimen/space_16"
@@ -197,7 +199,8 @@
         <!-- Procesos detectados -->
         <LinearLayout
             android:id="@+id/seccionProcesos"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginStart="@dimen/space_16"
@@ -560,8 +563,9 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnDetener"
-            android:layout_width="356dp"
+            android:id="@+id/btnModoCocina"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/space_16"
             android:text="Modo cocina"
@@ -575,8 +579,9 @@
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
-            android:id="@+id/btnPosponer"
-            android:layout_width="356dp"
+            android:id="@+id/btnEmpezar"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
             android:layout_height="56dp"
             android:layout_marginTop="@dimen/space_8"
             android:text="Empezar cocción"
@@ -586,7 +591,7 @@
             android:fontFamily="@font/roboto_bold"
             android:background="@drawable/bg_btn_lineal"
             android:backgroundTint="@null"
-            app:layout_constraintTop_toBottomOf="@id/btnDetener"
+            app:layout_constraintTop_toBottomOf="@id/btnModoCocina"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
