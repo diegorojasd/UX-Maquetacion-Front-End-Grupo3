@@ -85,6 +85,6 @@
     <dimen name="focus_halo">3dp</dimen>
     <color name="focus_color">#FDDCCF</color>
 
-    <style name="Theme.App" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.App" parent="Theme.MaterialComponents.Light.NoActionBar" />
 
 </resources>
