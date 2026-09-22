@@ -46,7 +46,9 @@
     </section>
 
     <div class="tc-transfer__actions">
-      <tc-button variant="brand-block" icon="send">{{ view.sendAction }}</tc-button>
+      <tc-button variant="brand-block" icon="send" [link]="view.sendTarget">
+        {{ view.sendAction }}
+      </tc-button>
       <tc-button variant="secondary" size="md" [block]="true">{{ view.editAction }}</tc-button>
     </div>
   </div>

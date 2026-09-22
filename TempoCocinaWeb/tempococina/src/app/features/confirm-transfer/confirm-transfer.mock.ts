@@ -16,6 +16,7 @@ export interface ConfirmTransferView {
   readonly rows: readonly RecipeStep[];
   readonly summary: TransferSummary;
   readonly sendAction: string;
+  readonly sendTarget: string;
   readonly editAction: string;
   readonly backTarget: string;
 }
@@ -30,6 +31,7 @@ export const CONFIRM_TRANSFER_VIEW: ConfirmTransferView = {
   rows: TRANSFER_ROWS,
   summary: TRANSFER_SUMMARY,
   sendAction: 'Enviar a mi celular',
+  sendTarget: '/mockups/w-24',
   editAction: 'Modificar alarmas',
   backTarget: '/mockups/w-13',
 };
