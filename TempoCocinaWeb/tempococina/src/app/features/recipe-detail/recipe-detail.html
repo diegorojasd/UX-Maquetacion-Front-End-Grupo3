@@ -1,0 +1,128 @@
+<main class="tc-recipe">
+  <nav class="tc-recipe__back-nav" aria-label="Navegación de la receta">
+    <a class="tc-recipe__back" routerLink="/mockups">
+      <tc-icon name="arrow-left" [size]="11" />
+      <span>{{ view.backLabel }}</span>
+    </a>
+  </nav>
+
+  <div class="tc-recipe__grid">
+    <div class="tc-recipe__column">
+      <article class="tc-recipe__card">
+        <div class="tc-recipe__cover">
+          <img
+            class="tc-recipe__cover-image"
+            [ngSrc]="view.recipe.image.src"
+            [alt]="view.recipe.image.alt"
+            fill
+            priority
+          />
+          <div class="tc-recipe__cover-scrim"></div>
+          <tc-image-badge class="tc-recipe__cover-technique" variant="technique" icon="flame">
+            {{ view.recipe.techniqueBadge }}
+          </tc-image-badge>
+          <tc-image-badge class="tc-recipe__cover-telemetry" variant="telemetry">
+            {{ view.recipe.phasesBadge }}
+          </tc-image-badge>
+        </div>
+
+        <div class="tc-recipe__details">
+          <p class="tc-recipe__eyebrow">{{ view.recipe.eyebrow }}</p>
+
+          <div class="tc-recipe__heading">
+            <h1 class="tc-recipe__title">{{ view.recipe.title }}</h1>
+            <p class="tc-recipe__description">{{ view.recipe.description }}</p>
+          </div>
+
+          <div class="tc-recipe__metrics">
+            @for (metric of view.recipe.metrics; track metric.label) {
+              <tc-metric-tile
+                [icon]="metric.icon"
+                [label]="metric.label"
+                [value]="metric.value"
+                [unit]="metric.unit"
+                [tone]="metric.tone"
+                [emphasizeValue]="metric.emphasizeValue ?? false"
+              />
+            }
+          </div>
+
+          <div class="tc-recipe__action">
+            <tc-button variant="brand-block" icon="gear">{{ view.primaryAction }}</tc-button>
+            <p class="tc-recipe__action-hint">{{ view.primaryActionHint }}</p>
+          </div>
+        </div>
+      </article>
+
+      <section class="tc-recipe__equipment" aria-labelledby="tc-equipment-title">
+        <h2 class="tc-recipe__equipment-title" id="tc-equipment-title">
+          <tc-icon name="toolbox" [size]="16" />
+          {{ view.equipmentTitle }}
+        </h2>
+        <ul class="tc-recipe__equipment-list">
+          @for (item of view.recipe.equipment; track item.id) {
+            <li>
+              <tc-equipment-chip [tone]="item.tone">{{ item.name }}</tc-equipment-chip>
+            </li>
+          }
+        </ul>
+      </section>
+    </div>
+
+    <div class="tc-recipe__column">
+      <section class="tc-recipe__panel" aria-labelledby="tc-ingredients-title">
+        <div class="tc-recipe__panel-header">
+          <h2 class="tc-recipe__panel-title" id="tc-ingredients-title">{{ view.ingredientsTitle }}</h2>
+          <span class="tc-recipe__count">{{ view.ingredientsCount }}</span>
+        </div>
+        <p class="tc-recipe__panel-subtitle">{{ view.ingredientsSubtitle }}</p>
+
+        <ul class="tc-recipe__ingredients">
+          @for (ingredient of view.recipe.ingredients; track ingredient.id) {
+            <li>
+              <tc-checklist-item
+                [name]="ingredient.name"
+                [note]="ingredient.note"
+                [checked]="ingredient.checked"
+              />
+            </li>
+          }
+        </ul>
+      </section>
+
+      <section class="tc-recipe__panel tc-recipe__panel--steps" aria-labelledby="tc-steps-title">
+        <div class="tc-recipe__panel-header tc-recipe__panel-header--divided">
+          <div>
+            <h2 class="tc-recipe__panel-title" id="tc-steps-title">{{ view.stepsTitle }}</h2>
+            <p class="tc-recipe__panel-subtitle">{{ view.stepsSubtitle }}</p>
+          </div>
+        </div>
+
+        <ol class="tc-recipe__steps">
+          @for (step of view.recipe.steps; track step.id) {
+            <li>
+              <tc-step-item
+                [order]="step.order"
+                [title]="step.title"
+                [description]="step.description"
+                [duration]="step.duration"
+                [meta]="step.meta"
+              />
+            </li>
+          }
+        </ol>
+
+        <div class="tc-recipe__control-bar">
+          <p class="tc-recipe__total">
+            {{ view.stepsTotalLabel }}
+            <span class="tc-recipe__total-value">{{ view.stepsTotalValue }}</span>
+          </p>
+          <div class="tc-recipe__control-actions">
+            <tc-button variant="secondary">{{ view.secondaryAction }}</tc-button>
+            <tc-button variant="primary" icon="play-circle">{{ view.startAction }}</tc-button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
