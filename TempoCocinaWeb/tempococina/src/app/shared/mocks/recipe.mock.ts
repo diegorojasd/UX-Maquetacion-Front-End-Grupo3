@@ -26,7 +26,7 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
   metrics: [
     { icon: 'clock', label: 'Tiempo total', value: '45', unit: 'min', tone: 'neutral' },
     {
-      icon: 'bell',
+      icon: 'bell-solid',
       label: 'Secuencia',
       value: '4',
       unit: 'alarmas',
@@ -106,7 +106,7 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       tone: 'Chime suave',
       meta: [
         { label: 'Finalización del lote', tone: 'neutral' },
-        { label: 'Notificación acústica activa', tone: 'critical', icon: 'bell' },
+        { label: 'Notificación acústica activa', tone: 'critical', icon: 'bell-solid' },
       ],
     },
   ],
