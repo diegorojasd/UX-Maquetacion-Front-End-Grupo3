@@ -49,7 +49,7 @@ import { TimelineMark, TimelineSegment } from '../../mocks/recipe.model';
     .tc-timeline__bar {
       display: flex;
       margin: 0;
-      padding: 3px;
+      padding: var(--tc-space-3);
       background: var(--tc-surface-alt);
       border: 1px solid var(--tc-border);
       border-radius: var(--tc-radius-pill);

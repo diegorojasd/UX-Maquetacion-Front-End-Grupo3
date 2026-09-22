@@ -18,15 +18,15 @@ import { Icon } from '../icon/icon';
     .tc-note {
       display: flex;
       align-items: flex-start;
-      gap: var(--tc-space-8);
-      padding: var(--tc-space-12);
+      gap: var(--tc-space-10);
+      padding: var(--tc-space-17) var(--tc-space-13) var(--tc-space-13);
       background: color-mix(in srgb, var(--tc-surface) 60%, transparent);
       border: 1px solid color-mix(in srgb, var(--tc-border) 60%, transparent);
       border-radius: var(--tc-radius-chip);
     }
 
     .tc-note__icon {
-      margin-top: 2px;
+      margin-top: var(--tc-space-2);
       color: var(--tc-primary);
     }
 

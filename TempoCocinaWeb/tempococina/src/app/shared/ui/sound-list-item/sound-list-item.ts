@@ -31,7 +31,7 @@ import { Icon } from '../icon/icon';
       display: flex;
       align-items: center;
       gap: var(--tc-space-12);
-      padding: var(--tc-space-12) var(--tc-space-16);
+      padding: var(--tc-space-13) var(--tc-space-17);
       background: var(--tc-surface);
       border: 1px solid color-mix(in srgb, var(--tc-border) 90%, transparent);
       border-radius: var(--tc-radius-button);
