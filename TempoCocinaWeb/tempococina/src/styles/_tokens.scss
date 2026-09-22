@@ -171,11 +171,12 @@
   // footer share the same left and right edge at any viewport. The
   // frames disagree with each other here — W-06 lets its content run to
   // 1600 while W-22 and W-24 stop at the 1280 canvas, and the footer
-  // uses a 48px gutter against the content's 32 — so the canvas width
-  // and the content gutter win, which is what all three frames agree on
-  // at the 1280 reference viewport.
+  // uses a 48px gutter against the content's 32 — so W-06's container
+  // was adopted for all of them. `max-width` only caps: below 1600 the
+  // container still shrinks with the viewport, and at the 1280 reference
+  // canvas every screen gives the 1216px of content its frame draws.
   // ---------------------------------------------------------------------
-  --tc-page-max: 1280px;
+  --tc-page-max: 1600px;
   --tc-page-gutter: var(--tc-space-32);
   --tc-page-block: var(--tc-space-32);
 
