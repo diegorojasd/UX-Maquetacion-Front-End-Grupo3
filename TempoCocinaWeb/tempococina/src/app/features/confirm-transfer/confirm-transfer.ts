@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { BackLink } from '../../shared/ui/back-link/back-link';
 import { Button } from '../../shared/ui/button/button';
 import { Icon } from '../../shared/ui/icon/icon';
 import { StatusBadge } from '../../shared/ui/status-badge/status-badge';
@@ -11,7 +11,7 @@ import { CONFIRM_TRANSFER_VIEW } from './confirm-transfer.mock';
 @Component({
   selector: 'tc-confirm-transfer',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, Button, Icon, StatusBadge, SummaryTable, Timeline],
+  imports: [BackLink, Button, Icon, StatusBadge, SummaryTable, Timeline],
   templateUrl: './confirm-transfer.html',
   styleUrl: './confirm-transfer.scss',
 })

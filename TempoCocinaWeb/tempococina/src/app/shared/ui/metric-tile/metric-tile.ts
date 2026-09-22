@@ -35,7 +35,7 @@ import { MetricTone } from '../../mocks/recipe.model';
       display: flex;
       flex-direction: column;
       gap: var(--tc-space-4);
-      padding: var(--tc-space-12);
+      padding: var(--tc-space-13);
       background: var(--tc-surface-subtle);
       border: 1px solid color-mix(in srgb, var(--tc-border) 80%, transparent);
       border-radius: var(--tc-radius-button);

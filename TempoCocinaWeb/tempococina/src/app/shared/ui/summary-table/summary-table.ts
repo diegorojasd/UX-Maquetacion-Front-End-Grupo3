@@ -111,10 +111,12 @@ import { RecipeStep } from '../../mocks/recipe.model';
     }
 
     .tc-table__cell--center {
+      padding-block: var(--tc-space-18);
       text-align: center;
     }
 
     .tc-table__cell--end {
+      padding-block: var(--tc-space-22);
       text-align: right;
     }
 

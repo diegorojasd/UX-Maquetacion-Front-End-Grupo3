@@ -33,7 +33,7 @@ import { Icon } from '../../../shared/ui/icon/icon';
     .tc-appbar {
       display: flex;
       align-items: center;
-      height: 54px;
+      height: 53px;
       padding-inline: var(--tc-space-32);
       background: var(--tc-surface);
       border-bottom: 1px solid var(--tc-border);

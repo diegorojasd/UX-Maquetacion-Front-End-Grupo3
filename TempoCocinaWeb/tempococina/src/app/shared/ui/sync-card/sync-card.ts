@@ -32,7 +32,7 @@ import { StatusBadge } from '../status-badge/status-badge';
       display: flex;
       flex-direction: column;
       gap: var(--tc-space-16);
-      padding: var(--tc-space-24);
+      padding: var(--tc-space-25);
       background: var(--tc-surface-subtle);
       border: 1px solid color-mix(in srgb, var(--tc-border) 80%, transparent);
       border-radius: var(--tc-radius-card);
@@ -43,7 +43,7 @@ import { StatusBadge } from '../status-badge/status-badge';
       align-items: center;
       justify-content: space-between;
       gap: var(--tc-space-16);
-      padding-bottom: var(--tc-space-16);
+      padding-bottom: var(--tc-space-17);
       border-bottom: 1px solid var(--tc-border);
     }
 
@@ -59,7 +59,7 @@ import { StatusBadge } from '../status-badge/status-badge';
 
     .tc-sync__device-icon {
       display: inline-flex;
-      padding: var(--tc-space-4);
+      padding: var(--tc-space-7);
       background: var(--tc-success-bg);
       border: 1px solid var(--tc-success-ink);
       border-radius: var(--tc-radius-chip);

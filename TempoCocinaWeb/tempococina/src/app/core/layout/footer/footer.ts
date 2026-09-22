@@ -49,7 +49,7 @@ import { Icon } from '../../../shared/ui/icon/icon';
     .tc-footer {
       background: var(--tc-surface);
       border-top: 1px solid var(--tc-border);
-      padding: var(--tc-space-16) var(--tc-space-48);
+      padding: var(--tc-space-21) var(--tc-space-48) var(--tc-space-20);
     }
 
     .tc-footer__row {
