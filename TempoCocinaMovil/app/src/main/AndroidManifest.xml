@@ -11,35 +11,42 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.App">
+
         <activity
             android:name=".m08_resumen"
             android:exported="false" />
+
         <activity
             android:name=".m07_proceso_terminado"
             android:exported="false" />
+
         <activity
             android:name=".m13_alarma"
             android:exported="false" />
+
         <activity
             android:name=".m03_cola_Alarmas"
             android:exported="false" />
+
         <activity
             android:name=".m02_permiso_ModoCocina"
             android:exported="false" />
+
         <activity
             android:name=".m01_recetas"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.App">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

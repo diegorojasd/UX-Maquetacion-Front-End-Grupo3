@@ -1,5 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="Theme.App" parent="android:Theme.Material.Light.NoActionBar" />
+    <!-- PALETA DE COLORES -->
+    <color name="primary">#18434B</color>
+    <color name="primary_deep">#0F2B31</color>
+    <color name="secondary">#ED532A</color>
+    <color name="secondary_soft">#FDDCCF</color>
+    <color name="secondary_wash">#FFF5F1</color>
+
+    <!-- NEUTROS Y TEXTO -->
+    <color name="background">#F8F9FA</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="surface_alt">#F1F5F9</color>
+    <color name="border">#E2E8F0</color>
+    <color name="text_primary">#18434B</color>
+    <color name="text_body">#1E293B</color>
+    <color name="text_secondary">#64748B</color>
+    <color name="text_disabled">#CBD5E1</color>
+
+    <!-- SEMÁNTICOS -->
+    <color name="success">#10B981</color>
+    <color name="warning">#F59E0B</color>
+    <color name="error">#EF4444</color>
+    <color name="critical">#ED532A</color>
+    <color name="completed">#E2E8F0</color>
+
+    <style name="ChipEstadoActivo" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipBackgroundColor">#F1F5F9</item>
+        <item name="android:textColor">#18434B</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:fontFamily">Roboto</item>
+        <item name="chipCornerRadius">999dp</item>
+        <item name="chipStartPadding">8dp</item>
+        <item name="chipEndPadding">8dp</item>
+        <item name="chipMinHeight">32dp</item>
+    </style>
+
+
+    <!-- DIMENSIONES BASE -->
+    <dimen name="base_width">390dp</dimen>
+    <dimen name="margin_lateral">20dp</dimen>
+    <dimen name="gutter_interno">12dp</dimen>
+    <dimen name="barra_superior">64dp</dimen>
+    <dimen name="boton_altura">48dp</dimen>
+
+    <!-- ESCALA DE ESPACIADO -->
+    <dimen name="space_4">4dp</dimen>
+    <dimen name="space_8">8dp</dimen>
+    <dimen name="space_12">12dp</dimen>
+    <dimen name="space_16">16dp</dimen>
+    <dimen name="space_24">24dp</dimen>
+    <dimen name="space_32">32dp</dimen>
+    <dimen name="space_48">48dp</dimen>
+
+    <!-- RADIOS -->
+    <dimen name="radius_chip">8dp</dimen>
+    <dimen name="radius_field">12dp</dimen>
+    <dimen name="radius_card">16dp</dimen>
+    <dimen name="radius_button">999dp</dimen>
+    <dimen name="radius_modal">28dp</dimen>
+
+    <!-- TAMAÑOS DE TEXTO -->
+    <dimen name="text_size_title">20sp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+
+    <!-- TIPOGRAFÍA -->
+    <style name="TextTitle">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+        <item name="android:fontFamily">Roboto</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextBody">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:fontFamily">Roboto</item>
+    </style>
+
+    <!-- ACCESIBILIDAD -->
+    <dimen name="touch_target_min">44dp</dimen>
+    <dimen name="focus_halo">3dp</dimen>
+    <color name="focus_color">#FDDCCF</color>
+
+    <style name="Theme.App" parent="Theme.AppCompat.Light.NoActionBar"/>
+
+
+
 </resources>

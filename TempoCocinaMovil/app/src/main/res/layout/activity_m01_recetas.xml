@@ -1,10 +1,599 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".m01_recetas">
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".m01_recetas">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Encabezado principal -->
+        <TextView
+            android:id="@+id/tituloModulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MÓDULO DE SINCRONIZACIÓN"
+            android:textColor="@color/secondary"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_caption"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_24"/>
+
+        <TextView
+            android:id="@+id/tituloPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RECETA PREPARACIÓN"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_title"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintTop_toBottomOf="@id/tituloModulo"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_4"/>
+
+        <!-- Recuadro temporal para el logo -->
+        <View
+            android:id="@+id/logoTempo"
+            android:layout_width="88dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="28dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toBottomOf="@id/tituloPrincipal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tituloPrincipal"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <!-- Tarjeta de receta activa -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReceta"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="@dimen/radius_card"
+            app:cardElevation="0dp"
+            app:layout_constraintTop_toBottomOf="@id/tituloPrincipal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="@dimen/space_16">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="@dimen/space_12">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Imagen temporal -->
+                    <View
+                        android:id="@+id/imgReceta"
+                        android:layout_width="74dp"
+                        android:layout_height="74dp"
+                        android:background="#000000"
+                        android:layout_marginEnd="10dp"
+                        android:clipToOutline="true" />
+
+                    <!-- Contenido textual -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <!-- Fila de rating -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <View
+                                android:layout_width="12dp"
+                                android:layout_height="12dp"
+                                android:background="#000000"
+                                android:layout_marginEnd="@dimen/space_4"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4.8"
+                                android:textColor="#18434B"
+                                android:textSize="14sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/roboto_regular"/>
+                        </LinearLayout>
+
+                        <!-- Señal de estado -->
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="12dp"
+                            app:cardBackgroundColor="#F1F5F9"
+                            app:cardElevation="0dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="4dp"
+                            android:paddingHorizontal="20dp"
+                            android:paddingVertical="4dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="RECETA ACTIVA"
+                                android:textColor="#18434B"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:fontFamily="@font/roboto_regular"
+                                android:gravity="center"/>
+                        </androidx.cardview.widget.CardView>
+
+                        <!-- Título de receta -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pollo al horno con arroz"
+                            android:textColor="#18434B"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/roboto_bold"/>
+
+                        <!-- Subtítulo -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3 procesos de cocción sincronizados"
+                            android:textColor="#64748B"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/roboto_medium"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Aviso sobre los tiempos configurados -->
+        <LinearLayout
+            android:id="@+id/avisoTiempos"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginEnd="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_12"
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16"
+            android:paddingTop="@dimen/space_12"
+            android:paddingBottom="@dimen/space_12"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@drawable/bg_aviso_tiempos"
+            app:layout_constraintTop_toBottomOf="@id/cardReceta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Los tiempos fueron configurados en tu navegador web.&#10;Puedes desmarcar procesos que no vayas a cocinar hoy."
+                android:textColor="@color/text_secondary"
+                android:textSize="11.5sp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp" />
+
+        </LinearLayout>
+
+        <!-- Procesos detectados -->
+        <LinearLayout
+            android:id="@+id/seccionProcesos"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/space_16"
+            android:layout_marginEnd="@dimen/space_16"
+            android:layout_marginTop="@dimen/space_24"
+            app:layout_constraintTop_toBottomOf="@id/avisoTiempos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Encabezado -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Título -->
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PROCESOS DETECTADOS"
+                    android:textColor="@color/text_body"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_bold" />
+
+                <!-- Contador -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="3/3"
+                    android:textColor="@color/text_body"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="center"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="7dp"
+                    android:paddingBottom="7dp"
+                    android:background="@drawable/bg_contador_procesos" />
+
+                <!-- Deseleccionar todos -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Deseleccionar todos"
+                    android:textColor="@color/primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_marginStart="16dp" />
+
+            </LinearLayout>
+
+
+            <!-- Tarjeta alarma 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:layout_marginTop="@dimen/space_16"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/space_24"
+                    android:paddingEnd="@dimen/space_24"
+                    android:background="@drawable/bg_card">
+
+                    <!-- Checkbox -->
+                    <TextView
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:text="✓"
+                        android:textColor="@color/surface"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:background="@drawable/bg_check_proceso" />
+
+                    <!-- Información -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="24dp">
+
+                        <!-- Nombre -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Arroz"
+                            android:textColor="@color/text_body"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto_bold" />
+
+                        <!-- Estado -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="●"
+                                android:textColor="@color/success"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/roboto_bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Listo para iniciar"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:layout_marginStart="8dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Temporizador -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end|center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="09:44"
+                            android:textColor="@color/primary"
+                            android:textSize="24sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:includeFontPadding="false" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MM:SS"
+                            android:textColor="#94A3B8"
+                            android:textSize="9.5sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tarjeta alarma 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:layout_marginTop="@dimen/space_16"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/space_24"
+                    android:paddingEnd="@dimen/space_24"
+                    android:background="@drawable/bg_card">
+
+                    <!-- Checkbox -->
+                    <TextView
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:text="✓"
+                        android:textColor="@color/surface"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:background="@drawable/bg_check_proceso" />
+
+                    <!-- Información -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="24dp">
+
+                        <!-- Nombre -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Horno"
+                            android:textColor="@color/text_body"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto_bold" />
+
+                        <!-- Estado -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="●"
+                                android:textColor="@color/success"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/roboto_bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Listo para iniciar"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:layout_marginStart="8dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Temporizador -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end|center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="33:15"
+                            android:textColor="@color/primary"
+                            android:textSize="24sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:includeFontPadding="false" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MM:SS"
+                            android:textColor="#94A3B8"
+                            android:textSize="9.5sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tarjeta alarma 3 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="84dp"
+                android:layout_marginTop="@dimen/space_16"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/space_24"
+                    android:paddingEnd="@dimen/space_24"
+                    android:background="@drawable/bg_card">
+
+                    <!-- Checkbox -->
+                    <TextView
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:text="✓"
+                        android:textColor="@color/surface"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:background="@drawable/bg_check_proceso" />
+
+                    <!-- Información -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginStart="24dp">
+
+                        <!-- Nombre -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Salsa"
+                            android:textColor="@color/text_body"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/roboto_bold" />
+
+                        <!-- Estado -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="8dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="●"
+                                android:textColor="@color/success"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/roboto_bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Listo para iniciar"
+                                android:textColor="@color/text_secondary"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_bold"
+                                android:layout_marginStart="8dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Temporizador -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="end|center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="17:09"
+                            android:textColor="@color/primary"
+                            android:textSize="24sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:includeFontPadding="false" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="MM:SS"
+                            android:textColor="#94A3B8"
+                            android:textSize="9.5sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:layout_marginTop="8dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnModoCocina"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/space_16"
+            android:text="Modo cocina"
+            android:textAllCaps="false"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bg_btn_opcion"
+            app:layout_constraintTop_toBottomOf="@id/seccionProcesos"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnEmpezar"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/space_8"
+            android:text="Empezar cocción"
+            android:textAllCaps="false"
+            android:textColor="@color/surface"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bg_btn_lineal"
+            android:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/btnModoCocina"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
