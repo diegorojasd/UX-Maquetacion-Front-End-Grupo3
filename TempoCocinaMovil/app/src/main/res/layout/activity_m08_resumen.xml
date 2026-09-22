@@ -450,7 +450,7 @@
                             android:backgroundTint="#F1F5F9"
                             android:padding="6dp"
                             android:layout_marginEnd="12dp"
-                            android:background="@drawable/bg_icono_proceso"
+                            android:background="@drawable/bg_icono_proceso"/>
 
                         <!-- Nombre y tiempos -->
                         <LinearLayout
