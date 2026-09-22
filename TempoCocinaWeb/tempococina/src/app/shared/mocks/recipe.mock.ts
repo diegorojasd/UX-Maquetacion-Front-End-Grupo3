@@ -69,7 +69,9 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       detectedLabel: 'Precalentar horno a 200°C',
       assignedMinutes: '10',
       alarmSound: 'Bip constante',
-      alarmSoundIcon: 'music',
+      // Reuses the bell already carrying the other alarm sounds rather
+      // than a separate `music` note, by the team's call.
+      alarmSoundIcon: 'bell',
       meta: [
         { label: 'Objetivo térmico:', value: '200°C', tone: 'neutral' },
         { label: 'Tipo:', value: 'Precalentamiento', tone: 'neutral' },
