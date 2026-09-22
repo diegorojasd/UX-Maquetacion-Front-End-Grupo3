@@ -110,5 +110,11 @@ export default class MockupsIndex {
       module: 'Recetario',
       path: '/mockups/w-06',
     },
+    {
+      id: 'W-24',
+      title: 'Alarmas sincronizadas',
+      module: 'Transferencia',
+      path: '/mockups/w-24',
+    },
   ];
 }

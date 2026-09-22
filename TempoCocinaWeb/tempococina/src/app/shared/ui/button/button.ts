@@ -1,4 +1,6 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { Icon } from '../icon/icon';
 
 /**
@@ -6,23 +8,34 @@ import { Icon } from '../icon/icon';
  * W-06 uses are implemented; the union grows as W-24, W-22 and W-13 land,
  * rather than shipping unstyled variants nothing renders yet.
  *
- * - `brand-block` — full-width ficha action, deep teal, gear icon.
+ * - `brand`       — deep teal, auto width, leading icon.
+ * - `brand-block` — the same skin at full width (ficha action).
  * - `primary`     — critical CTA, orange, uppercase label.
  * - `secondary`   — outline on surface, same height as primary.
  */
-export type ButtonVariant = 'brand-block' | 'primary' | 'secondary';
+export type ButtonVariant = 'brand' | 'brand-block' | 'primary' | 'secondary';
 
 @Component({
   selector: 'tc-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [Icon],
+  imports: [Icon, NgTemplateOutlet, RouterLink],
   template: `
-    <button class="tc-button" [class]="'tc-button--' + variant()" [disabled]="disabled()" type="button">
+    @if (link(); as target) {
+      <a class="tc-button" [class]="'tc-button--' + variant()" [routerLink]="target">
+        <ng-container [ngTemplateOutlet]="content" />
+      </a>
+    } @else {
+      <button class="tc-button" [class]="'tc-button--' + variant()" [disabled]="disabled()" type="button">
+        <ng-container [ngTemplateOutlet]="content" />
+      </button>
+    }
+
+    <ng-template #content>
       @if (icon(); as iconName) {
         <tc-icon [name]="iconName" [size]="16" />
       }
       <span class="tc-button__label"><ng-content /></span>
-    </button>
+    </ng-template>
   `,
   styles: `
     @use 'mixins' as *;
@@ -56,19 +69,16 @@ export type ButtonVariant = 'brand-block' | 'primary' | 'secondary';
       }
     }
 
+    .tc-button--brand,
     .tc-button--brand-block {
       @include tc-text-button;
 
-      width: 100%;
       gap: var(--tc-space-12);
-      padding: var(--tc-space-12) var(--tc-space-16);
+      padding: var(--tc-space-12) var(--tc-space-24);
       background: var(--tc-primary);
       color: var(--tc-on-primary);
+      text-decoration: none;
       box-shadow: 0 4px 6px -1px rgb(0 0 0 / 10%), 0 2px 4px -2px rgb(0 0 0 / 10%);
-
-      tc-icon {
-        color: var(--tc-secondary);
-      }
 
       &:hover:not(:disabled) {
         background: var(--tc-primary-deep);
@@ -81,6 +91,17 @@ export type ButtonVariant = 'brand-block' | 'primary' | 'secondary';
         tc-icon {
           color: var(--tc-text-disabled);
         }
+      }
+    }
+
+    // The ficha action spans its card and tints its gear icon with the
+    // accent; the inline brand button keeps a monochrome icon.
+    .tc-button--brand-block {
+      width: 100%;
+      padding-inline: var(--tc-space-16);
+
+      tc-icon {
+        color: var(--tc-secondary);
       }
     }
 
@@ -124,4 +145,6 @@ export class Button {
   readonly variant = input.required<ButtonVariant>();
   readonly icon = input<string>();
   readonly disabled = input(false);
+  /** Renders an `<a routerLink>` instead of a `<button>` (CLAUDE.md §8). */
+  readonly link = input<string>();
 }
