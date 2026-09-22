@@ -18,14 +18,5 @@ class m08_resumen : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        // Cargar el SVG directamente en el WebView
-        val webIcono = findViewById<WebView>(R.id.web_icono_aprendizaje)
-        webIcono.settings.apply {
-            javaScriptEnabled = false
-            loadWithOverviewMode = true
-            useWideViewPort = true
-        }
-        webIcono.loadUrl("file:///android_res/drawable/ic_aprendizaje.svg")
     }
 }
