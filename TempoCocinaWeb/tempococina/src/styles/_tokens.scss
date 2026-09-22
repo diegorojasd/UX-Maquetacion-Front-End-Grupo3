@@ -168,15 +168,12 @@
   // Page shell
   //
   // One container for every screen, so the app bar, the content and the
-  // footer share the same left and right edge at any viewport. The
-  // frames disagree with each other here — W-06 lets its content run to
-  // 1600 while W-22 and W-24 stop at the 1280 canvas, and the footer
-  // uses a 48px gutter against the content's 32 — so W-06's container
-  // was adopted for all of them. `max-width` only caps: below 1600 the
-  // container still shrinks with the viewport, and at the 1280 reference
-  // canvas every screen gives the 1216px of content its frame draws.
+  // footer share the same left and right edge at any viewport. Matches
+  // the 1440px canvas the frames were resized to, with the 32px gutter
+  // they all use, giving 1376px of content. `max-width` only caps, so
+  // below 1440 the container still shrinks with the viewport.
   // ---------------------------------------------------------------------
-  --tc-page-max: 1600px;
+  --tc-page-max: 1440px;
   --tc-page-gutter: var(--tc-space-32);
   --tc-page-block: var(--tc-space-32);
 
