@@ -118,7 +118,9 @@
           </p>
           <div class="tc-recipe__control-actions">
             <tc-button variant="secondary">{{ view.secondaryAction }}</tc-button>
-            <tc-button variant="primary" icon="play-circle">{{ view.startAction }}</tc-button>
+            <tc-button variant="primary" icon="play-circle" [link]="view.startTarget">
+              {{ view.startAction }}
+            </tc-button>
           </div>
         </div>
       </section>

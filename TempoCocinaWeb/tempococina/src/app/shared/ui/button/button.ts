@@ -62,6 +62,7 @@ export type ButtonSize = 'sm' | 'md';
       border: 1px solid transparent;
       border-radius: var(--tc-radius-button);
       cursor: pointer;
+      text-decoration: none;
       // CLAUDE.md §8 — every control keeps a 44px minimum target even
       // where the mockup draws a shorter box.
       min-height: 44px;
