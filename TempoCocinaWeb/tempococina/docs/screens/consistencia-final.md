@@ -92,8 +92,8 @@ W-06, W-22 y W-13 lo pintan con `--tc-text-primary` (`#1D434B`); W-24 con
 
 ## 4. Pendientes
 
-- **PASO 2 de W-13 — 5 iconos sin exportar.** `close`, `chevron-down`, `music`,
-  `plus` y `bolt` se renderizan en blanco. El MCP de Figma agotó el límite de
+- **PASO 2 de W-13 — 4 iconos sin exportar.** `close`, `chevron-down`, `plus` y
+  `bolt` se renderizan en blanco. El MCP de Figma agotó el límite de
   llamadas del plan Starter y CLAUDE.md §6 prohíbe redibujarlos o sustituirlos
   por una librería. Entran en el sprite sin tocar código.
 - **Verificación visual.** Captura a 1280px de las cuatro y comparación con los
