@@ -100,4 +100,31 @@
   <symbol id="tc-icon-play-circle" viewBox="0 0 16 16" fill="none">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M8 14.4C11.5323 14.4 14.4 11.5323 14.4 8C14.4 4.46774 11.5323 1.6 8 1.6C4.46774 1.6 1.6 4.46774 1.6 8C1.6 11.5323 4.46774 14.4 8 14.4V14.4M7.644 5.7344C7.39851 5.57061 7.08279 5.55528 6.82259 5.6945C6.56238 5.83372 6.39996 6.10489 6.4 6.4V9.6C6.39996 9.89511 6.56238 10.1663 6.82259 10.3055C7.08279 10.4447 7.39851 10.4294 7.644 10.2656L10.044 8.6656C10.2665 8.51722 10.4002 8.26746 10.4002 8C10.4002 7.73254 10.2665 7.48278 10.044 7.3344L7.644 5.7344V5.7344" fill="currentColor"/>
   </symbol>
+
+  <!--
+    STAND-INS — not extracted from the mockups.
+    CLAUDE.md §6 requires every icon to come from the frames, but the
+    Figma MCP hit its plan call limit before these four could be
+    exported. The team authorised substitutes in the meantime. They
+    follow the family's conventions (16px box, 1.33px stroke, round
+    caps) so they sit correctly beside the real ones. Replace each with
+    its export when Figma is reachable; `plus`, `close` and
+    `chevron-down` are geometrically unambiguous, `bolt` is the one
+    worth checking against the frame.
+  -->
+  <symbol id="tc-icon-plus" viewBox="0 0 16 16" fill="none">
+    <path d="M8 3.33333V12.6667M3.33333 8H12.6667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-close" viewBox="0 0 16 16" fill="none">
+    <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-chevron-down" viewBox="0 0 16 16" fill="none">
+    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-bolt" viewBox="0 0 16 16" fill="none">
+    <path d="M8.66667 1.33333L2.66667 9.33333H8L7.33333 14.6667L13.3333 6.66667H8L8.66667 1.33333Z" fill="currentColor"/>
+  </symbol>
 </svg>
