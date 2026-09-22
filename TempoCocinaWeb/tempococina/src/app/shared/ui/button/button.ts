@@ -1,5 +1,5 @@
 import { NgTemplateOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Icon } from '../icon/icon';
 
@@ -15,17 +15,25 @@ import { Icon } from '../icon/icon';
  */
 export type ButtonVariant = 'brand' | 'brand-block' | 'primary' | 'secondary';
 
+/**
+ * `secondary` is drawn at two scales across the mockups: compact in the
+ * W-06 control bar, and larger beside the W-22 send action
+ * (docs/screens/W-22.md, F12). Size is an input rather than two
+ * variants, and each screen passes what its frame shows.
+ */
+export type ButtonSize = 'sm' | 'md';
+
 @Component({
   selector: 'tc-button',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [Icon, NgTemplateOutlet, RouterLink],
   template: `
     @if (link(); as target) {
-      <a class="tc-button" [class]="'tc-button--' + variant()" [routerLink]="target">
+      <a class="tc-button" [class]="classes()" [routerLink]="target">
         <ng-container [ngTemplateOutlet]="content" />
       </a>
     } @else {
-      <button class="tc-button" [class]="'tc-button--' + variant()" [disabled]="disabled()" type="button">
+      <button class="tc-button" [class]="classes()" [disabled]="disabled()" type="button">
         <ng-container [ngTemplateOutlet]="content" />
       </button>
     }
@@ -124,12 +132,9 @@ export type ButtonVariant = 'brand' | 'brand-block' | 'primary' | 'secondary';
     }
 
     .tc-button--secondary {
-      @include tc-text-button-s;
-
-      padding: var(--tc-space-8) var(--tc-space-16);
       background: var(--tc-surface);
       border-color: var(--tc-text-disabled);
-      color: var(--tc-text-control);
+      text-decoration: none;
 
       &:hover:not(:disabled) {
         background: var(--tc-surface-alt);
@@ -139,12 +144,38 @@ export type ButtonVariant = 'brand' | 'brand-block' | 'primary' | 'secondary';
         background: var(--tc-surface);
       }
     }
+
+    .tc-button--secondary.tc-button--sm {
+      @include tc-text-button-s;
+
+      padding: var(--tc-space-8) var(--tc-space-16);
+      color: var(--tc-text-control);
+    }
+
+    .tc-button--secondary.tc-button--md {
+      @include tc-text-button;
+
+      padding: var(--tc-space-12) var(--tc-space-24);
+      color: var(--tc-primary);
+    }
+
+    .tc-button--block {
+      width: 100%;
+    }
   `,
 })
 export class Button {
   readonly variant = input.required<ButtonVariant>();
+  readonly size = input<ButtonSize>('sm');
+  /** Stretches the control to its container's width. */
+  readonly block = input(false);
   readonly icon = input<string>();
   readonly disabled = input(false);
   /** Renders an `<a routerLink>` instead of a `<button>` (CLAUDE.md §8). */
   readonly link = input<string>();
+
+  protected readonly classes = computed(() => {
+    const names = [`tc-button--${this.variant()}`, `tc-button--${this.size()}`];
+    return this.block() ? [...names, 'tc-button--block'].join(' ') : names.join(' ');
+  });
 }

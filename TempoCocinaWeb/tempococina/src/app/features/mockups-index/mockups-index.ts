@@ -111,6 +111,12 @@ export default class MockupsIndex {
       path: '/mockups/w-06',
     },
     {
+      id: 'W-22',
+      title: 'Confirmar y enviar al móvil',
+      module: 'Transferencia',
+      path: '/mockups/w-22',
+    },
+    {
       id: 'W-24',
       title: 'Alarmas sincronizadas',
       module: 'Transferencia',

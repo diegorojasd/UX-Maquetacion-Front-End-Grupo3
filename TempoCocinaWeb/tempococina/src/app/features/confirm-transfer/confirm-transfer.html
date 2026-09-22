@@ -1,0 +1,65 @@
+<main class="tc-transfer">
+  <nav class="tc-transfer__back-nav" aria-label="Navegación de la transferencia">
+    <a class="tc-transfer__back" [routerLink]="view.backTarget">
+      <tc-icon name="arrow-left" [size]="11" />
+      <span>{{ view.backLabel }}</span>
+    </a>
+  </nav>
+
+  <header class="tc-transfer__header">
+    <h1 class="tc-transfer__title">{{ view.title }}</h1>
+    <p class="tc-transfer__lead">
+      {{ view.leadBefore }}<strong class="tc-transfer__lead-recipe">{{ view.leadRecipe }}</strong>{{ view.leadAfter }}
+    </p>
+  </header>
+
+  <div class="tc-transfer__grid">
+    <section class="tc-transfer__card" aria-labelledby="tc-summary-title">
+      <div class="tc-transfer__card-header">
+        <h2 class="tc-transfer__card-title" id="tc-summary-title">
+          <span class="tc-transfer__card-icon">
+            <tc-icon name="clock" [size]="16" />
+          </span>
+          <span>{{ view.summary.heading }}</span>
+          <span class="tc-transfer__card-count">{{ view.summary.headingCount }}</span>
+        </h2>
+        <tc-status-badge tone="neutral" shape="chip">{{ view.summary.sequenceStatus }}</tc-status-badge>
+      </div>
+
+      <tc-summary-table [rows]="view.rows" [caption]="view.tableCaption" />
+
+      <div class="tc-transfer__totals">
+        <p class="tc-transfer__total">
+          {{ view.summary.totalLabel }}
+          <strong class="tc-transfer__total-value">{{ view.summary.totalValue }}</strong>
+        </p>
+        <p class="tc-transfer__offsets">
+          <span>
+            {{ view.summary.earliestLabel }}
+            <strong class="tc-transfer__offset-value">{{ view.summary.earliestValue }}</strong>
+          </span>
+          <span>
+            {{ view.summary.finalLabel }}
+            <strong class="tc-transfer__offset-value">{{ view.summary.finalValue }}</strong>
+          </span>
+        </p>
+      </div>
+    </section>
+
+    <div class="tc-transfer__actions">
+      <tc-button variant="brand-block" icon="send">{{ view.sendAction }}</tc-button>
+      <tc-button variant="secondary" size="md" [block]="true">{{ view.editAction }}</tc-button>
+    </div>
+  </div>
+
+  <section class="tc-transfer__timeline-card" aria-labelledby="tc-timeline-title">
+    <div class="tc-transfer__timeline-header">
+      <h2 class="tc-transfer__timeline-title" id="tc-timeline-title">{{ view.summary.timelineTitle }}</h2>
+      <p class="tc-transfer__syncable">
+        <span class="tc-transfer__syncable-dot" aria-hidden="true"></span>
+        {{ view.summary.syncableLabel }}
+      </p>
+    </div>
+    <tc-timeline [segments]="view.summary.segments" [marks]="view.summary.marks" />
+  </section>
+</main>

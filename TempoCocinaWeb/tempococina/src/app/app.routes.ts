@@ -11,6 +11,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/recipe-detail/recipe-detail'),
   },
   {
+    path: 'mockups/w-22',
+    loadComponent: () => import('./features/confirm-transfer/confirm-transfer'),
+  },
+  {
     path: 'mockups/w-24',
     loadComponent: () => import('./features/synced-alarms/synced-alarms'),
   },

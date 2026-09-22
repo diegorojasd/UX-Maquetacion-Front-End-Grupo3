@@ -20,7 +20,7 @@ import { StatusBadge } from '../status-badge/status-badge';
           </span>
           {{ deviceName() }}
         </p>
-        <tc-status-badge tone="success">{{ deviceStatus() }}</tc-status-badge>
+        <tc-status-badge tone="success" shape="chip" [dot]="true">{{ deviceStatus() }}</tc-status-badge>
       </div>
       <ng-content />
     </div>
