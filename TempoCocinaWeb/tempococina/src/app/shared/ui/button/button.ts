@@ -161,21 +161,22 @@ export type ButtonSize = 'sm' | 'md';
     }
 
     .tc-button--dashed {
-      @include tc-text-button-s;
+      @include tc-text-button;
 
+      gap: var(--tc-space-12);
       padding: var(--tc-space-10) var(--tc-space-17);
-      background: transparent;
-      border: 1px dashed var(--tc-text-disabled);
-      color: var(--tc-text-secondary);
+      background: var(--tc-primary);
+      border: 1px dashed color-mix(in srgb, var(--tc-on-primary) 45%, transparent);
+      color: var(--tc-on-primary);
 
       &:hover:not(:disabled) {
-        background: var(--tc-surface-subtle);
-        border-color: var(--tc-text-secondary);
-        color: var(--tc-text-control);
+        background: var(--tc-primary-deep);
+        border-color: var(--tc-on-primary);
       }
 
       &:disabled {
-        background: transparent;
+        background: var(--tc-surface-alt);
+        border-color: var(--tc-text-disabled);
       }
     }
 
