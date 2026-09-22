@@ -103,15 +103,21 @@ export type ButtonSize = 'sm' | 'md';
       }
     }
 
-    // The ficha action spans its card and tints its gear icon with the
-    // accent; the inline brand button keeps a monochrome icon.
     .tc-button--brand-block {
       width: 100%;
       padding-inline: var(--tc-space-16);
+    }
 
-      tc-icon {
-        color: var(--tc-secondary);
-      }
+    // The frames tint the leading icon on some brand buttons and not
+    // others, so it is opted into rather than tied to the variant.
+    .tc-button--brand-block tc-icon,
+    .tc-button--accent-icon tc-icon {
+      color: var(--tc-secondary);
+    }
+
+    .tc-button--brand-block:disabled tc-icon,
+    .tc-button--accent-icon:disabled tc-icon {
+      color: var(--tc-text-disabled);
     }
 
     .tc-button--primary {
@@ -190,6 +196,12 @@ export class Button {
   readonly size = input<ButtonSize>('sm');
   /** Stretches the control to its container's width. */
   readonly block = input(false);
+  /**
+   * Tints the leading icon with the accent, the way the ficha action
+   * does. The frames apply it per button, not per variant: W-13's send
+   * carries an orange bolt while W-24's back arrow stays white.
+   */
+  readonly accentIcon = input(false);
   readonly icon = input<string>();
   readonly disabled = input(false);
   /** Renders an `<a routerLink>` instead of a `<button>` (CLAUDE.md §8). */
@@ -197,6 +209,12 @@ export class Button {
 
   protected readonly classes = computed(() => {
     const names = [`tc-button--${this.variant()}`, `tc-button--${this.size()}`];
-    return this.block() ? [...names, 'tc-button--block'].join(' ') : names.join(' ');
+    if (this.block()) {
+      names.push('tc-button--block');
+    }
+    if (this.accentIcon()) {
+      names.push('tc-button--accent-icon');
+    }
+    return names.join(' ');
   });
 }

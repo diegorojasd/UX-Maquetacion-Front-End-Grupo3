@@ -92,10 +92,12 @@ W-06, W-22 y W-13 lo pintan con `--tc-text-primary` (`#1D434B`); W-24 con
 
 ## 4. Pendientes
 
-- **PASO 2 de W-13 — 4 iconos sin exportar.** `close`, `chevron-down`, `plus` y
-  `bolt` se renderizan en blanco. El MCP de Figma agotó el límite de
-  llamadas del plan Starter y CLAUDE.md §6 prohíbe redibujarlos o sustituirlos
-  por una librería. Entran en el sprite sin tocar código.
+- **PASO 2 de W-13 — 4 iconos suplentes.** `close`, `chevron-down`, `plus` y
+  `bolt` no se pudieron exportar (límite de llamadas del plan de Figma). Con
+  autorización del equipo se añadieron suplentes al sprite, marcados como tales,
+  siguiendo la convención de trazo de la familia. **Se aparta de CLAUDE.md §6.**
+  `bolt` es el que conviene contrastar contra el frame; los otros tres son
+  geométricamente inequívocos.
 - **Verificación visual.** Captura a 1280px de las cuatro y comparación con los
   frames: requiere navegador, no disponible en el entorno de trabajo.
 - **Recorrido de teclado y AXE.** Igual: requiere navegador. La semántica de la
