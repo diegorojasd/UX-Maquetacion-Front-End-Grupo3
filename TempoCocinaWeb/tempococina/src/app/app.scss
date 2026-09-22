@@ -1,0 +1,6 @@
+// Page shell — app bar, routed screen, footer.
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
