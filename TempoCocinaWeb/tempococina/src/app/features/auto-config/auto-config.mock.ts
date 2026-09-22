@@ -12,7 +12,6 @@ export interface AutoConfigView {
   readonly rows: readonly RecipeStep[];
   readonly sounds: readonly string[];
   readonly unitLabel: string;
-  /** Transcribed as designed, stray parenthesis and all (W-13, G1). */
   readonly addAction: string;
   readonly deviceStatus: string;
   readonly reconfigureAction: string;
@@ -31,7 +30,7 @@ export const AUTO_CONFIG_VIEW: AutoConfigView = {
   rows: DETECTED_ROWS,
   sounds: ALARM_SOUNDS,
   unitLabel: 'minutos',
-  addAction: 'Agregar proceso manual)',
+  addAction: 'Agregar proceso manual',
   deviceStatus: 'Dispositivo vinculado',
   reconfigureAction: 'Reconfigurar manualmente',
   confirmAction: 'Confirmar y enviar al móvil',
