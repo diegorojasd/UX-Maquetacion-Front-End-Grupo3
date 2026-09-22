@@ -12,8 +12,9 @@ import { Icon } from '../icon/icon';
  * - `brand-block` — the same skin at full width (ficha action).
  * - `primary`     — critical CTA, orange, uppercase label.
  * - `secondary`   — outline on surface, same height as primary.
+ * - `dashed`      — dashed outline, adds an item to an editable list.
  */
-export type ButtonVariant = 'brand' | 'brand-block' | 'primary' | 'secondary';
+export type ButtonVariant = 'brand' | 'brand-block' | 'primary' | 'secondary' | 'dashed';
 
 /**
  * `secondary` is drawn at two scales across the mockups: compact in the
@@ -157,6 +158,25 @@ export type ButtonSize = 'sm' | 'md';
 
       padding: var(--tc-space-12) var(--tc-space-24);
       color: var(--tc-primary);
+    }
+
+    .tc-button--dashed {
+      @include tc-text-button-s;
+
+      padding: var(--tc-space-10) var(--tc-space-17);
+      background: transparent;
+      border: 1px dashed var(--tc-text-disabled);
+      color: var(--tc-text-secondary);
+
+      &:hover:not(:disabled) {
+        background: var(--tc-surface-subtle);
+        border-color: var(--tc-text-secondary);
+        color: var(--tc-text-control);
+      }
+
+      &:disabled {
+        background: transparent;
+      }
     }
 
     .tc-button--block {

@@ -34,3 +34,14 @@
   margin-inline: auto;
   padding-inline: var(--tc-page-gutter);
 }
+
+/// The header band both tables share. Extracted so the read-only
+/// summary (W-22) and the editable grid (W-13) stay visually identical
+/// without their components being coupled.
+@mixin tc-table-head {
+  background: color-mix(in srgb, var(--tc-surface-subtle) 75%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--tc-border) 80%, transparent);
+  color: var(--tc-text-secondary);
+  font-weight: 700;
+  text-align: left;
+}

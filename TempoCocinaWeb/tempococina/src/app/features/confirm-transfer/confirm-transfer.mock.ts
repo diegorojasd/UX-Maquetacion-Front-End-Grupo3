@@ -17,7 +17,6 @@ export interface ConfirmTransferView {
   readonly summary: TransferSummary;
   readonly sendAction: string;
   readonly editAction: string;
-  /** W-13 (Configuración automática sugerida) is not implemented yet. */
   readonly backTarget: string;
 }
 
@@ -32,5 +31,5 @@ export const CONFIRM_TRANSFER_VIEW: ConfirmTransferView = {
   summary: TRANSFER_SUMMARY,
   sendAction: 'Enviar a mi celular',
   editAction: 'Modificar alarmas',
-  backTarget: '/mockups',
+  backTarget: '/mockups/w-13',
 };
