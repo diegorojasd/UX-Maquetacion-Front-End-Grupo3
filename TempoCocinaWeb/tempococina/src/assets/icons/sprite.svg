@@ -65,8 +65,26 @@
     <path d="M12.6667 7.33333H3.33333M12.6667 7.33333C13.4026 7.33333 14 7.93078 14 8.66667V12.6667C14 13.4026 13.4026 14 12.6667 14H3.33333C2.59745 14 2 13.4026 2 12.6667V8.66667C2 7.93078 2.59745 7.33333 3.33333 7.33333M12.6667 7.33333V6C12.6667 5.26411 12.0692 4.66667 11.3333 4.66667M3.33333 7.33333V6C3.33333 5.26411 3.93078 4.66667 4.66667 4.66667M4.66667 4.66667V3.33333C4.66667 2.59695 5.26362 2 6 2H10C10.7359 2 11.3333 2.59745 11.3333 3.33333V4.66667M4.66667 4.66667H11.3333" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
-  <symbol id="tc-icon-check" viewBox="0 0 16 16" fill="none">
+  <!-- The tick inside a checked ingredient box (W-06). Catalog name is
+       `checkbox`; the standalone confirmation check is `tc-icon-check`. -->
+  <symbol id="tc-icon-checkbox" viewBox="0 0 16 16" fill="none">
     <path d="M12.207 4.793C12.5974 5.1835 12.5974 5.8165 12.207 6.207L7.207 11.207C6.8165 11.5974 6.1835 11.5974 5.793 11.207L3.793 9.207C3.41403 8.81462 3.41945 8.19092 3.80518 7.80518C4.19092 7.41945 4.81462 7.41403 5.207 7.793L6.5 9.086L10.793 4.793C11.1835 4.40262 11.8165 4.40262 12.207 4.793V4.793" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="tc-icon-check" viewBox="0 0 40 40" fill="none">
+    <path d="M8.33333 21.6667L15 28.3333L31.6667 11.6667" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-volume" viewBox="0 0 14 14" fill="none">
+    <path d="M9.06267 4.93733C9.60981 5.48434 9.91721 6.22632 9.91721 7C9.91721 7.77368 9.60981 8.51566 9.06267 9.06267M10.7123 3.28767C11.6969 4.27223 12.25 5.6076 12.25 7C12.25 8.3924 11.6969 9.72777 10.7123 10.7123M3.2585 8.75H2.33333C2.01138 8.75 1.75 8.48862 1.75 8.16667V5.83333C1.75 5.51138 2.01138 5.25 2.33333 5.25H3.2585L6.00425 2.50425C6.37175 2.13675 7 2.39692 7 2.91667V11.0833C7 11.6031 6.37175 11.8632 6.00425 11.4957L3.2585 8.75Z" stroke="currentColor" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-info" viewBox="0 0 16 16" fill="none">
+    <path d="M8.66667 10.6667H8V8H7.33333M8 5.33333H8.00667M14 8C14 11.3115 11.3115 14 8 14C4.68851 14 2 11.3115 2 8C2 4.68851 4.68851 2 8 2C11.3115 2 14 4.68851 14 8Z" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-arrow-left-inv" viewBox="0 0 16 16" fill="none">
+    <path d="M6.66667 12.6667L2 8M2 8L6.66667 3.33333M2 8H14" stroke="currentColor" stroke-width="1.46667" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
   <symbol id="tc-icon-play-circle" viewBox="0 0 16 16" fill="none">

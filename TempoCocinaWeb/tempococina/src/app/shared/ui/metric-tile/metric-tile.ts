@@ -85,7 +85,7 @@ import { MetricTone } from '../../mocks/recipe.model';
     }
 
     .tc-metric__value--text {
-      @include tc-text-metric-value-sm;
+      @include tc-text-subhead;
 
       color: var(--tc-text-body);
     }

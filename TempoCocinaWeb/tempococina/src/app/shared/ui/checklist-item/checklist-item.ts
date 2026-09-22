@@ -18,7 +18,7 @@ import { Icon } from '../icon/icon';
     <label class="tc-check" [class.tc-check--disabled]="disabled()">
       <span class="tc-check__control">
         <input class="tc-check__input" type="checkbox" [checked]="checked()" [disabled]="disabled()" />
-        <tc-icon class="tc-check__tick" name="check" [size]="16" aria-hidden="true" />
+        <tc-icon class="tc-check__tick" name="checkbox" [size]="16" aria-hidden="true" />
       </span>
       <span class="tc-check__name">{{ name() }}</span>
       <span class="tc-check__note">{{ note() }}</span>

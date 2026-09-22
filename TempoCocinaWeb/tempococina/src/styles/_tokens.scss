@@ -57,7 +57,10 @@
   --tc-slate-900: #0f172a;
   --tc-grey-500: #6b7078;
   --tc-teal-500: #0d9488;
+  --tc-teal-50: #f0fdfa;
   --tc-ink-950: #020617;
+  --tc-green-300: #6ee7b7;
+  --tc-green-800: #065f46;
 
   // ---------------------------------------------------------------------
   // Semantic — brand & accent
@@ -118,6 +121,13 @@
   --tc-surface-subtle: var(--tc-slate-25); // metric tiles, checklist rows
   --tc-accent-servings: var(--tc-teal-500); // "Porciones" metric icon
   --tc-scrim: var(--tc-ink-950); // gradient over cover photography
+
+  // W-24 signals success with a deeper green than --tc-success-text
+  // (#047857) and haloes the confirmation mark in teal, not green.
+  // Both kept as designed; see docs/screens/W-24.md, E8 and E13.
+  --tc-success-ink: var(--tc-green-800);
+  --tc-success-border: var(--tc-green-300);
+  --tc-success-halo: var(--tc-teal-50);
 
   // ---------------------------------------------------------------------
   // Spacing scale — base 4 (CLAUDE.md §7)
