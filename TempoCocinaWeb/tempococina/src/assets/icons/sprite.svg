@@ -37,8 +37,18 @@
     <path d="M7 4.66667V7L8.75 8.75M12.25 7C12.25 9.89755 9.89755 12.25 7 12.25C4.10245 12.25 1.75 9.89755 1.75 7C1.75 4.10245 4.10245 1.75 7 1.75C9.89755 1.75 12.25 4.10245 12.25 7Z" stroke="currentColor" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
-  <symbol id="tc-icon-bell" viewBox="0 0 14 14" fill="none">
+  <!-- CLAUDE.md §6 keeps solid variants for the alarm state; the linear
+       bell below is the default one. -->
+  <symbol id="tc-icon-bell-solid" viewBox="0 0 14 14" fill="none">
     <path d="M7 1.4C4.68196 1.4 2.8 3.28196 2.8 5.6V8.1102L2.3051 8.6051C2.10496 8.8053 2.0451 9.10633 2.15343 9.36786C2.26175 9.62939 2.51692 9.79994 2.8 9.8H11.2C11.4831 9.79994 11.7383 9.62939 11.8466 9.36786C11.9549 9.10633 11.895 8.8053 11.6949 8.6051L11.2 8.1102V5.6C11.2 3.28196 9.31804 1.4 7 1.4V1.4M7 12.6C5.84098 12.6 4.9 11.659 4.9 10.5H9.1C9.1 11.659 8.15902 12.6 7 12.6V12.6" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="tc-icon-bell" viewBox="0 0 14 14" fill="none">
+    <path d="M8.75 9.91667H11.6667L10.8471 9.09708C10.6248 8.87475 10.5 8.57322 10.5 8.25883V6.41667C10.5002 4.93308 9.56529 3.61044 8.16667 3.11558V2.91667C8.16667 2.27277 7.6439 1.75 7 1.75C6.3561 1.75 5.83333 2.27277 5.83333 2.91667V3.11558C4.47417 3.59625 3.5 4.893 3.5 6.41667V8.25942C3.5 8.57325 3.37517 8.87483 3.15292 9.09708L2.33333 9.91667H5.25M8.75 9.91667V10.5C8.75 11.4659 7.96585 12.25 7 12.25C6.03415 12.25 5.25 11.4659 5.25 10.5V9.91667M8.75 9.91667H5.25" stroke="currentColor" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-send" viewBox="0 0 16 16" fill="none">
+    <path d="M13.9417 8.843C14.2152 8.71317 14.392 8.44008 14.3984 8.13741C14.4049 7.83473 14.24 7.55433 13.9723 7.41293L2.89452 1.57483C2.61386 1.42681 2.27226 1.45866 2.02379 1.65599C1.77533 1.85332 1.66696 2.17884 1.74758 2.48572L2.80503 6.50924C2.89591 6.85475 3.20487 7.09812 3.56206 7.10556L7.21802 7.18372C7.65945 7.19315 8.01018 7.5592 8.00074 8.00063C7.9913 8.44206 7.62525 8.79279 7.18382 8.78335L3.52786 8.70519C3.17068 8.69736 2.8516 8.9273 2.74604 9.26861L1.5184 13.2433C1.42457 13.5463 1.51868 13.8762 1.75829 14.0841C1.9979 14.292 2.33773 14.3387 2.62454 14.2031L13.9417 8.8438L13.9417 8.843" fill="currentColor"/>
   </symbol>
 
   <symbol id="tc-icon-trend" viewBox="0 0 14 14" fill="none">
@@ -65,11 +75,56 @@
     <path d="M12.6667 7.33333H3.33333M12.6667 7.33333C13.4026 7.33333 14 7.93078 14 8.66667V12.6667C14 13.4026 13.4026 14 12.6667 14H3.33333C2.59745 14 2 13.4026 2 12.6667V8.66667C2 7.93078 2.59745 7.33333 3.33333 7.33333M12.6667 7.33333V6C12.6667 5.26411 12.0692 4.66667 11.3333 4.66667M3.33333 7.33333V6C3.33333 5.26411 3.93078 4.66667 4.66667 4.66667M4.66667 4.66667V3.33333C4.66667 2.59695 5.26362 2 6 2H10C10.7359 2 11.3333 2.59745 11.3333 3.33333V4.66667M4.66667 4.66667H11.3333" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
-  <symbol id="tc-icon-check" viewBox="0 0 16 16" fill="none">
+  <!-- The tick inside a checked ingredient box (W-06). Catalog name is
+       `checkbox`; the standalone confirmation check is `tc-icon-check`. -->
+  <symbol id="tc-icon-checkbox" viewBox="0 0 16 16" fill="none">
     <path d="M12.207 4.793C12.5974 5.1835 12.5974 5.8165 12.207 6.207L7.207 11.207C6.8165 11.5974 6.1835 11.5974 5.793 11.207L3.793 9.207C3.41403 8.81462 3.41945 8.19092 3.80518 7.80518C4.19092 7.41945 4.81462 7.41403 5.207 7.793L6.5 9.086L10.793 4.793C11.1835 4.40262 11.8165 4.40262 12.207 4.793V4.793" fill="currentColor"/>
+  </symbol>
+
+  <symbol id="tc-icon-check" viewBox="0 0 40 40" fill="none">
+    <path d="M8.33333 21.6667L15 28.3333L31.6667 11.6667" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-volume" viewBox="0 0 14 14" fill="none">
+    <path d="M9.06267 4.93733C9.60981 5.48434 9.91721 6.22632 9.91721 7C9.91721 7.77368 9.60981 8.51566 9.06267 9.06267M10.7123 3.28767C11.6969 4.27223 12.25 5.6076 12.25 7C12.25 8.3924 11.6969 9.72777 10.7123 10.7123M3.2585 8.75H2.33333C2.01138 8.75 1.75 8.48862 1.75 8.16667V5.83333C1.75 5.51138 2.01138 5.25 2.33333 5.25H3.2585L6.00425 2.50425C6.37175 2.13675 7 2.39692 7 2.91667V11.0833C7 11.6031 6.37175 11.8632 6.00425 11.4957L3.2585 8.75Z" stroke="currentColor" stroke-width="1.16667" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-info" viewBox="0 0 16 16" fill="none">
+    <path d="M8.66667 10.6667H8V8H7.33333M8 5.33333H8.00667M14 8C14 11.3115 11.3115 14 8 14C4.68851 14 2 11.3115 2 8C2 4.68851 4.68851 2 8 2C11.3115 2 14 4.68851 14 8Z" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-arrow-left-inv" viewBox="0 0 16 16" fill="none">
+    <path d="M6.66667 12.6667L2 8M2 8L6.66667 3.33333M2 8H14" stroke="currentColor" stroke-width="1.46667" stroke-linecap="round" stroke-linejoin="round"/>
   </symbol>
 
   <symbol id="tc-icon-play-circle" viewBox="0 0 16 16" fill="none">
     <path fill-rule="evenodd" clip-rule="evenodd" d="M8 14.4C11.5323 14.4 14.4 11.5323 14.4 8C14.4 4.46774 11.5323 1.6 8 1.6C4.46774 1.6 1.6 4.46774 1.6 8C1.6 11.5323 4.46774 14.4 8 14.4V14.4M7.644 5.7344C7.39851 5.57061 7.08279 5.55528 6.82259 5.6945C6.56238 5.83372 6.39996 6.10489 6.4 6.4V9.6C6.39996 9.89511 6.56238 10.1663 6.82259 10.3055C7.08279 10.4447 7.39851 10.4294 7.644 10.2656L10.044 8.6656C10.2665 8.51722 10.4002 8.26746 10.4002 8C10.4002 7.73254 10.2665 7.48278 10.044 7.3344L7.644 5.7344V5.7344" fill="currentColor"/>
+  </symbol>
+
+  <!--
+    STAND-INS — not extracted from the mockups.
+    CLAUDE.md §6 requires every icon to come from the frames, but the
+    Figma MCP hit its plan call limit before these four could be
+    exported. The team authorised substitutes in the meantime. They
+    follow the family's conventions (16px box, 1.33px stroke, round
+    caps) so they sit correctly beside the real ones. Replace each with
+    its export when Figma is reachable; `plus`, `close` and
+    `chevron-down` are geometrically unambiguous, `bolt` is the one
+    worth checking against the frame.
+  -->
+  <symbol id="tc-icon-plus" viewBox="0 0 16 16" fill="none">
+    <path d="M8 3.33333V12.6667M3.33333 8H12.6667" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-close" viewBox="0 0 16 16" fill="none">
+    <path d="M12 4L4 12M4 4L12 12" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-chevron-down" viewBox="0 0 16 16" fill="none">
+    <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+  <symbol id="tc-icon-bolt" viewBox="0 0 16 16" fill="none">
+    <path d="M8.66667 1.33333L2.66667 9.33333H8L7.33333 14.6667L13.3333 6.66667H8L8.66667 1.33333Z" fill="currentColor"/>
   </symbol>
 </svg>

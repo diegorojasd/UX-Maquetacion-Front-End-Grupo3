@@ -150,12 +150,30 @@
   font-variant-numeric: tabular-nums;
 }
 
-/// Textual value on a metric tile ("Media") — set smaller than a number.
-@mixin tc-text-metric-value-sm {
+/// 16px heading weight — the textual value on a metric tile ("Media")
+/// and the device name on a sync card.
+@mixin tc-text-subhead {
   font-family: 'Roboto', sans-serif;
   font-weight: 700;
   font-size: 1rem; // 16px
   line-height: 1.5rem; // 24px
+}
+
+/// Standfirst under a screen title.
+@mixin tc-text-lead {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1rem; // 16px
+  line-height: 1.5rem; // 24px
+}
+
+/// Monospaced ordinals and durations ("01", "10:00 min").
+@mixin tc-text-data-num {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+  font-variant-numeric: tabular-nums;
 }
 
 /// Metric unit ("min", "alarmas") and checklist item names.
@@ -164,6 +182,43 @@
   font-weight: 600;
   font-size: 0.875rem; // 14px
   line-height: 1.25rem; // 20px
+}
+
+/// Title of a row in a summary table.
+@mixin tc-text-row-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem; // 15px
+  line-height: 1.25rem; // 20px
+}
+
+/// The "Volver" back link. Caption-sized but on its own 14px leading
+/// and wider tracking, exactly as the frames set it.
+@mixin tc-text-nav-label {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 600;
+  font-size: 0.6875rem; // 11px
+  line-height: 0.875rem; // 14px
+  letter-spacing: 0.88px;
+  text-transform: uppercase;
+}
+
+/// Tick labels on a timeline axis.
+@mixin tc-text-axis {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 0.625rem; // 10px
+  line-height: 0.9375rem; // 15px
+  font-variant-numeric: tabular-nums;
+}
+
+/// Chip label at full weight — status pills, flags, offsets.
+@mixin tc-text-chip-bold {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 0.75rem; // 12px
+  line-height: 1rem; // 16px
+  font-variant-numeric: tabular-nums;
 }
 
 /// Neutral chip label.

@@ -37,6 +37,7 @@ import { Icon } from '../../../shared/ui/icon/icon';
     </footer>
   `,
   styles: `
+    @use 'mixins' as *;
     @use 'typography' as *;
 
     // Pushes the footer to the bottom of the shell's flex column when the
@@ -49,17 +50,17 @@ import { Icon } from '../../../shared/ui/icon/icon';
     .tc-footer {
       background: var(--tc-surface);
       border-top: 1px solid var(--tc-border);
-      padding: var(--tc-space-16) var(--tc-space-48);
+      padding-block: var(--tc-space-21) var(--tc-space-20);
     }
 
     .tc-footer__row {
+      @include tc-page-container;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: var(--tc-space-16);
-      max-width: 1560px;
-      margin-inline: auto;
     }
 
     .tc-footer__seals {

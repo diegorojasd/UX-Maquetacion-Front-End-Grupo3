@@ -57,7 +57,10 @@
   --tc-slate-900: #0f172a;
   --tc-grey-500: #6b7078;
   --tc-teal-500: #0d9488;
+  --tc-teal-50: #f0fdfa;
   --tc-ink-950: #020617;
+  --tc-green-300: #6ee7b7;
+  --tc-green-800: #065f46;
 
   // ---------------------------------------------------------------------
   // Semantic — brand & accent
@@ -119,6 +122,13 @@
   --tc-accent-servings: var(--tc-teal-500); // "Porciones" metric icon
   --tc-scrim: var(--tc-ink-950); // gradient over cover photography
 
+  // W-24 signals success with a deeper green than --tc-success-text
+  // (#047857) and haloes the confirmation mark in teal, not green.
+  // Both kept as designed; see docs/screens/W-24.md, E8 and E13.
+  --tc-success-ink: var(--tc-green-800);
+  --tc-success-border: var(--tc-green-300);
+  --tc-success-halo: var(--tc-teal-50);
+
   // ---------------------------------------------------------------------
   // Spacing scale — base 4 (CLAUDE.md §7)
   // ---------------------------------------------------------------------
@@ -129,6 +139,43 @@
   --tc-space-24: 1.5rem;
   --tc-space-32: 2rem;
   --tc-space-48: 3rem;
+
+  // Spacing — EXTENDED
+  //
+  // The frames do not stay on the base-4 scale: card padding lands on
+  // 17, 21 and 25, the nav divider on 25, table cells on 18 and 22. The
+  // measured values live here so screens can be pixel-exact without any
+  // component writing a raw length (CLAUDE.md §11). Prefer the base
+  // scale for anything new; reach for these only to match a frame.
+  --tc-space-2: 0.125rem;
+  --tc-space-3: 0.1875rem;
+  --tc-space-6: 0.375rem;
+  --tc-space-7: 0.4375rem;
+  --tc-space-9: 0.5625rem;
+  --tc-space-10: 0.625rem;
+  --tc-space-13: 0.8125rem;
+  --tc-space-14: 0.875rem;
+  --tc-space-15: 0.9375rem;
+  --tc-space-17: 1.0625rem;
+  --tc-space-18: 1.125rem;
+  --tc-space-20: 1.25rem;
+  --tc-space-21: 1.3125rem;
+  --tc-space-22: 1.375rem;
+  --tc-space-25: 1.5625rem;
+  --tc-space-28: 1.75rem;
+
+  // ---------------------------------------------------------------------
+  // Page shell
+  //
+  // One container for every screen, so the app bar, the content and the
+  // footer share the same left and right edge at any viewport. Matches
+  // the 1440px canvas the frames were resized to, with the 32px gutter
+  // they all use, giving 1376px of content. `max-width` only caps, so
+  // below 1440 the container still shrinks with the viewport.
+  // ---------------------------------------------------------------------
+  --tc-page-max: 1440px;
+  --tc-page-gutter: var(--tc-space-32);
+  --tc-page-block: var(--tc-space-32);
 
   // ---------------------------------------------------------------------
   // Radii (CLAUDE.md §7) — picked the upper bound of each documented range

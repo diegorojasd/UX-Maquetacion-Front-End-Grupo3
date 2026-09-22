@@ -1,6 +1,6 @@
 import { NgOptimizedImage } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { BackLink } from '../../shared/ui/back-link/back-link';
 import { Button } from '../../shared/ui/button/button';
 import { ChecklistItem } from '../../shared/ui/checklist-item/checklist-item';
 import { EquipmentChip } from '../../shared/ui/equipment-chip/equipment-chip';
@@ -16,7 +16,7 @@ import { RECIPE_DETAIL_VIEW } from './recipe-detail.mock';
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgOptimizedImage,
-    RouterLink,
+    BackLink,
     Button,
     ChecklistItem,
     EquipmentChip,

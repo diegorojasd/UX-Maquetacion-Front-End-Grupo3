@@ -1,0 +1,82 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.tc-synced {
+  @include tc-page-container;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-block: var(--tc-page-block);
+}
+
+// In Figma the card is a fixed 893.5px box with absolutely positioned
+// children; rebuilt here as a flow column (CLAUDE.md §7).
+.tc-synced__card {
+  @include tc-card-surface;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 896px;
+  padding: var(--tc-space-48);
+}
+
+.tc-synced__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 0 var(--tc-space-24);
+  background: var(--tc-primary);
+  border-radius: var(--tc-radius-pill);
+  color: var(--tc-on-primary);
+  box-shadow:
+    0 0 0 8px var(--tc-success-halo),
+    0 10px 15px -3px color-mix(in srgb, var(--tc-primary) 25%, transparent),
+    0 4px 6px -4px color-mix(in srgb, var(--tc-primary) 25%, transparent);
+}
+
+.tc-synced__title {
+  @include tc-text-h1;
+
+  margin: 0 0 var(--tc-space-12);
+  color: var(--tc-text-strong);
+  text-align: center;
+}
+
+.tc-synced__lead {
+  @include tc-text-lead;
+
+  max-width: 672px;
+  margin: 0 0 var(--tc-space-32);
+  color: var(--tc-text-secondary);
+  text-align: center;
+}
+
+.tc-synced__lead-recipe {
+  color: var(--tc-primary);
+}
+
+.tc-synced__sync {
+  width: 100%;
+  max-width: 672px;
+}
+
+.tc-synced__timers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-space-10);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tc-synced__actions {
+  display: flex;
+  width: 100%;
+  max-width: 672px;
+  margin-top: var(--tc-space-32);
+}

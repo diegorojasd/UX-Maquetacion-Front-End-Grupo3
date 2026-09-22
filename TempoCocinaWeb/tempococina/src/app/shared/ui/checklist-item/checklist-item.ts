@@ -18,7 +18,7 @@ import { Icon } from '../icon/icon';
     <label class="tc-check" [class.tc-check--disabled]="disabled()">
       <span class="tc-check__control">
         <input class="tc-check__input" type="checkbox" [checked]="checked()" [disabled]="disabled()" />
-        <tc-icon class="tc-check__tick" name="check" [size]="16" aria-hidden="true" />
+        <tc-icon class="tc-check__tick" name="checkbox" [size]="16" aria-hidden="true" />
       </span>
       <span class="tc-check__name">{{ name() }}</span>
       <span class="tc-check__note">{{ note() }}</span>
@@ -32,9 +32,7 @@ import { Icon } from '../icon/icon';
       display: flex;
       align-items: center;
       gap: var(--tc-space-12);
-      // 13px in the frame; rounded to the scale so the row still clears
-      // the 44px minimum target.
-      padding: var(--tc-space-12);
+      padding: var(--tc-space-13) var(--tc-space-13) var(--tc-space-13) var(--tc-space-12);
       background: color-mix(in srgb, var(--tc-surface-subtle) 90%, transparent);
       border: 1px solid color-mix(in srgb, var(--tc-border) 80%, transparent);
       border-radius: var(--tc-radius-button);
