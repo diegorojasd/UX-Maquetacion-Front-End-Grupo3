@@ -1,10 +1,806 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".m08_resumen">
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".m01_recetas">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Encabezado principal -->
+        <TextView
+            android:id="@+id/tituloModulo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SESIÓN FINALIZADA"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_caption"
+            android:fontFamily="@font/roboto_bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_24"/>
+
+        <!-- Recuadro temporal para el logo -->
+        <TextView
+            android:id="@+id/tituloPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="RESUMEN DE COCCION"
+            android:textColor="@color/text_primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tituloModulo" />
+
+        <TextView
+            android:id="@+id/RECETA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginTop="36dp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Pollo al horno con arroz · Tiempo total: 48 min"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tituloModulo" />
+
+        <ImageView
+            android:id="@+id/logoTempo"
+            android:layout_width="88dp"
+            android:layout_height="42dp"
+            android:layout_marginEnd="28dp"
+            android:src="@drawable/tempo_cocina_logo"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@id/tituloPrincipal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tituloPrincipal"
+            app:layout_constraintVertical_bias="1.0"/>
+
+
+        <!-- Tarjeta de resumen receta -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardReceta"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="165dp"
+            android:layout_margin="@dimen/space_16"
+            app:cardCornerRadius="@dimen/radius_card"
+            app:cardElevation="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tituloPrincipal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="165dp"
+                android:background="@drawable/bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/space_12">
+
+                <!-- Fila superior: precisión y desviación -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <!-- Precisión global -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/roboto_medium"
+                                android:text="PRECISIÓN GLOBAL"
+                                android:textColor="#64748B"
+                                android:textSize="11sp" />
+
+                            <!-- Porcentaje + efectividad en línea -->
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/roboto_bold"
+                                    android:text="92%"
+                                    android:textColor="#18434B"
+                                    android:textSize="30sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="38dp"
+                                    android:layout_marginStart="4dp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:text="efectividad"
+                                    android:textColor="#64748B"
+                                    android:gravity="bottom"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Desviación neta -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:gravity="start"
+                            android:text="DESVIACIÓN NETA"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_bold"
+                            android:gravity="start"
+                            android:text="+4 min"
+                            android:textColor="#F97316"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+                <!-- Barra de division -->
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="15dp"
+                    android:layout_marginTop="5dp"
+                    android:backgroundTint="#F1F5F9"
+                    android:max="100"
+                    android:progressTint="#18434B" />
+
+                <!-- Barra de progreso -->
+                <ProgressBar
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginVertical="12dp"
+                    android:backgroundTint="#F1F5F9"
+                    android:max="100"
+                    android:progress="92"
+                    android:progressTint="#18434B" />
+
+                <!-- Fila inferior -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 procesos ejecutados"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2 ligeros desfases"
+                        android:textColor="#F97316"
+                        android:textSize="12sp"
+                        android:fontFamily="@font/roboto_regular"
+                        android:layout_gravity="end"/>
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <!-- Desglose por proceso -->
+        <LinearLayout
+            android:id="@+id/seccionDesglose"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/space_24"
+            app:layout_constraintTop_toBottomOf="@id/cardReceta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <!-- Encabezado -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="DESGLOSE POR PROCESO"
+                    android:textColor="@color/text_body"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PLANEADO VS. REAL"
+                    android:textColor="#94A3B8"
+                    android:textSize="12sp"
+                    android:fontFamily="@font/roboto_medium"/>
+            </LinearLayout>
+
+            <!-- Tarjeta proceso 1 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!-- arroz -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="@dimen/space_16">
+
+                    <!-- Fila superior -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Icono -->
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_arroz"
+                            android:layout_marginEnd="12dp"/>
+
+                        <!-- Nombre y tiempos -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Arroz"
+                                android:textColor="@color/text_body"
+                                android:textSize="15sp"
+                                android:fontFamily="@font/roboto_bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15 min est. · 17 min real"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+
+                        <!-- Estado -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="+2 min desfase"
+                            android:textColor="#F97316"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:background="@drawable/bg_estado_naranja"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="4dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <!-- Barras -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+
+                        <!-- Plan -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Plan"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:progress="100"
+                                android:max="100"
+                                android:progressTint="#18434B"
+                                android:backgroundTint="#E2E8F0"
+                                android:layout_marginHorizontal="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="15m"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+
+                        <!-- Real -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Real"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:progress="90"
+                                android:max="100"
+                                android:progressTint="#18434B"
+                                android:backgroundTint="#E2E8F0"
+                                android:layout_marginHorizontal="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="17m"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tarjeta proceso 2 -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_12"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <!-- Pollo al horno -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="@dimen/space_16"
+                    android:layout_marginTop="@dimen/space_12">
+
+                    <!-- Fila superior -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Icono -->
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_horno"
+                            android:layout_marginEnd="12dp"/>
+
+                        <!-- Nombre y tiempos -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Pollo al horno"
+                                android:textColor="@color/text_body"
+                                android:textSize="15sp"
+                                android:fontFamily="@font/roboto_bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="35 min est. · 35 min real"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+
+                        <!-- Estado -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="A tiempo"
+                            android:textColor="#16A34A"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:background="@drawable/bg_estado_verde"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="4dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <!-- Barras -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+
+                        <!-- Plan -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Plan"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:progress="100"
+                                android:max="100"
+                                android:progressTint="#CBD5E1"
+                                android:backgroundTint="#E2E8F0"
+                                android:layout_marginHorizontal="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="35m"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+
+                        <!-- Real -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Real"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:progress="100"
+                                android:max="100"
+                                android:progressTint="#18434B"
+                                android:backgroundTint="#E2E8F0"
+                                android:layout_marginHorizontal="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="35m"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tarjeta proceso 3: Salsa (reducción) -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_card"
+                    android:padding="@dimen/space_16">
+
+                    <!-- Fila superior -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <!-- Icono -->
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:src="@drawable/ic_salsa"
+                            android:backgroundTint="#F1F5F9"
+                            android:padding="6dp"
+                            android:layout_marginEnd="12dp"
+                            android:background="@drawable/bg_icono_proceso"/>
+
+                        <!-- Nombre y tiempos -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Salsa (reducción)"
+                                android:textColor="@color/text_body"
+                                android:textSize="15sp"
+                                android:fontFamily="@font/roboto_bold"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18 min est. · 20 min real"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+
+                        <!-- Estado -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Reducción +2m"
+                            android:textColor="#F97316"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/roboto_bold"
+                            android:background="@drawable/bg_estado_naranja"
+                            android:paddingHorizontal="12dp"
+                            android:paddingVertical="4dp"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <!-- Barras -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+
+                        <!-- Plan -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Plan"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:progress="90"
+                                android:max="100"
+                                android:progressTint="#CBD5E1"
+                                android:backgroundTint="#E2E8F0"
+                                android:layout_marginHorizontal="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="18m"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+                        </LinearLayout>
+
+                        <!-- Real -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Real"
+                                android:textColor="#94A3B8"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_medium"/>
+
+                            <ProgressBar
+                                style="?android:attr/progressBarStyleHorizontal"
+                                android:layout_width="0dp"
+                                android:layout_height="6dp"
+                                android:layout_weight="1"
+                                android:progress="100"
+                                android:max="100"
+                                android:progressTint="#18434B"
+                                android:backgroundTint="#E2E8F0"
+                                android:layout_marginHorizontal="8dp"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="20m"
+                                android:textColor="#18434B"
+                                android:textSize="11sp"
+                                android:fontFamily="@font/roboto_bold"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tarjeta de aprendizaje automático -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_16"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:foreground="?attr/selectableItemBackground">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_card_aprendizaje"
+                    android:padding="@dimen/space_16"
+                    android:gravity="center_vertical">
+
+                    <!-- Icono -->
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="12dp"
+                        android:background="@drawable/bg_icono_aprendizaje"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_aprendizaje"
+                            android:adjustViewBounds="true"
+                            android:scaleType="centerInside"/>
+                    </FrameLayout>
+
+
+
+                    <!-- Texto -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Aprendizaje automático"
+                            android:textColor="#0F172A"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/roboto_bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Considera calibrar tu preset de Arroz a 17 min la cocción habitual en tu receta."
+                            android:textColor="#64748B"
+                            android:textSize="12sp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+        <!-- Botón al final -->
+        <Button
+            android:id="@+id/btnEmpezar"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/space_24"
+            android:text="Evaluar"
+            android:textAllCaps="false"
+            android:textColor="@color/surface"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto_bold"
+            android:background="@drawable/bg_btn_lineal"
+            android:backgroundTint="@null"
+            app:layout_constraintTop_toBottomOf="@id/seccionDesglose"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

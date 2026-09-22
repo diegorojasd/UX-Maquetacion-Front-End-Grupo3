@@ -28,7 +28,7 @@
         android:text="ALARMA"
         android:textColor="@color/text_primary"
         android:textStyle="bold"
-        android:textSize="@dimen/text_size_title"
+        android:textSize="24sp"
         android:fontFamily="@font/roboto_bold"
         app:layout_constraintTop_toBottomOf="@id/tituloModulo"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,16 +36,18 @@
         android:layout_marginTop="@dimen/space_4"/>
 
     <!-- Recuadro temporal para el logo -->
-    <View
+    <ImageView
         android:id="@+id/logoTempo"
         android:layout_width="88dp"
         android:layout_height="42dp"
         android:layout_marginEnd="28dp"
-        android:background="#000000"
+        android:src="@drawable/tempo_cocina_logo"
+        android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@id/tituloPrincipal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/tituloPrincipal"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"/>
+
 
     <!-- TARJETA ALARMNA -->
     <androidx.cardview.widget.CardView
