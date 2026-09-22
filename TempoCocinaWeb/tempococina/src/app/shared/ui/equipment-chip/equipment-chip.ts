@@ -38,7 +38,7 @@ import { EquipmentTone } from '../../mocks/recipe.model';
     .tc-chip__dot {
       width: 6px;
       height: 6px;
-      border-radius: 50%;
+      border-radius: var(--tc-radius-pill);
       background: currentcolor;
     }
 
