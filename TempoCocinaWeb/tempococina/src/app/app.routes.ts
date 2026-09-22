@@ -10,4 +10,8 @@ export const routes: Routes = [
     path: 'mockups/w-06',
     loadComponent: () => import('./features/recipe-detail/recipe-detail'),
   },
+  {
+    path: 'mockups/w-24',
+    loadComponent: () => import('./features/synced-alarms/synced-alarms'),
+  },
 ];
