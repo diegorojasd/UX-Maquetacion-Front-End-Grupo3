@@ -1,10 +1,9 @@
 <main class="tc-recipe">
-  <nav class="tc-recipe__back-nav" aria-label="Navegación de la receta">
-    <a class="tc-recipe__back" routerLink="/mockups">
-      <tc-icon name="arrow-left" [size]="11" />
-      <span>{{ view.backLabel }}</span>
-    </a>
-  </nav>
+  <tc-back-link
+    [label]="view.backLabel"
+    target="/mockups"
+    navLabel="Navegación de la receta"
+  />
 
   <div class="tc-recipe__grid">
     <div class="tc-recipe__column">
@@ -119,7 +118,9 @@
           </p>
           <div class="tc-recipe__control-actions">
             <tc-button variant="secondary">{{ view.secondaryAction }}</tc-button>
-            <tc-button variant="primary" icon="play-circle">{{ view.startAction }}</tc-button>
+            <tc-button variant="primary" icon="play-circle" [link]="view.startTarget">
+              {{ view.startAction }}
+            </tc-button>
           </div>
         </div>
       </section>

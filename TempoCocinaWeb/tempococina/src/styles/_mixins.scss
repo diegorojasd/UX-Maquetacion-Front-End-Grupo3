@@ -25,3 +25,23 @@
   border-radius: var(--tc-radius-card);
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
 }
+
+/// The shared page container. Everything that spans the width of a
+/// screen — app bar, main content, footer — sits inside one of these so
+/// their edges line up.
+@mixin tc-page-container {
+  max-width: var(--tc-page-max);
+  margin-inline: auto;
+  padding-inline: var(--tc-page-gutter);
+}
+
+/// The header band both tables share. Extracted so the read-only
+/// summary (W-22) and the editable grid (W-13) stay visually identical
+/// without their components being coupled.
+@mixin tc-table-head {
+  background: color-mix(in srgb, var(--tc-surface-subtle) 75%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--tc-border) 80%, transparent);
+  color: var(--tc-text-secondary);
+  font-weight: 700;
+  text-align: left;
+}

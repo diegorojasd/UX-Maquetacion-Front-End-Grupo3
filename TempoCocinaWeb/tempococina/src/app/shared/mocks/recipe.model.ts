@@ -50,6 +50,94 @@ export interface RecipeStep {
   readonly description: string;
   readonly duration: string;
   readonly meta: readonly RecipeStepMeta[];
+  /** Condensed title used once the process is transferred (W-24). */
+  readonly shortLabel: string;
+  /**
+   * Duration as the transfer screens print it ("10:00 min"). Kept apart
+   * from `duration` because W-24 does not merely reformat W-06: process
+   * 02 reads 35 minutes there and 30 here (docs/screens/W-24.md, E2/E3).
+   */
+  readonly syncDuration: string;
+  /** Alarm tone assigned to the process on the phone. */
+  readonly tone: string;
+
+  /**
+   * Fields the confirm-and-transfer review adds (W-22). It names the
+   * same four processes a third way and re-numbers them in an order
+   * that differs from every other screen (docs/screens/W-22.md, F1/F2).
+   */
+  readonly transferTitle: string;
+  readonly transferSubtitle: string;
+  /** Present only on the process the design flags in accent. */
+  readonly criticalLabel?: string;
+  /** Minutes as the table prints them, zero-padded ("05"). */
+  readonly transferDuration: string;
+  readonly channel: string;
+  readonly sound: string;
+  /** `bell` for a chime, `volume` for a tone — both from the sprite. */
+  readonly soundIcon: string;
+  readonly transferStatus: string;
+
+  /**
+   * Fields the auto-detection review adds (W-13). It names the same four
+   * processes a fourth way — two of them worded differently from W-22,
+   * not merely unprefixed — and drops the leading zero on the minutes,
+   * since here they sit in an editable field
+   * (docs/screens/W-13.md, G2/G6).
+   */
+  readonly detectedLabel: string;
+  readonly assignedMinutes: string;
+  readonly alarmSound: string;
+  /** `bell`, `music` or `volume`, from the sprite. */
+  readonly alarmSoundIcon: string;
+}
+
+/** One band of the estimated time distribution (W-22). */
+export interface TimelineSegment {
+  readonly stepId: string;
+  readonly label: string;
+  /**
+   * Width as the design draws it, NOT derived from the durations: the
+   * processes overlap, so the chicken's 35 min is drawn as 40 % of a
+   * 50-minute span (docs/screens/W-22.md, F5). Never recomputed.
+   */
+  readonly percent: number;
+  readonly tone: 'muted' | 'deep' | 'primary' | 'accent';
+}
+
+/** A tick on the timeline axis. */
+export interface TimelineMark {
+  readonly label: string;
+  /** The design sets the closing mark apart. */
+  readonly emphasis?: boolean;
+}
+
+/** Screen-level figures for the transfer review (W-22). */
+export interface TransferSummary {
+  readonly heading: string;
+  readonly headingCount: string;
+  readonly sequenceStatus: string;
+  readonly totalLabel: string;
+  /**
+   * Shown as designed. It is not the sum of the rows, which come to
+   * 65 min, because the processes overlap (docs/screens/W-22.md, F4).
+   */
+  readonly totalValue: string;
+  readonly earliestLabel: string;
+  readonly earliestValue: string;
+  readonly finalLabel: string;
+  readonly finalValue: string;
+  readonly timelineTitle: string;
+  readonly syncableLabel: string;
+  readonly segments: readonly TimelineSegment[];
+  readonly marks: readonly TimelineMark[];
+}
+
+/** The phone a recipe's alarm sequence was transferred to (W-24). */
+export interface SyncedDevice {
+  readonly name: string;
+  readonly status: string;
+  readonly icon: string;
 }
 
 export interface RecipeImage {

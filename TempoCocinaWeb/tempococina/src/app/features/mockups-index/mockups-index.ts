@@ -39,10 +39,10 @@ interface MockupEntry {
     .tc-index {
       display: flex;
       flex-direction: column;
+      @include tc-page-container;
+
       gap: var(--tc-space-24);
-      max-width: 1600px;
-      margin-inline: auto;
-      padding: var(--tc-space-32);
+      padding-block: var(--tc-page-block);
     }
 
     .tc-index__title {
@@ -109,6 +109,24 @@ export default class MockupsIndex {
       title: 'Detalle de receta y flujo de pasos',
       module: 'Recetario',
       path: '/mockups/w-06',
+    },
+    {
+      id: 'W-13',
+      title: 'Configuración automática sugerida',
+      module: 'Detección automática',
+      path: '/mockups/w-13',
+    },
+    {
+      id: 'W-22',
+      title: 'Confirmar y enviar al móvil',
+      module: 'Transferencia',
+      path: '/mockups/w-22',
+    },
+    {
+      id: 'W-24',
+      title: 'Alarmas sincronizadas',
+      module: 'Transferencia',
+      path: '/mockups/w-24',
     },
   ];
 }

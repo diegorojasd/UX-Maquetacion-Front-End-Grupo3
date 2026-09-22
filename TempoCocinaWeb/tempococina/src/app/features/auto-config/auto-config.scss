@@ -1,0 +1,310 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.tc-auto {
+  @include tc-page-container;
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-space-24);
+  padding-block: var(--tc-page-block);
+}
+
+.tc-auto__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-space-4);
+}
+
+.tc-auto__title {
+  @include tc-text-h1;
+
+  margin: 0;
+  color: var(--tc-text-primary);
+}
+
+.tc-auto__lead {
+  @include tc-text-lead;
+
+  margin: 0;
+  color: var(--tc-text-muted);
+}
+
+// ---------------------------------------------------------------------
+// Editable card
+// ---------------------------------------------------------------------
+.tc-auto__card {
+  @include tc-card-surface;
+
+  overflow: hidden;
+}
+
+.tc-auto__card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--tc-space-12);
+  padding: var(--tc-space-16) var(--tc-space-24);
+}
+
+.tc-auto__card-title {
+  @include tc-text-h2;
+
+  margin: 0;
+  color: var(--tc-text-strong);
+  font-weight: 700;
+}
+
+.tc-auto__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.tc-auto__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+// Visually hidden, still announced.
+.tc-auto__caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.tc-auto__th {
+  @include tc-text-caption;
+  @include tc-table-head;
+
+  padding: var(--tc-space-10) var(--tc-space-24);
+}
+
+.tc-auto__th--index {
+  width: 82px;
+  text-align: center;
+}
+
+.tc-auto__th--action {
+  width: 82px;
+  text-align: center;
+}
+
+.tc-auto__cell {
+  padding: var(--tc-space-13) var(--tc-space-12);
+  vertical-align: middle;
+}
+
+.tc-auto__cell:first-child {
+  padding-left: var(--tc-space-24);
+}
+
+.tc-auto__cell:last-child {
+  padding-right: var(--tc-space-24);
+}
+
+.tc-auto__cell--index {
+  @include tc-text-data-num;
+
+  color: var(--tc-text-tertiary);
+  font-weight: 500;
+  text-align: center;
+}
+
+.tc-auto__cell--action {
+  text-align: center;
+}
+
+// ---------------------------------------------------------------------
+// Controls
+// ---------------------------------------------------------------------
+.tc-auto__input {
+  @include tc-text-unit;
+
+  width: 100%;
+  padding: var(--tc-space-9) var(--tc-space-13);
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: var(--tc-radius-field);
+  color: var(--tc-text-body);
+  font-weight: 500;
+
+  &:hover:not(:disabled) {
+    border-color: var(--tc-text-disabled);
+  }
+
+  &:focus-visible {
+    @include tc-focus-ring;
+
+    border-color: var(--tc-primary);
+  }
+
+  &:disabled {
+    background: var(--tc-surface-alt);
+    color: var(--tc-text-disabled);
+  }
+}
+
+.tc-auto__time {
+  display: flex;
+  align-items: center;
+  gap: var(--tc-space-8);
+}
+
+.tc-auto__input--minutes {
+  width: 80px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.tc-auto__unit {
+  @include tc-text-body-s;
+
+  color: var(--tc-text-secondary);
+}
+
+// The sound icon and the chevron sit over a native select, so the
+// control keeps its own keyboard behaviour (docs/screens/W-13.md, G11).
+.tc-auto__select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  max-width: 177px;
+}
+
+.tc-auto__select-control {
+  @include tc-text-body-s;
+
+  appearance: none;
+  width: 100%;
+  padding: var(--tc-space-9) var(--tc-space-28) var(--tc-space-9) var(--tc-space-32);
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: var(--tc-radius-chip);
+  color: var(--tc-text-body);
+
+  &:hover:not(:disabled) {
+    border-color: var(--tc-text-disabled);
+  }
+
+  &:focus-visible {
+    @include tc-focus-ring;
+
+    border-color: var(--tc-primary);
+  }
+
+  &:disabled {
+    background: var(--tc-surface-alt);
+    color: var(--tc-text-disabled);
+  }
+}
+
+.tc-auto__select-icon,
+.tc-auto__select-chevron {
+  position: absolute;
+  pointer-events: none;
+}
+
+.tc-auto__select-icon {
+  left: var(--tc-space-10);
+  color: var(--tc-secondary);
+}
+
+.tc-auto__select-chevron {
+  right: var(--tc-space-8);
+  color: var(--tc-text-tertiary);
+}
+
+.tc-auto__remove {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--tc-radius-chip);
+  color: var(--tc-text-tertiary);
+  cursor: pointer;
+
+  // The frame draws a 32px control; the target is widened without
+  // changing the box (CLAUDE.md §8).
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -6px;
+  }
+
+  &:hover {
+    background: var(--tc-error-bg);
+    color: var(--tc-error);
+  }
+
+  &:focus-visible {
+    @include tc-focus-ring;
+  }
+}
+
+.tc-auto__add {
+  padding: var(--tc-space-12) var(--tc-space-24) var(--tc-space-24);
+}
+
+// ---------------------------------------------------------------------
+// Bottom action bar
+// ---------------------------------------------------------------------
+.tc-auto__actions-bar {
+  @include tc-card-surface;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tc-space-16);
+  padding: var(--tc-space-21);
+}
+
+.tc-auto__device {
+  @include tc-text-body-s;
+
+  display: flex;
+  align-items: center;
+  gap: var(--tc-space-12);
+  margin: 0;
+  color: var(--tc-text-secondary);
+}
+
+.tc-auto__device-icon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--tc-surface-subtle);
+  border: 1px solid var(--tc-border);
+  border-radius: var(--tc-radius-button);
+  color: var(--tc-primary);
+}
+
+.tc-auto__device-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 12px;
+  height: 12px;
+  background: var(--tc-success);
+  border: 2px solid var(--tc-surface);
+  border-radius: var(--tc-radius-pill);
+}
+
+.tc-auto__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tc-space-12);
+}

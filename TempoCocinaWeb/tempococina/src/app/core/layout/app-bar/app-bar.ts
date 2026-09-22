@@ -18,25 +18,32 @@ import { Icon } from '../../../shared/ui/icon/icon';
   imports: [Icon],
   template: `
     <header class="tc-appbar">
-      <div class="tc-appbar__brand">
-        <tc-icon name="timer-brand" [size]="32" />
-        <span class="tc-appbar__wordmark">
-          <span class="tc-appbar__wordmark-line tc-appbar__wordmark-line--tempo">Tempo</span>
-          <span class="tc-appbar__wordmark-line tc-appbar__wordmark-line--cocina">Cocina</span>
-        </span>
+      <div class="tc-appbar__inner">
+        <div class="tc-appbar__brand">
+          <tc-icon name="timer-brand" [size]="32" />
+          <span class="tc-appbar__wordmark">
+            <span class="tc-appbar__wordmark-line tc-appbar__wordmark-line--tempo">Tempo</span>
+            <span class="tc-appbar__wordmark-line tc-appbar__wordmark-line--cocina">Cocina</span>
+          </span>
+        </div>
       </div>
     </header>
   `,
   styles: `
+    @use 'mixins' as *;
     @use 'typography' as *;
 
     .tc-appbar {
-      display: flex;
-      align-items: center;
-      height: 54px;
-      padding-inline: var(--tc-space-32);
       background: var(--tc-surface);
       border-bottom: 1px solid var(--tc-border);
+    }
+
+    .tc-appbar__inner {
+      @include tc-page-container;
+
+      display: flex;
+      align-items: center;
+      height: 53px;
     }
 
     .tc-appbar__brand {
