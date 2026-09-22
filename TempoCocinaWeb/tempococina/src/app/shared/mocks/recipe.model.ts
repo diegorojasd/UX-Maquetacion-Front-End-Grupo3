@@ -60,6 +60,64 @@ export interface RecipeStep {
   readonly syncDuration: string;
   /** Alarm tone assigned to the process on the phone. */
   readonly tone: string;
+
+  /**
+   * Fields the confirm-and-transfer review adds (W-22). It names the
+   * same four processes a third way and re-numbers them in an order
+   * that differs from every other screen (docs/screens/W-22.md, F1/F2).
+   */
+  readonly transferTitle: string;
+  readonly transferSubtitle: string;
+  /** Present only on the process the design flags in accent. */
+  readonly criticalLabel?: string;
+  /** Minutes as the table prints them, zero-padded ("05"). */
+  readonly transferDuration: string;
+  readonly channel: string;
+  readonly sound: string;
+  /** `bell` for a chime, `volume` for a tone — both from the sprite. */
+  readonly soundIcon: string;
+  readonly transferStatus: string;
+}
+
+/** One band of the estimated time distribution (W-22). */
+export interface TimelineSegment {
+  readonly stepId: string;
+  readonly label: string;
+  /**
+   * Width as the design draws it, NOT derived from the durations: the
+   * processes overlap, so the chicken's 35 min is drawn as 40 % of a
+   * 50-minute span (docs/screens/W-22.md, F5). Never recomputed.
+   */
+  readonly percent: number;
+  readonly tone: 'muted' | 'deep' | 'primary' | 'accent';
+}
+
+/** A tick on the timeline axis. */
+export interface TimelineMark {
+  readonly label: string;
+  /** The design sets the closing mark apart. */
+  readonly emphasis?: boolean;
+}
+
+/** Screen-level figures for the transfer review (W-22). */
+export interface TransferSummary {
+  readonly heading: string;
+  readonly headingCount: string;
+  readonly sequenceStatus: string;
+  readonly totalLabel: string;
+  /**
+   * Shown as designed. It is not the sum of the rows, which come to
+   * 65 min, because the processes overlap (docs/screens/W-22.md, F4).
+   */
+  readonly totalValue: string;
+  readonly earliestLabel: string;
+  readonly earliestValue: string;
+  readonly finalLabel: string;
+  readonly finalValue: string;
+  readonly timelineTitle: string;
+  readonly syncableLabel: string;
+  readonly segments: readonly TimelineSegment[];
+  readonly marks: readonly TimelineMark[];
 }
 
 /** The phone a recipe's alarm sequence was transferred to (W-24). */
