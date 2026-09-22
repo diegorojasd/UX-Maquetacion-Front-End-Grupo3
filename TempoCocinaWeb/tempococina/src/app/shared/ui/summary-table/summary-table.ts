@@ -63,6 +63,7 @@ import { RecipeStep } from '../../mocks/recipe.model';
     </table>
   `,
   styles: `
+    @use 'mixins' as *;
     @use 'typography' as *;
 
     .tc-table {
@@ -84,13 +85,9 @@ import { RecipeStep } from '../../mocks/recipe.model';
 
     .tc-table__th {
       @include tc-text-caption;
+      @include tc-table-head;
 
       padding: var(--tc-space-12) var(--tc-space-24);
-      background: color-mix(in srgb, var(--tc-surface-subtle) 75%, transparent);
-      border-bottom: 1px solid color-mix(in srgb, var(--tc-border) 80%, transparent);
-      color: var(--tc-text-secondary);
-      font-weight: 700;
-      text-align: left;
     }
 
     .tc-table__th--center {

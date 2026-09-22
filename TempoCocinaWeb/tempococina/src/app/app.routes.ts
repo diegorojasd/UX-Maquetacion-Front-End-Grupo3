@@ -11,6 +11,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/recipe-detail/recipe-detail'),
   },
   {
+    path: 'mockups/w-13',
+    loadComponent: () => import('./features/auto-config/auto-config'),
+  },
+  {
     path: 'mockups/w-22',
     loadComponent: () => import('./features/confirm-transfer/confirm-transfer'),
   },

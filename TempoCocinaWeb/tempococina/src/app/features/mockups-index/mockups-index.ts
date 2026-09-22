@@ -111,6 +111,12 @@ export default class MockupsIndex {
       path: '/mockups/w-06',
     },
     {
+      id: 'W-13',
+      title: 'Configuración automática sugerida',
+      module: 'Detección automática',
+      path: '/mockups/w-13',
+    },
+    {
       id: 'W-22',
       title: 'Confirmar y enviar al móvil',
       module: 'Transferencia',
