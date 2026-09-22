@@ -1,0 +1,41 @@
+<main class="tc-synced">
+  <article class="tc-synced__card">
+    <p class="tc-synced__mark" aria-hidden="true">
+      <tc-icon name="check" [size]="40" />
+    </p>
+
+    <h1 class="tc-synced__title">{{ view.title }}</h1>
+
+    <p class="tc-synced__lead">
+      {{ view.leadBefore }}<strong class="tc-synced__lead-recipe">{{ view.leadRecipe }}</strong>{{ view.leadAfter }}
+    </p>
+
+    <tc-sync-card
+      class="tc-synced__sync"
+      [deviceName]="view.device.name"
+      [deviceStatus]="view.device.status"
+      [deviceIcon]="view.device.icon"
+    >
+      <ol class="tc-synced__timers">
+        @for (step of view.recipe.steps; track step.id) {
+          <li>
+            <tc-sound-list-item
+              [order]="step.order"
+              [label]="step.shortLabel"
+              [duration]="step.syncDuration"
+              [tone]="step.tone"
+            />
+          </li>
+        }
+      </ol>
+
+      <tc-info-note>{{ view.note }}</tc-info-note>
+    </tc-sync-card>
+
+    <div class="tc-synced__actions">
+      <tc-button variant="brand" icon="arrow-left-inv" [link]="view.backTarget">
+        {{ view.backAction }}
+      </tc-button>
+    </div>
+  </article>
+</main>

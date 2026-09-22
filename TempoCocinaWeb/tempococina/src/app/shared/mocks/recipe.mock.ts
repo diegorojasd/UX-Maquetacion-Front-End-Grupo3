@@ -1,4 +1,4 @@
-import { Recipe } from './recipe.model';
+import { Recipe, RecipeStep, SyncedDevice, TransferSummary } from './recipe.model';
 
 /**
  * "Pollo al horno con arroz" — the recipe W-06, W-13, W-22 and W-24 all
@@ -26,7 +26,7 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
   metrics: [
     { icon: 'clock', label: 'Tiempo total', value: '45', unit: 'min', tone: 'neutral' },
     {
-      icon: 'bell',
+      icon: 'bell-solid',
       label: 'Secuencia',
       value: '4',
       unit: 'alarmas',
@@ -56,6 +56,22 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Encender el horno con calor arriba y abajo. Colocar la rejilla en la posición intermedia y esperar hasta estabilizar la temperatura.',
       duration: '10 min',
+      shortLabel: 'Precalentar horno',
+      syncDuration: '10:00 min',
+      tone: 'Bip constante',
+      transferTitle: '3. Precalentar horno a 200°C',
+      transferSubtitle: 'Convección activa',
+      transferDuration: '10',
+      channel: 'Horno #1',
+      sound: 'Bip constante',
+      soundIcon: 'volume',
+      transferStatus: 'Listo',
+      detectedLabel: 'Precalentar horno a 200°C',
+      assignedMinutes: '10',
+      alarmSound: 'Bip constante',
+      // Reuses the bell already carrying the other alarm sounds rather
+      // than a separate `music` note, by the team's call.
+      alarmSoundIcon: 'bell',
       meta: [
         { label: 'Objetivo térmico:', value: '200°C', tone: 'neutral' },
         { label: 'Tipo:', value: 'Precalentamiento', tone: 'neutral' },
@@ -68,6 +84,21 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Untar el pollo con aceite, sal, ajo picado y hierbas provenzales. Colocar en la fuente e iniciar la cocción primaria sin acompañamiento.',
       duration: '30 min',
+      shortLabel: 'Sellado y cocción',
+      syncDuration: '35:00 min',
+      tone: 'Campana Suave',
+      transferTitle: '1. Pollo al horno — Sellado y dorado',
+      transferSubtitle: 'Térmica continua',
+      criticalLabel: 'Fase crítica',
+      transferDuration: '35',
+      channel: 'Horno #1',
+      sound: 'Campana Suave (Tono alt.)',
+      soundIcon: 'bell',
+      transferStatus: 'Listo',
+      detectedLabel: 'Pollo al horno — Sellado y dorado',
+      assignedMinutes: '35',
+      alarmSound: 'Timbre clásico',
+      alarmSoundIcon: 'bell',
       meta: [
         { label: 'Fase:', value: 'Dorado y sellado', tone: 'neutral' },
         { label: 'Disparo automático al finalizar', tone: 'success' },
@@ -80,6 +111,20 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Abrir el horno cuidadosamente. Incorporar el arroz crudo distribuyéndolo por el fondo de la bandeja junto con el caldo caliente para absorción.',
       duration: '15 min',
+      shortLabel: 'Absorción arroz',
+      syncDuration: '15:00 min',
+      tone: 'Campana horno',
+      transferTitle: '2. Arroz — Absorción y cocción lenta',
+      transferSubtitle: 'Monitoreo de ebullición suave',
+      transferDuration: '15',
+      channel: 'Anafe #2',
+      sound: 'Campana horno (Predet.)',
+      soundIcon: 'bell',
+      transferStatus: 'Listo',
+      detectedLabel: 'Arroz — Absorción y cocción a fuego lento',
+      assignedMinutes: '15',
+      alarmSound: 'Campana horno',
+      alarmSoundIcon: 'bell',
       meta: [
         { label: 'Caldo estimado:', value: '600 ml', tone: 'neutral' },
         { label: 'Fase:', value: 'Absorción simultánea', tone: 'neutral' },
@@ -92,10 +137,105 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Apagar el horno, entreabrir la puerta y dejar reposar 5 minutos para asentar jugos antes del trinchado y servicio en mesa.',
       duration: '5 min',
+      shortLabel: 'Reposo final',
+      syncDuration: '05:00 min',
+      tone: 'Chime suave',
+      transferTitle: '4. Reposo final de asado y trinchado',
+      transferSubtitle: 'Estabilización de jugos internos',
+      transferDuration: '05',
+      channel: 'Mesa de pase',
+      sound: 'Chime suave',
+      soundIcon: 'volume',
+      transferStatus: 'Listo',
+      detectedLabel: 'Reposo final de asado y redistribución',
+      assignedMinutes: '5',
+      alarmSound: 'Chime suave',
+      alarmSoundIcon: 'volume',
       meta: [
         { label: 'Finalización del lote', tone: 'neutral' },
-        { label: 'Notificación acústica activa', tone: 'critical', icon: 'bell' },
+        { label: 'Notificación acústica activa', tone: 'critical', icon: 'bell-solid' },
       ],
     },
   ],
 };
+
+/**
+ * The phone the sequence was transferred to (W-24). The icon is the
+ * plain `phone` symbol: the design does not use a distinct "phone-ok"
+ * mark, the green box and the badge carry the synced meaning
+ * (docs/screens/W-24.md, E7).
+ */
+export const SYNCED_DEVICE: SyncedDevice = {
+  name: 'Móvil Pixel 8',
+  status: 'Sincronizado y listo',
+  icon: 'phone',
+};
+
+/**
+ * Row order of the transfer review (W-22). The screen numbers the same
+ * four processes 1–4 in an order that puts the chicken before the
+ * preheat, contradicting both its own timeline and every other screen.
+ * Declared explicitly rather than sorted, so the deviation stays visible
+ * (docs/screens/W-22.md, F1).
+ */
+export const TRANSFER_ROWS: readonly RecipeStep[] = [
+  RECIPE_POLLO_AL_HORNO.steps[1], // 1. Pollo al horno
+  RECIPE_POLLO_AL_HORNO.steps[2], // 2. Arroz
+  RECIPE_POLLO_AL_HORNO.steps[0], // 3. Precalentar horno
+  RECIPE_POLLO_AL_HORNO.steps[3], // 4. Reposo final
+];
+
+/**
+ * Screen-level figures for W-22. Both the total and the segment widths
+ * are transcribed from the design, never derived from the row
+ * durations — the processes overlap.
+ */
+export const TRANSFER_SUMMARY: TransferSummary = {
+  heading: 'Resumen final de alarmas',
+  headingCount: '(4 procesos programados)',
+  sequenceStatus: 'Secuencia completa',
+  totalLabel: 'Tiempo acumulado total:',
+  totalValue: '50 min',
+  earliestLabel: 'Alarma más temprana:',
+  earliestValue: '+10 min',
+  finalLabel: 'Alarma final:',
+  finalValue: '+50 min',
+  timelineTitle: 'Distribución temporal estimada',
+  syncableLabel: '100% Sincronizable',
+  segments: [
+    { stepId: 'precalentar', label: 'Precalentado', percent: 20, tone: 'muted' },
+    { stepId: 'arroz', label: 'Arroz', percent: 30, tone: 'deep' },
+    { stepId: 'pollo', label: 'Pollo asado', percent: 40, tone: 'primary' },
+    { stepId: 'reposo', label: 'Reposo final', percent: 10, tone: 'accent' },
+  ],
+  marks: [
+    { label: '00m (Inicio)' },
+    { label: '+10m' },
+    { label: '+25m' },
+    { label: '+45m' },
+    { label: '+50m (Servido)', emphasis: true },
+  ],
+};
+
+/**
+ * Row order of the auto-detection review (W-13). It matches W-22's, so
+ * the same declaration is reused rather than repeated.
+ */
+export const DETECTED_ROWS: readonly RecipeStep[] = TRANSFER_ROWS;
+
+/**
+ * Options offered by the alarm-sound selects (W-13).
+ *
+ * The mockup never shows a dropdown open, so no list of available sounds
+ * exists anywhere in the design. These are the five sound names that do
+ * appear across the screens — four of them selected in W-13 itself, plus
+ * "Campana Suave" from W-22 and W-24. Recorded as an assumption
+ * (docs/screens/W-13.md, G10); replace it if the real catalog turns up.
+ */
+export const ALARM_SOUNDS: readonly string[] = [
+  'Timbre clásico',
+  'Campana Suave',
+  'Campana horno',
+  'Bip constante',
+  'Chime suave',
+];

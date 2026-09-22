@@ -1,0 +1,118 @@
+<main class="tc-auto">
+  <tc-back-link
+    [label]="view.backLabel"
+    [target]="view.backTarget"
+    navLabel="Navegación de la configuración"
+  />
+
+  <header class="tc-auto__header">
+    <h1 class="tc-auto__title">{{ view.title }}</h1>
+    <p class="tc-auto__lead">{{ view.lead }}</p>
+  </header>
+
+  <section class="tc-auto__card" aria-labelledby="tc-auto-card-title">
+    <div class="tc-auto__card-header">
+      <h2 class="tc-auto__card-title" id="tc-auto-card-title">{{ view.cardTitle }}</h2>
+      <tc-status-badge tone="neutral" shape="chip">{{ view.processCount }}</tc-status-badge>
+    </div>
+
+    <form class="tc-auto__form" [formGroup]="form">
+      <table class="tc-auto__table">
+        <caption class="tc-auto__caption">{{ view.tableCaption }}</caption>
+        <thead>
+          <tr>
+            <th class="tc-auto__th tc-auto__th--index" scope="col">#</th>
+            <th class="tc-auto__th" scope="col">Proceso detectado</th>
+            <th class="tc-auto__th" scope="col">Tiempo asignado</th>
+            <th class="tc-auto__th" scope="col">Sonido de alarma</th>
+            <th class="tc-auto__th tc-auto__th--action" scope="col">Acción</th>
+          </tr>
+        </thead>
+        <tbody formArrayName="entries">
+          @for (entry of entries.controls; track entry; let i = $index) {
+            <tr class="tc-auto__row" [formGroupName]="i">
+              <th class="tc-auto__cell tc-auto__cell--index" scope="row">
+                {{ entry.controls.rowNumber.value }}
+              </th>
+
+              <td class="tc-auto__cell">
+                <input
+                  class="tc-auto__input"
+                  type="text"
+                  formControlName="name"
+                  [attr.aria-label]="'Proceso detectado ' + entry.controls.rowNumber.value"
+                />
+              </td>
+
+              <td class="tc-auto__cell">
+                <span class="tc-auto__time">
+                  <input
+                    class="tc-auto__input tc-auto__input--minutes"
+                    type="text"
+                    inputmode="numeric"
+                    formControlName="minutes"
+                    [attr.aria-label]="
+                      'Tiempo asignado del proceso ' + entry.controls.rowNumber.value + ', en minutos'
+                    "
+                  />
+                  <span class="tc-auto__unit" aria-hidden="true">{{ view.unitLabel }}</span>
+                </span>
+              </td>
+
+              <td class="tc-auto__cell">
+                <span class="tc-auto__select">
+                  <tc-icon
+                    class="tc-auto__select-icon"
+                    [name]="entry.controls.soundIcon.value"
+                    [size]="14"
+                  />
+                  <select
+                    class="tc-auto__select-control"
+                    formControlName="sound"
+                    [attr.aria-label]="'Sonido de alarma del proceso ' + entry.controls.rowNumber.value"
+                  >
+                    @for (sound of view.sounds; track sound) {
+                      <option [value]="sound">{{ sound }}</option>
+                    }
+                  </select>
+                  <tc-icon class="tc-auto__select-chevron" name="chevron-down" [size]="18" />
+                </span>
+              </td>
+
+              <td class="tc-auto__cell tc-auto__cell--action">
+                <button
+                  class="tc-auto__remove"
+                  type="button"
+                  [attr.aria-label]="'Eliminar proceso ' + entry.controls.rowNumber.value"
+                >
+                  <tc-icon name="close" [size]="16" />
+                </button>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+
+      <div class="tc-auto__add">
+        <tc-button variant="dashed" icon="plus">{{ view.addAction }}</tc-button>
+      </div>
+    </form>
+  </section>
+
+  <div class="tc-auto__actions-bar">
+    <p class="tc-auto__device">
+      <span class="tc-auto__device-icon">
+        <tc-icon name="phone" [size]="20" />
+        <span class="tc-auto__device-dot" aria-hidden="true"></span>
+      </span>
+      <span class="tc-auto__device-label">{{ view.deviceStatus }}</span>
+    </p>
+
+    <div class="tc-auto__actions">
+      <tc-button variant="secondary" size="md">{{ view.reconfigureAction }}</tc-button>
+      <tc-button variant="brand" icon="bolt" [accentIcon]="true" [link]="view.confirmTarget">
+        {{ view.confirmAction }}
+      </tc-button>
+    </div>
+  </div>
+</main>

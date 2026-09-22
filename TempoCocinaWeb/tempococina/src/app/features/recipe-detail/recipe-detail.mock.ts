@@ -21,6 +21,7 @@ export interface RecipeDetailView {
   readonly stepsTotalValue: string;
   readonly secondaryAction: string;
   readonly startAction: string;
+  readonly startTarget: string;
 }
 
 export const RECIPE_DETAIL_VIEW: RecipeDetailView = {
@@ -38,4 +39,5 @@ export const RECIPE_DETAIL_VIEW: RecipeDetailView = {
   stepsTotalValue: '4 temporizadores encadenados',
   secondaryAction: 'Modificar Receta',
   startAction: 'Preparar receta',
+  startTarget: '/mockups/w-24',
 };
