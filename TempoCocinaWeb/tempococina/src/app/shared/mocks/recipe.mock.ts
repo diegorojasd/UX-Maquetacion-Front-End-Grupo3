@@ -1,4 +1,4 @@
-import { Recipe } from './recipe.model';
+import { Recipe, SyncedDevice } from './recipe.model';
 
 /**
  * "Pollo al horno con arroz" — the recipe W-06, W-13, W-22 and W-24 all
@@ -56,6 +56,9 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Encender el horno con calor arriba y abajo. Colocar la rejilla en la posición intermedia y esperar hasta estabilizar la temperatura.',
       duration: '10 min',
+      shortLabel: 'Precalentar horno',
+      syncDuration: '10:00 min',
+      tone: 'Bip constante',
       meta: [
         { label: 'Objetivo térmico:', value: '200°C', tone: 'neutral' },
         { label: 'Tipo:', value: 'Precalentamiento', tone: 'neutral' },
@@ -68,6 +71,9 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Untar el pollo con aceite, sal, ajo picado y hierbas provenzales. Colocar en la fuente e iniciar la cocción primaria sin acompañamiento.',
       duration: '30 min',
+      shortLabel: 'Sellado y cocción',
+      syncDuration: '35:00 min',
+      tone: 'Campana Suave',
       meta: [
         { label: 'Fase:', value: 'Dorado y sellado', tone: 'neutral' },
         { label: 'Disparo automático al finalizar', tone: 'success' },
@@ -80,6 +86,9 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Abrir el horno cuidadosamente. Incorporar el arroz crudo distribuyéndolo por el fondo de la bandeja junto con el caldo caliente para absorción.',
       duration: '15 min',
+      shortLabel: 'Absorción arroz',
+      syncDuration: '15:00 min',
+      tone: 'Campana horno',
       meta: [
         { label: 'Caldo estimado:', value: '600 ml', tone: 'neutral' },
         { label: 'Fase:', value: 'Absorción simultánea', tone: 'neutral' },
@@ -92,10 +101,25 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       description:
         'Apagar el horno, entreabrir la puerta y dejar reposar 5 minutos para asentar jugos antes del trinchado y servicio en mesa.',
       duration: '5 min',
+      shortLabel: 'Reposo final',
+      syncDuration: '05:00 min',
+      tone: 'Chime suave',
       meta: [
         { label: 'Finalización del lote', tone: 'neutral' },
         { label: 'Notificación acústica activa', tone: 'critical', icon: 'bell' },
       ],
     },
   ],
+};
+
+/**
+ * The phone the sequence was transferred to (W-24). The icon is the
+ * plain `phone` symbol: the design does not use a distinct "phone-ok"
+ * mark, the green box and the badge carry the synced meaning
+ * (docs/screens/W-24.md, E7).
+ */
+export const SYNCED_DEVICE: SyncedDevice = {
+  name: 'Móvil Pixel 8',
+  status: 'Sincronizado y listo',
+  icon: 'phone',
 };

@@ -50,6 +50,23 @@ export interface RecipeStep {
   readonly description: string;
   readonly duration: string;
   readonly meta: readonly RecipeStepMeta[];
+  /** Condensed title used once the process is transferred (W-24). */
+  readonly shortLabel: string;
+  /**
+   * Duration as the transfer screens print it ("10:00 min"). Kept apart
+   * from `duration` because W-24 does not merely reformat W-06: process
+   * 02 reads 35 minutes there and 30 here (docs/screens/W-24.md, E2/E3).
+   */
+  readonly syncDuration: string;
+  /** Alarm tone assigned to the process on the phone. */
+  readonly tone: string;
+}
+
+/** The phone a recipe's alarm sequence was transferred to (W-24). */
+export interface SyncedDevice {
+  readonly name: string;
+  readonly status: string;
+  readonly icon: string;
 }
 
 export interface RecipeImage {
