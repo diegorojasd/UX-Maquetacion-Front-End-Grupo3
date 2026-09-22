@@ -1,6 +1,7 @@
 package com.example.app
 
 import android.os.Bundle
+import android.webkit.WebView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +12,20 @@ class m08_resumen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_m08_resumen)
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        // Cargar el SVG directamente en el WebView
+        val webIcono = findViewById<WebView>(R.id.web_icono_aprendizaje)
+        webIcono.settings.apply {
+            javaScriptEnabled = false
+            loadWithOverviewMode = true
+            useWideViewPort = true
+        }
+        webIcono.loadUrl("file:///android_res/drawable/ic_aprendizaje.svg")
     }
 }
