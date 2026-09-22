@@ -101,9 +101,18 @@
 
     <style name="TextItemTitle">
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">17sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:lineSpacingExtra">7sp</item>
         <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Row description. §5 lists Body 15/22, but the mockup wraps these
+         at Body S; §2 puts the screenshot above this file. -->
+    <style name="TextBodyS">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
     </style>
 
     <style name="TextBodyM">
@@ -119,6 +128,31 @@
         <item name="android:letterSpacing">0.073</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Top-bar screen title. The baseline sets 24sp inline; kept at the
+         same size so M-02 matches M-01, but named here. -->
+    <style name="TextScreenTitle">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Low-emphasis action: uppercase, accent, no fill (§9 "Text"). -->
+    <style name="TextActionLabel">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">0.06</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/secondary</item>
+    </style>
+
+    <!-- Compact button label, for the small "Escuchar" pill. -->
+    <style name="TextButtonLabelSmall">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_primary</item>
     </style>
 
     <style name="TextButtonLabel">
