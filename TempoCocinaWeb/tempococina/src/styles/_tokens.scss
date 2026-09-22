@@ -165,6 +165,21 @@
   --tc-space-28: 1.75rem;
 
   // ---------------------------------------------------------------------
+  // Page shell
+  //
+  // One container for every screen, so the app bar, the content and the
+  // footer share the same left and right edge at any viewport. The
+  // frames disagree with each other here — W-06 lets its content run to
+  // 1600 while W-22 and W-24 stop at the 1280 canvas, and the footer
+  // uses a 48px gutter against the content's 32 — so the canvas width
+  // and the content gutter win, which is what all three frames agree on
+  // at the 1280 reference viewport.
+  // ---------------------------------------------------------------------
+  --tc-page-max: 1280px;
+  --tc-page-gutter: var(--tc-space-32);
+  --tc-page-block: var(--tc-space-32);
+
+  // ---------------------------------------------------------------------
   // Radii (CLAUDE.md §7) — picked the upper bound of each documented range
   // ---------------------------------------------------------------------
   --tc-radius-xs: 4px; // EXTENDED — checkboxes and inline note chips

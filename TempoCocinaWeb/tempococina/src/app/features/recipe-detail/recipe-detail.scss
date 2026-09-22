@@ -4,10 +4,10 @@
 .tc-recipe {
   display: flex;
   flex-direction: column;
+  @include tc-page-container;
+
   gap: var(--tc-space-20);
-  max-width: 1600px;
-  margin-inline: auto;
-  padding: var(--tc-space-20) var(--tc-space-32);
+  padding-block: var(--tc-page-block);
 }
 
 // ---------------------------------------------------------------------

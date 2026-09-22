@@ -39,10 +39,10 @@ interface MockupEntry {
     .tc-index {
       display: flex;
       flex-direction: column;
+      @include tc-page-container;
+
       gap: var(--tc-space-24);
-      max-width: 1600px;
-      margin-inline: auto;
-      padding: var(--tc-space-32);
+      padding-block: var(--tc-page-block);
     }
 
     .tc-index__title {

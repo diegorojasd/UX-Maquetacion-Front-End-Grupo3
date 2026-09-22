@@ -2,10 +2,12 @@
 @use 'typography' as *;
 
 .tc-synced {
+  @include tc-page-container;
+
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: var(--tc-space-48) var(--tc-space-16);
+  padding-block: var(--tc-page-block);
 }
 
 // In Figma the card is a fixed 893.5px box with absolutely positioned
