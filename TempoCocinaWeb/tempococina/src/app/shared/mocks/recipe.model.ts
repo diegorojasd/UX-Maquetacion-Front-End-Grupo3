@@ -77,6 +77,19 @@ export interface RecipeStep {
   /** `bell` for a chime, `volume` for a tone — both from the sprite. */
   readonly soundIcon: string;
   readonly transferStatus: string;
+
+  /**
+   * Fields the auto-detection review adds (W-13). It names the same four
+   * processes a fourth way — two of them worded differently from W-22,
+   * not merely unprefixed — and drops the leading zero on the minutes,
+   * since here they sit in an editable field
+   * (docs/screens/W-13.md, G2/G6).
+   */
+  readonly detectedLabel: string;
+  readonly assignedMinutes: string;
+  readonly alarmSound: string;
+  /** `bell`, `music` or `volume`, from the sprite. */
+  readonly alarmSoundIcon: string;
 }
 
 /** One band of the estimated time distribution (W-22). */

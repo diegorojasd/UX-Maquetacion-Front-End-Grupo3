@@ -66,6 +66,10 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       sound: 'Bip constante',
       soundIcon: 'volume',
       transferStatus: 'Listo',
+      detectedLabel: 'Precalentar horno a 200°C',
+      assignedMinutes: '10',
+      alarmSound: 'Bip constante',
+      alarmSoundIcon: 'music',
       meta: [
         { label: 'Objetivo térmico:', value: '200°C', tone: 'neutral' },
         { label: 'Tipo:', value: 'Precalentamiento', tone: 'neutral' },
@@ -89,6 +93,10 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       sound: 'Campana Suave (Tono alt.)',
       soundIcon: 'bell',
       transferStatus: 'Listo',
+      detectedLabel: 'Pollo al horno — Sellado y dorado',
+      assignedMinutes: '35',
+      alarmSound: 'Timbre clásico',
+      alarmSoundIcon: 'bell',
       meta: [
         { label: 'Fase:', value: 'Dorado y sellado', tone: 'neutral' },
         { label: 'Disparo automático al finalizar', tone: 'success' },
@@ -111,6 +119,10 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       sound: 'Campana horno (Predet.)',
       soundIcon: 'bell',
       transferStatus: 'Listo',
+      detectedLabel: 'Arroz — Absorción y cocción a fuego lento',
+      assignedMinutes: '15',
+      alarmSound: 'Campana horno',
+      alarmSoundIcon: 'bell',
       meta: [
         { label: 'Caldo estimado:', value: '600 ml', tone: 'neutral' },
         { label: 'Fase:', value: 'Absorción simultánea', tone: 'neutral' },
@@ -133,6 +145,10 @@ export const RECIPE_POLLO_AL_HORNO: Recipe = {
       sound: 'Chime suave',
       soundIcon: 'volume',
       transferStatus: 'Listo',
+      detectedLabel: 'Reposo final de asado y redistribución',
+      assignedMinutes: '5',
+      alarmSound: 'Chime suave',
+      alarmSoundIcon: 'volume',
       meta: [
         { label: 'Finalización del lote', tone: 'neutral' },
         { label: 'Notificación acústica activa', tone: 'critical', icon: 'bell-solid' },
@@ -198,3 +214,26 @@ export const TRANSFER_SUMMARY: TransferSummary = {
     { label: '+50m (Servido)', emphasis: true },
   ],
 };
+
+/**
+ * Row order of the auto-detection review (W-13). It matches W-22's, so
+ * the same declaration is reused rather than repeated.
+ */
+export const DETECTED_ROWS: readonly RecipeStep[] = TRANSFER_ROWS;
+
+/**
+ * Options offered by the alarm-sound selects (W-13).
+ *
+ * The mockup never shows a dropdown open, so no list of available sounds
+ * exists anywhere in the design. These are the five sound names that do
+ * appear across the screens — four of them selected in W-13 itself, plus
+ * "Campana Suave" from W-22 and W-24. Recorded as an assumption
+ * (docs/screens/W-13.md, G10); replace it if the real catalog turns up.
+ */
+export const ALARM_SOUNDS: readonly string[] = [
+  'Timbre clásico',
+  'Campana Suave',
+  'Campana horno',
+  'Bip constante',
+  'Chime suave',
+];
