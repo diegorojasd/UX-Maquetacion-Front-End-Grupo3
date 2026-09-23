@@ -38,6 +38,17 @@ android {
     }
 }
 
+// El APK sale como tempococina.apk en vez del app-debug.apk que da el nombre
+// del módulo. Aplica tanto al build local como al del pipeline.
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach { output ->
+            (output as? com.android.build.api.variant.impl.VariantOutputImpl)
+                ?.outputFileName?.set("tempococina.apk")
+        }
+    }
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
