@@ -30,6 +30,11 @@
     <color name="tile_neutral">#E6F0F2</color>
     <color name="tile_secondary">#FFF1EC</color>
 
+    <!-- M-03. §12 describes the active timer card's border as a soft
+         orange, not the full #ED532A, and says to take the exact value
+         from Figma; using the documented soft token meanwhile. -->
+    <color name="timer_alert_border">#FDDCCF</color>
+
     <style name="ChipEstadoActivo" parent="Widget.MaterialComponents.Chip.Action">
         <item name="chipBackgroundColor">#F1F5F9</item>
         <item name="android:textColor">#18434B</item>
@@ -152,6 +157,31 @@
     <style name="TextButtonLabelSmall">
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Remaining time inside a timer card (§5 Timer 34/38). -->
+    <style name="TextTimer">
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:letterSpacing">-0.015</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Compact card timer. §5 has no size for it; the mockup shows it
+         clearly smaller than the active card's. Estimated. -->
+    <style name="TextTimerSm">
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:letterSpacing">-0.015</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextChip">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">13sp</item>
         <item name="android:textColor">@color/text_primary</item>
     </style>
 
