@@ -97,7 +97,7 @@ Desde esta carpeta (`TempoCocinaWeb/tempococina/`):
    npm start
    ```
 
-   Es un alias de `ng serve`. La primera compilación tarda algo; termina cuando imprime:
+   Es un alias de `ng serve` o `ng s`. La primera compilación tarda algo; termina cuando imprime:
 
    ```
    Watch mode enabled. Watching for file changes...
@@ -326,22 +326,3 @@ propia. Las decisiones que sí se tomaron a conciencia están en la sección 3 d
 | `npm run watch` | Compila en modo desarrollo y se queda observando | — |
 | `npm run build` | Compilación de producción a `dist/` | ⚠️ **falla hoy**, ver abajo |
 | `npm run ng` | Acceso directo a la CLI del proyecto | — |
-
-### `npm run build` está roto
-
-La compilación de producción falla por un presupuesto de tamaño:
-
-```
-✘ [ERROR] src/app/features/edit-alarm/edit-alarm.scss exceeded maximum budget.
-          Budget 16.00 kB was not met by 262 bytes with a total of 16.26 kB.
-```
-
-Son **262 bytes** por encima del tope que fija `angular.json` para los estilos de un
-componente. `npm start` no lo aplica, así que **el desarrollo y la revisión visual no están
-bloqueados**; solo el build de producción. Se arregla de dos maneras, y conviene acordar
-cuál: adelgazar `edit-alarm.scss` (16.26 kB es mucho para una pantalla, y sugiere que hay
-estilos que deberían vivir en un componente compartido), o subir el presupuesto en
-`angular.json`.
-
-La compilación también emite dos avisos **NG8113**: `SoundListItem` y `SyncCard` están
-importados en `suggested-sound.ts` pero no se usan en su plantilla.
