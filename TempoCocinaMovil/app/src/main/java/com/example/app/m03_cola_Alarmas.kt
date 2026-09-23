@@ -37,6 +37,11 @@ class m03_cola_Alarmas : AppCompatActivity() {
         fillCompact(R.id.cardHorno, CookingSession.secondary[0])
         fillCompact(R.id.cardSalsa, CookingSession.secondary[1])
 
+        // The prototype opens the sounding alarm from the active card.
+        findViewById<View>(R.id.cardActiva).setOnClickListener {
+            startActivity(Intent(this, m13_alarma::class.java))
+        }
+
         findViewById<View>(R.id.btnFinalizar).setOnClickListener {
             startActivity(Intent(this, m07_proceso_terminado::class.java))
         }
