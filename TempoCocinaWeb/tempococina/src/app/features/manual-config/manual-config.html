@@ -1,0 +1,114 @@
+<main class="tc-auto">
+  <header class="tc-auto__header">
+    <h1 class="tc-auto__title">Configurar alarmas manualmente</h1>
+    <p class="tc-auto__lead">
+      Define individualmente cada proceso de cocción, asignando su duración estimada y el tono de alarma correspondiente.
+    </p>
+  </header>
+
+
+  <section class="tc-auto__card" aria-labelledby="tc-auto-card-title">
+    <div class="tc-auto__card-header">
+      <h2 class="tc-auto__card-title" id="tc-auto-card-title">Lista de alarmas programadas</h2>
+      <tc-status-badge tone="neutral" shape="chip">2 activas</tc-status-badge>
+    </div>
+
+    <!-- Alarma 01 -->
+    <div class="tc-auto__alarm">
+      <div class="tc-auto__alarm-header">
+        <div class="tc-auto__alarm-left">
+          <span class="tc-auto__alarm-index">ALARMA 01</span>
+          <button class="tc-auto__alarm-edit">
+            <tc-icon name="pencil" [size]="14"></tc-icon> Editar alarma
+          </button>
+        </div>
+        <button class="tc-auto__alarm-remove">
+          <tc-icon name="trash" [size]="14"></tc-icon> Quitar alarma
+        </button>
+      </div>
+
+      <div class="tc-auto__alarm-body">
+        <div class="tc-auto__field tc-auto__field--process">
+          <label class="tc-auto__label">PROCESO / TAREA</label>
+          <input class="tc-auto__input" type="text" value="Guiso de carne a fuego lento" />
+        </div>
+
+        <div class="tc-auto__field tc-auto__field--time">
+          <label class="tc-auto__label">TIEMPO (MIN)</label>
+          <div class="tc-auto__time">
+            <input class="tc-auto__input tc-auto__input--minutes" type="text" value="45" />
+            <span class="tc-auto__unit">min</span>
+          </div>
+        </div>
+
+        <div class="tc-auto__field tc-auto__field--sound">
+          <label class="tc-auto__label">SONIDO</label>
+          <span class="tc-auto__select">
+            <select class="tc-auto__select-control">
+              <option selected>Campana horno (Predeterminado)</option>
+              <option>Bip constante</option>
+            </select>
+            <tc-icon class="tc-auto__select-chevron" name="chevron-down" [size]="18"></tc-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alarma 02 -->
+    <div class="tc-auto__alarm">
+      <div class="tc-auto__alarm-header">
+        <div class="tc-auto__alarm-left">
+          <span class="tc-auto__alarm-index">ALARMA 02</span>
+          <button class="tc-auto__alarm-edit">
+            <tc-icon name="pencil" [size]="14"></tc-icon> Editar alarma
+          </button>
+        </div>
+        <button class="tc-auto__alarm-remove">
+          <tc-icon name="trash" [size]="14"></tc-icon> Quitar alarma
+        </button>
+      </div>
+
+      <div class="tc-auto__alarm-body">
+        <div class="tc-auto__field tc-auto__field--process">
+          <label class="tc-auto__label">PROCESO / TAREA</label>
+          <input class="tc-auto__input" type="text" value="Salteado de verduras en sartén" />
+        </div>
+
+        <div class="tc-auto__field tc-auto__field--time">
+          <label class="tc-auto__label">TIEMPO (MIN)</label>
+          <div class="tc-auto__time">
+            <input class="tc-auto__input tc-auto__input--minutes" type="text" value="12" />
+            <span class="tc-auto__unit">min</span>
+          </div>
+        </div>
+
+        <div class="tc-auto__field tc-auto__field--sound">
+          <label class="tc-auto__label">SONIDO</label>
+          <span class="tc-auto__select">
+            <select class="tc-auto__select-control">
+              <option>Campana horno (Predeterminado)</option>
+              <option selected>Bip constante</option>
+            </select>
+            <tc-icon class="tc-auto__select-chevron" name="chevron-down" [size]="18"></tc-icon>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tc-auto__add">
+      <tc-button variant="secondary" icon="plus">Agregar otra alarma</tc-button>
+    </div>
+  </section>
+
+
+  <div class="tc-auto__actions-bar">
+    <p class="tc-auto__device">
+      Total configurado: <strong>2 alarmas activas</strong> (tiempo total estimado: 45 min en paralelo)
+    </p>
+
+    <div class="tc-auto__actions">
+      <tc-button variant="secondary" size="md">DESCARTAR Y CANCELAR</tc-button>
+      <tc-button variant="brand" size="md">GUARDAR Y SINCRONIZAR CON EL MÓVIL</tc-button>
+    </div>
+  </div>
+</main>

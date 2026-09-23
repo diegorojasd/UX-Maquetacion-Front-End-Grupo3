@@ -123,6 +123,18 @@ export default class MockupsIndex {
       path: '/mockups/w-13',
     },
     {
+      id: 'W-15',
+      title: 'Configuración manual',
+      module: 'Detección manual',
+      path: '/mockups/w-15',
+    },
+    {
+      id: 'W-16',
+      title: 'Editar alarmas',
+      module: 'Alarmas',
+      path: '/mockups/w-16',
+    },
+    {
       id: 'W-17',
       title: 'Sonido Sugerido',
       module: 'Sonido',
