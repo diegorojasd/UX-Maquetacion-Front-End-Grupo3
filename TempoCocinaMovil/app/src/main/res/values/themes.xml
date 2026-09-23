@@ -147,10 +147,30 @@
         <item name="android:textColor">@color/text_secondary</item>
     </style>
 
-    <!-- Top-bar screen title. The baseline sets 24sp inline; kept at the
-         same size so M-02 matches M-01, but named here. -->
+    <!--
+        Kicker del encabezado, sobre el título. Estándar de M-01: 12sp
+        (@dimen/text_size_caption), roboto_bold, secondary y sin tracking.
+        No usar TextCaptionUpper aquí: ese es el caption del sistema (11sp
+        con +0.073 de tracking) y lo llevan las etiquetas de sección.
+    -->
+    <style name="TextScreenKicker">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/text_size_caption</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/secondary</item>
+    </style>
+
+    <!--
+        Título de pantalla, en la barra superior. Estándar de M-01: 24sp,
+        text_primary, roboto_bold y textStyle="bold". M-08 y M-13 lo declaran
+        igual en línea. (textStyle es redundante sobre una fuente que ya es
+        bold —se comprobó que no cambia el render— y se mantiene sólo para
+        que la declaración sea idéntica a la de M-01.)
+    -->
     <style name="TextScreenTitle">
         <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textColor">@color/text_primary</item>
