@@ -74,9 +74,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
 
+            <!-- 44dp, no 32: el contenido del drawable ocupa 21.4 de las 24
+                 unidades del viewport, así que renderiza a 39dp = 61% del tile,
+                 que es la proporción que tiene el icono en el diseño. -->
             <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_volume"
                 app:tint="@color/text_primary"
