@@ -20,6 +20,11 @@ class m01_recetas : AppCompatActivity() {
             insets
         }
 
+        // "Modo cocina" leads to the audio-permission screen (M-02).
+        findViewById<Button>(R.id.btnModoCocina).setOnClickListener {
+            startActivity(Intent(this, m02_permiso_ModoCocina::class.java))
+        }
+
         val btnEmpezar = findViewById<Button>(R.id.btnEmpezar)
         btnEmpezar.setOnClickListener {
             val intent = Intent(this, m13_alarma::class.java)
