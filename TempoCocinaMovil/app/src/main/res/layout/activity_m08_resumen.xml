@@ -170,7 +170,7 @@
                             android:fontFamily="@font/roboto_bold"
                             android:gravity="start"
                             android:text="+4 min"
-                            android:textColor="#F97316"
+                            android:textColor="#ED532A"
                             android:textSize="30sp"
                             android:textStyle="bold" />
                     </LinearLayout>
@@ -217,7 +217,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="2 ligeros desfases"
-                        android:textColor="#F97316"
+                        android:textColor="#ED532A"
                         android:textSize="12sp"
                         android:fontFamily="@font/roboto_regular"
                         android:layout_gravity="end"/>
@@ -327,7 +327,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="+2 min desfase"
-                            android:textColor="#F97316"
+                            android:textColor="#ED532A"
                             android:textSize="12sp"
                             android:fontFamily="@font/roboto_bold"
                             android:background="@drawable/bg_estado_naranja"
@@ -633,7 +633,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Reducción +2m"
-                            android:textColor="#F97316"
+                            android:textColor="#ED532A"
                             android:textSize="12sp"
                             android:fontFamily="@font/roboto_bold"
                             android:background="@drawable/bg_estado_naranja"
