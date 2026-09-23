@@ -21,7 +21,7 @@ class m13_alarma : AppCompatActivity() {
 
         val btnDetener = findViewById<Button>(R.id.btnDetener)
         btnDetener.setOnClickListener {
-            val intent = Intent(this, m08_resumen::class.java)
+            val intent = Intent(this, m07_proceso_terminado::class.java)
             startActivity(intent)
         }
     }
