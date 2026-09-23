@@ -109,7 +109,7 @@
     </p>
 
     <div class="tc-auto__actions">
-      <tc-button variant="secondary" size="md">{{ view.reconfigureAction }}</tc-button>
+      <tc-button variant="secondary" size="md" [link]="view.manualTarget">{{ view.reconfigureAction }}</tc-button>
       <tc-button variant="brand" icon="bolt" [accentIcon]="true" [link]="view.confirmTarget">
         {{ view.confirmAction }}
       </tc-button>

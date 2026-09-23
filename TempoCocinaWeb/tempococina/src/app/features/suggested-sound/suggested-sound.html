@@ -1,6 +1,6 @@
 <main class="tc-synced">
   <tc-back-link label="Volver"
-                target="/mockups"
+                target="/mockups/w-16"
                 navLabel="Navegación de la configuración" />
 
   <div class="tc-synced__separator"></div>
@@ -47,7 +47,7 @@
 
     <div class="tc-synced__footer">
       <tc-button variant="secondary" size="md">ELEGIR OTRO</tc-button>
-      <tc-button variant="brand" size="md" icon="check">CONSERVAR SONIDO</tc-button>
+      <tc-button variant="brand" size="md" icon="check" [link]="view.safeTarget">CONSERVAR SONIDO</tc-button>
     </div>
   </article>
 

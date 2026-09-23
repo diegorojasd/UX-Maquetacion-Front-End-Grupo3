@@ -18,6 +18,7 @@ export interface AutoConfigView {
   readonly confirmAction: string;
   readonly confirmTarget: string;
   readonly backTarget: string;
+  readonly manualTarget: string;
 }
 
 export const AUTO_CONFIG_VIEW: AutoConfigView = {
@@ -35,5 +36,6 @@ export const AUTO_CONFIG_VIEW: AutoConfigView = {
   reconfigureAction: 'Reconfigurar manualmente',
   confirmAction: 'Confirmar y enviar al móvil',
   confirmTarget: '/mockups/w-22',
-  backTarget: '/mockups',
+  backTarget: '/mockups/w-06',
+  manualTarget: '/mockups/w-15',
 };
