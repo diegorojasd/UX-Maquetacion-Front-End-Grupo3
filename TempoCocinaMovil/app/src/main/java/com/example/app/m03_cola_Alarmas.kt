@@ -43,7 +43,7 @@ class m03_cola_Alarmas : AppCompatActivity() {
         }
 
         findViewById<View>(R.id.btnFinalizar).setOnClickListener {
-            startActivity(Intent(this, m07_proceso_terminado::class.java))
+            startActivity(Intent(this, m08_resumen::class.java))
         }
 
         // Detener, Pausar and Pausar todo have no listener: CLAUDE.md §3 rules
