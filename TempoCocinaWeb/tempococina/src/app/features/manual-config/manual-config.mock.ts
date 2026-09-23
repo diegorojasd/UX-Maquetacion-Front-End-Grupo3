@@ -18,6 +18,7 @@ export interface ManualConfigView {
   readonly confirmAction: string;
   readonly confirmTarget: string;
   readonly backTarget: string;
+  readonly editTarget: string;
 }
 
 export const MANUAL_CONFIG_VIEW: ManualConfigView = {
@@ -35,5 +36,6 @@ export const MANUAL_CONFIG_VIEW: ManualConfigView = {
   reconfigureAction: 'Reconfigurar manualmente',
   confirmAction: 'Confirmar y enviar al móvil',
   confirmTarget: '/mockups/w-22',
-  backTarget: '/mockups',
+  backTarget: '/mockups/w-13',
+  editTarget: '/mockups/w-16',
 };

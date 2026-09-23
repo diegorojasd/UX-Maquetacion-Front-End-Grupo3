@@ -1,7 +1,7 @@
 <main class="tc-recipe">
   <tc-back-link
     [label]="view.backLabel"
-    target="/mockups"
+    target="/mockups/w-02"
     navLabel="Navegación de la receta"
   />
 
@@ -47,7 +47,7 @@
           </div>
 
           <div class="tc-recipe__action">
-            <tc-button variant="brand-block" icon="gear">{{ view.primaryAction }}</tc-button>
+            <tc-button variant="brand-block" icon="gear" [link]="view.nextTarget">{{ view.primaryAction }}</tc-button>
             <p class="tc-recipe__action-hint">{{ view.primaryActionHint }}</p>
           </div>
         </div>
