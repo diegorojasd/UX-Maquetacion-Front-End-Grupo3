@@ -1,0 +1,242 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+.tc-synced {
+  @include tc-page-container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-block: var(--tc-page-block);
+  gap: 24px;
+}
+
+// In Figma the card is a fixed 893.5px box with absolutely positioned
+// children; rebuilt here as a flow column (CLAUDE.md §7).
+.tc-synced__card {
+  @include tc-card-surface;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 896px;
+  padding: var(--tc-space-48);
+}
+
+  .tc-synced__card:first-of-type {
+    @include tc-card-surface;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 660px;
+    aspect-ratio: 660 / 499.5;
+    padding: var(--tc-space-48);
+  }
+
+  .tc-synced__step {
+    width: 100%;
+    max-width: 570px;
+    min-height: 34px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 1px solid var(--tc-border);
+    border-radius: 999px;
+    background: var(--tc-surface);
+    color: var(--tc-text-secondary);
+    font-size: 10px;
+    line-height: 1;
+    white-space: nowrap;
+
+    tc-icon {
+      flex-shrink: 0;
+      color: #f4512a;
+    }
+
+    span {
+      white-space: nowrap;
+    }
+
+    strong {
+      color: var(--tc-text-primary);
+      font-weight: 600;
+    }
+  }
+
+.tc-synced__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  margin: 0 0 var(--tc-space-24);
+  background: var(--tc-primary);
+  border-radius: var(--tc-radius-pill);
+  color: var(--tc-on-primary);
+  box-shadow: 0 0 0 8px var(--tc-success-halo), 0 10px 15px -3px color-mix(in srgb, var(--tc-primary) 25%, transparent), 0 4px 6px -4px color-mix(in srgb, var(--tc-primary) 25%, transparent);
+}
+
+.tc-synced__title {
+  @include tc-text-h1;
+  margin: 0 0 var(--tc-space-12);
+  color: var(--tc-text-strong);
+  text-align: center;
+}
+
+.tc-synced__lead {
+  @include tc-text-lead;
+  max-width: 672px;
+  margin: 0 0 var(--tc-space-32);
+  color: var(--tc-text-secondary);
+  text-align: center;
+}
+
+.tc-synced__lead-recipe {
+  color: var(--tc-primary);
+}
+
+.tc-synced__sync {
+  width: 100%;
+  max-width: 672px;
+}
+
+.tc-synced__timers {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-space-10);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tc-synced__actions {
+  display: flex;
+  width: 100%;
+  max-width: 672px;
+  margin-top: var(--tc-space-32);
+}
+
+.tc-synced__separator {
+  width: 100%;
+  margin: 0 0 24px;
+  border-top: 1px solid var(--tc-surface-alt);
+}
+
+.tc-sound-option {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--tc-border);
+  cursor: pointer;
+  border-radius: 12px;
+  background: var(--tc-surface);
+
+  &:not(:last-of-type) {
+    margin-bottom: 12px;
+  }
+}
+
+.tc-sound-option--selected {
+  border-color: #f4512a;
+}
+
+.tc-sound-option__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--tc-surface-alt);
+  color: var(--tc-text-control);
+  flex-shrink: 0;
+}
+
+.tc-sound-option__content {
+  flex: 1;
+}
+
+.tc-sound-option__title {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--tc-text-primary);
+}
+
+.tc-sound-option__description {
+  margin: 0;
+  font-size: 13px;
+  color: var(--tc-text-secondary);
+}
+
+.tc-sound-option__input {
+  display: none;
+}
+
+.tc-sound-option__radio {
+  position: relative;
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border: 1px solid var(--tc-border);
+  border-radius: 50%;
+  background: transparent;
+}
+
+.tc-sound-option--selected .tc-sound-option__radio {
+  border-color: #f4512a;
+  background: #f4512a;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: white;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.tc-synced__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  width: 100%;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--tc-surface-alt);
+}
+
+.tc-synced__progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 672px;
+  margin-bottom: 24px;
+  padding: 10px 14px;
+  border: 1px solid var(--tc-border);
+  border-radius: 999px;
+  background: var(--tc-surface);
+  color: var(--tc-text-secondary);
+  font-size: 12px;
+  line-height: 1.4;
+
+  tc-icon {
+    flex-shrink: 0;
+    color: var(--tc-secondary);
+  }
+
+  strong {
+    color: var(--tc-text-primary);
+    font-weight: 600;
+  }
+}
