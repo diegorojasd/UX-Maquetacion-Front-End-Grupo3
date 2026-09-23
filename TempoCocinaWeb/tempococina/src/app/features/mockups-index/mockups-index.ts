@@ -105,6 +105,12 @@ interface MockupEntry {
 export default class MockupsIndex {
   protected readonly entries: readonly MockupEntry[] = [
     {
+      id: 'W-02',
+      title: ' Lista de recetas comunes',
+      module: 'Recetario',
+      path: '/mockups/w-02',
+    },
+    {
       id: 'W-06',
       title: 'Detalle de receta y flujo de pasos',
       module: 'Recetario',
