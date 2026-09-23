@@ -99,7 +99,7 @@ chmod +x gradlew
 ./gradlew installDebug
 ```
 
-El APK queda en `app/build/outputs/apk/debug/app-debug.apk` y el informe de lint en
+El APK queda en `app/build/outputs/apk/debug/tempococina.apk` y el informe de lint en
 `app/build/reports/lint-results-debug.html`.
 
 ---
