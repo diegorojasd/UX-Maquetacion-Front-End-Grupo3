@@ -57,7 +57,7 @@ y `app/build.gradle.kts`.
 | Android Gradle Plugin | 9.1.1 |
 | Gradle (wrapper) | 9.3.1 |
 | Kotlin | 2.2.10 |
-| JDK | 25 (probado con Temurin 25.0.3 LTS) |
+| JDK | 17 o superior (probado con el JBR 21 de Android Studio y con Temurin 25.0.3) |
 | `compileSdk` | 37 |
 | `minSdk` | 24 (Android 7.0) |
 | `targetSdk` | 36 |
@@ -65,10 +65,14 @@ y `app/build.gradle.kts`.
 
 Necesitas:
 
-- **Android Studio** con el Android SDK y un emulador (o un teléfono con depuración USB).
-- **JDK 25**. Android Studio trae el suyo (*Settings → Build, Execution, Deployment → Build
-  Tools → Gradle → Gradle JDK*); desde la terminal usa el del sistema.
-- **No** necesitas Node, npm ni instalar Gradle: el wrapper (`./gradlew`) lo descarga solo.
+- **Android Studio** (probado con **2025.3**) con el Android SDK y un emulador, o un
+  teléfono Android con depuración USB.
+- **El SDK Platform 37**, porque el proyecto compila contra `compileSdk 37`. Se instala desde
+  el SDK Manager (paso 1 de la sección 4).
+- **Un JDK 17 o superior.** No hace falta instalarlo: **el que trae Android Studio sirve**
+  (JBR 21, verificado). Desde la terminal se usa el JDK del sistema.
+- **No** necesitas Node, npm, Ionic, Capacitor ni instalar Gradle: el wrapper (`./gradlew`)
+  descarga Gradle 9.3.1 solo.
 
 > El proyecto arrastra las dependencias de Jetpack Compose del template de Android Studio
 > (`MainActivity.kt`, `ui/theme/`). **Ninguna pantalla real las usa** — todas son XML +
@@ -102,52 +106,140 @@ El APK queda en `app/build/outputs/apk/debug/app-debug.apk` y el informe de lint
 
 ## 4. Probar en Android Studio
 
-1. **Abrir el proyecto.** *File → Open* y selecciona la carpeta **`TempoCocinaMovil/`**, no
-   la raíz del repositorio. La raíz contiene también el proyecto web y Android Studio no
-   sabría qué hacer con ella.
-2. **Esperar el sync de Gradle.** La primera vez descarga Gradle 9.3.1 y las dependencias;
-   tarda varios minutos. Si te ofrece actualizar AGP o Gradle, **di que no**: las versiones
-   están fijadas.
-3. **Crear un emulador.** *Device Manager → Add a new device → Pixel* (cualquier Pixel
-   reciente sirve) con una imagen de sistema de **API 24 o superior**.
-4. **Ejecutar.** Elige el emulador en la barra superior y pulsa **Run ▶** (`^R` en macOS).
-   Arranca en **M-01**, que es la Activity marcada como `LAUNCHER`.
+Paso a paso completo, desde un clon recién hecho. Las rutas de menú son las de **Android
+Studio 2025.3**; en otras versiones las etiquetas cambian un poco pero el flujo es el mismo.
 
-### Reproducir el lienzo exacto de los mockups
+### 4.1 Preparar el SDK (solo la primera vez)
 
-Los mockups están dibujados sobre **390 × 844 dp** y exportados a 4×. Para comparar píxel a
-píxel, fija el emulador a esa resolución con `adb` (el binario está en
-`~/Library/Android/sdk/platform-tools/` en macOS):
+1. Abre Android Studio y ve a **Settings → Languages & Frameworks → Android SDK**
+   (en macOS *Android Studio → Settings*; también llegas desde *More Actions → SDK Manager*
+   en la pantalla de bienvenida).
+2. En la pestaña **SDK Platforms**, marca **Android API 37**. Es obligatorio: el proyecto
+   declara `compileSdk 37` y sin esa plataforma el sync falla.
+3. En la pestaña **SDK Tools**, confirma que están marcados **Android SDK Build-Tools**,
+   **Android SDK Platform-Tools** y **Android Emulator**.
+4. **Apply** y espera la descarga.
+
+> No necesitas crear `local.properties`: está en `.gitignore` y Android Studio lo genera con
+> la ruta de tu SDK la primera vez que abres el proyecto.
+
+### 4.2 Abrir el proyecto
+
+1. En la pantalla de bienvenida pulsa **Open** (o *File → Open* si ya tienes otro proyecto
+   abierto).
+2. Selecciona la carpeta **`TempoCocinaMovil/`**, **no la raíz del repositorio**. La raíz
+   contiene también `TempoCocinaWeb/`, que es un proyecto Angular: si abres la raíz, Android
+   Studio no encuentra `settings.gradle.kts` y no reconoce el proyecto.
+3. Si pregunta si confías en el proyecto, acepta (**Trust Project**).
+4. Empieza el **Gradle Sync** automáticamente. La primera vez descarga Gradle 9.3.1 y las
+   dependencias de AndroidX: tarda varios minutos y la barra de estado dice
+   *«Gradle: Downloading…»*.
+5. **Si te ofrece actualizar AGP, Gradle o Kotlin, di que no.** Las versiones están fijadas en
+   `gradle/libs.versions.toml` y actualizarlas rompe el build.
+6. **Sabes que salió bien** cuando el panel *Build* muestra `BUILD SUCCESSFUL` y en el
+   desplegable de configuraciones de la barra superior aparece el módulo **`app`**.
+
+> No deberías tener que tocar el Gradle JDK: el que Android Studio trae de fábrica (JBR 21)
+> compila este proyecto sin cambios. Si lo cambiaste alguna vez, está en
+> *Settings → Build, Execution, Deployment → Build Tools → Gradle → Gradle JDK* y debe ser
+> **17 o superior**.
+
+### 4.3 Crear el emulador
+
+1. Abre el **Device Manager** (icono del teléfono en la barra lateral derecha, o
+   *View → Tool Windows → Device Manager*).
+2. Pulsa **+ → Create Virtual Device**.
+3. Elige un **Pixel**. Para revisar la app sirve cualquiera; los que más se acercan al lienzo
+   de los mockups (390 dp de ancho) son el **Pixel 4** y el **Pixel 5**, de 393 dp.
+4. Elige una **imagen de sistema de API 24 o superior** — el `minSdk` del proyecto es 24.
+   Si no tienes ninguna descargada, pulsa el icono de descarga junto al nombre.
+5. Dale un nombre y pulsa **Finish**. El emulador aparece en la lista del Device Manager.
+
+Desde la terminal puedes comprobar qué emuladores existen:
 
 ```bash
-adb -s emulator-5554 shell wm size 1560x3376
-adb -s emulator-5554 shell wm density 640
+~/Library/Android/sdk/emulator/emulator -list-avds
 ```
 
-Cambia `emulator-5554` por lo que liste `adb devices`. Para volver a la configuración
-original del AVD:
+### 4.4 Ejecutar la app
+
+1. En la barra superior, elige el módulo **`app`** en el desplegable de la izquierda y tu
+   emulador en el de la derecha.
+2. Pulsa **Run ▶** (`⌃R` en macOS, `Shift+F10` en Windows y Linux).
+3. Android Studio arranca el emulador, compila, instala el APK y lanza la app.
+4. **Sabes que funcionó** cuando el emulador muestra **M-01 «Receta preparación»**: el kicker
+   naranja arriba, el logo de Tempo Cocina a la derecha, la tarjeta de la receta *Pollo al
+   horno con arroz* y los botones «Modo cocina» y «Empezar cocción» abajo. M-01 es la única
+   Activity marcada como `LAUNCHER`, así que siempre es la pantalla de entrada.
+5. Desde ahí navega con el recorrido de la sección 5.
+
+**Alternativa por terminal**, con el emulador ya abierto:
+
+```bash
+./gradlew installDebug
+adb shell am start -n com.example.app/.m01_recetas
+```
+
+### 4.5 Ejecutar en un teléfono físico
+
+1. En el teléfono, *Ajustes → Información del teléfono* y toca **Número de compilación**
+   siete veces para activar las opciones de desarrollador.
+2. *Ajustes → Opciones de desarrollador* y activa **Depuración por USB**.
+3. Conéctalo por USB y acepta el diálogo de autorización que aparece en el teléfono.
+4. Comprueba que el equipo lo ve:
+
+   ```bash
+   adb devices
+   ```
+
+5. Elígelo en el desplegable de dispositivos de Android Studio y pulsa **Run ▶**.
+
+El `minSdk` es 24, así que sirve cualquier teléfono con **Android 7.0 o superior**. No hace
+falta red ni Wi-Fi compartida: la app no habla con ningún servidor.
+
+### 4.6 Reproducir el lienzo exacto de los mockups
+
+Los mockups están dibujados sobre **390 × 844 dp** y exportados a 4×. Ningún perfil de Pixel
+coincide exactamente, así que para comparar píxel a píxel se fuerza esa resolución con `adb`
+(en macOS el binario está en `~/Library/Android/sdk/platform-tools/`):
+
+```bash
+adb devices                                       # ver el id del emulador
+adb -s emulator-5554 shell wm size 1560x3376      # 1560 / 4 = 390 dp
+adb -s emulator-5554 shell wm density 640         # 640 dpi = 4x
+```
+
+Cambia `emulator-5554` por lo que liste `adb devices`. Para capturar la pantalla tal como
+están los PNG de `docs/screens/`:
+
+```bash
+adb -s emulator-5554 exec-out screencap -p > captura.png
+```
+
+Y para devolver el emulador a su configuración original:
 
 ```bash
 adb -s emulator-5554 shell wm size reset
 adb -s emulator-5554 shell wm density reset
 ```
 
-Y para capturar la pantalla tal como están los PNG de `docs/screens/`:
+> El override sobrevive a los reinicios del emulador. Si un día lo ves todo enorme o
+> diminuto, es que quedó fijado: ejecuta los dos `reset`.
 
-```bash
-adb -s emulator-5554 exec-out screencap -p > captura.png
-```
-
-### Problemas comunes
+### 4.7 Problemas comunes
 
 | Síntoma | Causa y solución |
 |---|---|
+| Android Studio no reconoce el proyecto al abrirlo | Abriste la raíz del repositorio. Ábrelo desde **`TempoCocinaMovil/`**, que es donde está `settings.gradle.kts` |
+| El sync falla con `Failed to find target with hash string 'android-37'` | Falta el SDK Platform 37. Instálalo en el SDK Manager (sección 4.1) |
+| El sync falla con `SDK location not found` | `local.properties` apunta al SDK de otra máquina. Bórralo y reabre el proyecto; **nunca lo subas al repo** |
+| `Unsupported class file major version` | El Gradle JDK es anterior al 17. Cámbialo en *Settings → Build Tools → Gradle → Gradle JDK* |
 | `zsh: permission denied: ./gradlew` | Falta el bit de ejecución: `chmod +x gradlew` |
-| El sync falla por el SDK | `local.properties` apunta al SDK de otra máquina. Bórralo y deja que Android Studio lo regenere; **no lo subas al repo** |
-| `Unsupported class file major version` | El Gradle JDK no es el 25. Cámbialo en *Settings → Build Tools → Gradle → Gradle JDK* |
-| La app arranca en una pantalla que no es M-01 | El emulador restauró la tarea anterior. Ciérrala del todo: `adb shell am force-stop com.example.app` |
-| Un cambio en un layout no se ve | *Build → Clean Project* y vuelve a ejecutar; Apply Changes no siempre recarga recursos |
-| `SecurityException` al abrir una pantalla con `adb shell am start` | Todas las Activities salvo M-01 son `exported="false"`. Navega tocando la interfaz, no por intent directo |
+| El botón Run está gris | El sync no terminó o falló. Mira el panel *Build* y relanza con *File → Sync Project with Gradle Files* |
+| La app arranca en una pantalla que no es M-01 | El emulador restauró la tarea anterior. Ciérrala del todo con `adb shell am force-stop com.example.app` y vuelve a lanzarla |
+| Un cambio en un layout no se ve | *Build → Clean Project* y ejecuta de nuevo; *Apply Changes* no siempre recarga recursos |
+| `SecurityException` al abrir una pantalla con `adb shell am start` | Salvo M-01, todas las Activities son `exported="false"`. Navega tocando la interfaz |
+| La pantalla se ve enorme o diminuta | Quedó un override de `wm size`/`wm density`. Ejecuta los dos `reset` de la sección 4.6 |
 
 ---
 
