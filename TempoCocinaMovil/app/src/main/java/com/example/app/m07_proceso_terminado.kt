@@ -21,60 +21,85 @@ class m07_proceso_terminado : AppCompatActivity() {
             insets
         }
 
-        findViewById<TextView>(R.id.subtituloSesion).text =
-            "${CookingSession.RECIPE} · ${CookingSession.TOTAL_TIME}"
-        findViewById<TextView>(R.id.precisionGlobal).text = CookingSession.ACCURACY
-        findViewById<TextView>(R.id.desviacionNeta).text = CookingSession.NET_DEVIATION
-        findViewById<TextView>(R.id.procesosEjecutados).text = CookingSession.EXECUTED
-        findViewById<TextView>(R.id.desfases).text = CookingSession.SLIPPAGES
-        findViewById<ProgressBar>(R.id.barraPrecision).apply {
-            progress = CookingSession.ACCURACY_PROGRESS
-            contentDescription = "Precisión global ${CookingSession.ACCURACY}"
+        findViewById<TextView>(R.id.textoBanner).text = CookingSession.MODE_BANNER
+        findViewById<TextView>(R.id.nombreReceta).text = CookingSession.RECIPE
+        findViewById<TextView>(R.id.chipProcesos).text = CookingSession.PROCESS_COUNT
+
+        // Horno is the one in alert at this point in the session, not Arroz.
+        val active = CookingSession.secondary[0]
+        val snapshot = active.finished
+        findViewById<TextView>(R.id.nombreActivo).text = active.name
+        findViewById<TextView>(R.id.chipActivo).text = snapshot.statusLabel
+        findViewById<TextView>(R.id.tiempoActivo).text = snapshot.remaining
+        findViewById<TextView>(R.id.inicioProceso).text = snapshot.startLabel
+        findViewById<TextView>(R.id.faltanProceso).text = snapshot.remainingHint
+        findViewById<ProgressBar>(R.id.barraActiva).apply {
+            progress = snapshot.progress
+            contentDescription = "Progreso de ${active.name}"
         }
 
-        val icons = listOf(R.drawable.ic_pot, R.drawable.ic_oven, R.drawable.ic_pan)
-        val rows = listOf(R.id.barrasArroz, R.id.barrasHorno, R.id.barrasSalsa)
-        CookingSession.summary.forEachIndexed { i, process ->
-            fillBars(rows[i], icons[i], process)
-        }
+        fillCard(R.id.cardArroz, CookingSession.alert)
+        fillCard(R.id.cardSalsa, CookingSession.secondary[1])
 
-        // "Evaluar" has no listener: M-09 is out of scope (CLAUDE.md §3).
+        // "Finalizar sesión de cocina" is not wired: nothing in the prototype
+        // shared so far shows where it goes from here (docs/screens/M-07.md).
+        // Detener, Pausar and Pausar todo have no listener either — §3 rules
+        // out real timers in this phase.
     }
 
-    private fun fillBars(rowId: Int, iconRes: Int, process: CookingProcess) {
-        val row = findViewById<View>(rowId)
-        row.findViewById<ImageView>(R.id.iconoProceso).setImageResource(iconRes)
-        row.findViewById<TextView>(R.id.nombreResumen).text = process.summaryName
-        row.findViewById<TextView>(R.id.tiemposResumen).text =
-            "${process.plannedMin} min est. · ${process.realMin} min real"
+    private fun fillCard(cardId: Int, process: CookingProcess) {
+        val card = findViewById<View>(cardId)
+        val snapshot = process.finished
+        val done = snapshot.state == SnapshotState.COMPLETED
 
-        row.findViewById<TextView>(R.id.chipDesfase).apply {
-            text = process.deviationLabel
-            when (process.deviationTone) {
-                DeviationTone.SUCCESS -> {
-                    setBackgroundResource(R.drawable.bg_chip_success)
-                    setTextColor(getColor(R.color.success_text))
-                }
-                DeviationTone.CRITICAL_SOFT -> {
-                    setBackgroundResource(R.drawable.bg_chip_critical_soft)
-                    setTextColor(getColor(R.color.secondary))
-                }
+        card.findViewById<TextView>(R.id.nombreProceso).apply {
+            text = process.name
+            if (done) setTextColor(getColor(R.color.text_disabled))
+        }
+        card.findViewById<View>(R.id.puntoEstado).setBackgroundResource(
+            if (done) R.drawable.bg_dot_disabled else R.drawable.bg_dot_secondary
+        )
+        card.findViewById<TextView>(R.id.chipEstado).apply {
+            text = snapshot.statusLabel
+            if (done) {
+                setBackgroundResource(R.drawable.bg_chip_disabled)
+            } else {
+                // Reducción reads as a soft alert here, not as the neutral
+                // grey M-03 gives it (docs/screens/M-07.md).
+                setBackgroundResource(R.drawable.bg_chip_critical_soft)
+                setTextColor(getColor(R.color.secondary))
             }
         }
+        card.findViewById<TextView>(R.id.tiempoRestante).apply {
+            text = snapshot.remaining
+            if (done) setTextColor(getColor(R.color.text_disabled))
+        }
+        card.findViewById<ProgressBar>(R.id.barraProgreso).apply {
+            progress = snapshot.progress
+            contentDescription = "Progreso de ${process.name}"
+            if (done) progressTintList = getColorStateList(R.color.bar_plan)
+        }
 
-        // Each pair is scaled against its own longer value, so the two bars of
-        // a process are comparable with each other. The exact widths belong in
-        // Figma, which was unreachable (docs/screens/M-07.md).
-        val longest = maxOf(process.plannedMin, process.realMin)
-        row.findViewById<ProgressBar>(R.id.barraPlan).apply {
-            progress = process.plannedMin * 100 / longest
-            contentDescription = "Planeado ${process.plannedMin} minutos"
+        // A finished process cannot be paused: the control keeps its shape and
+        // only loses its ink (§8).
+        card.findViewById<View>(R.id.btnPausarProceso).apply {
+            contentDescription = if (done) {
+                "Pausar ${process.name}, no disponible"
+            } else {
+                "Pausar ${process.name}"
+            }
+            if (done) {
+                isEnabled = false
+                isClickable = false
+                isFocusable = false
+                setBackgroundResource(R.drawable.bg_btn_small_disabled)
+            }
         }
-        row.findViewById<ProgressBar>(R.id.barraReal).apply {
-            progress = process.realMin * 100 / longest
-            contentDescription = "Real ${process.realMin} minutos"
+        if (done) {
+            card.findViewById<TextView>(R.id.etiquetaPausar)
+                .setTextColor(getColor(R.color.text_disabled))
+            card.findViewById<ImageView>(R.id.iconoPausar)
+                .setColorFilter(getColor(R.color.text_disabled))
         }
-        row.findViewById<TextView>(R.id.valorPlan).text = "${process.plannedMin}m"
-        row.findViewById<TextView>(R.id.valorReal).text = "${process.realMin}m"
     }
 }

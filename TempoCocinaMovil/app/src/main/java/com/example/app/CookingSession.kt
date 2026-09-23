@@ -24,21 +24,25 @@ data class CookingProcess(
     val statusLabel: String,
     val status: ProcessStatus,
 
-    /**
-     * Fields the end-of-session summary adds (M-07). The name differs from
-     * `name` on purpose — the summary calls the same process "Pollo al horno"
-     * where the active view calls it "Horno" — and CLAUDE.md §1 says to keep
-     * both and not normalise them.
-     */
-    val summaryName: String,
-    val plannedMin: Int,
-    val realMin: Int,
-    val deviationLabel: String,
-    val deviationTone: DeviationTone,
+    /** The same process later in the session, once Arroz has finished (M-07). */
+    val finished: ProcessSnapshot,
 )
 
-/** Chip tone on the summary. `CRITICAL_SOFT` is not in the PDF catalog (§12). */
-enum class DeviationTone { SUCCESS, CRITICAL_SOFT }
+/**
+ * One process at one moment. M-03 shows the session with Arroz still running;
+ * M-07 shows it after Arroz completed and the oven went into alert.
+ */
+data class ProcessSnapshot(
+    val remaining: String,
+    val progress: Int,
+    val statusLabel: String,
+    val state: SnapshotState,
+    /** Only the active card carries these two (M-07). */
+    val startLabel: String? = null,
+    val remainingHint: String? = null,
+)
+
+enum class SnapshotState { COMPLETED, ALERT, REDUCTION }
 
 enum class ProcessStatus { ALERT, RUNNING, REDUCTION }
 
@@ -46,27 +50,18 @@ object CookingSession {
     const val RECIPE = "Pollo al horno con arroz"
     const val PROCESS_COUNT = "3 procesos"
 
-    /** Session totals as the summary prints them. §12: the per-process real
-     *  times (17 + 35 + 20) do not add up to 48 because the processes overlap.
-     *  Not an error — keep the copy. */
-    const val TOTAL_TIME = "Tiempo total: 48 min"
-    const val ACCURACY = "92%"
-    const val NET_DEVIATION = "+4 min"
-    const val EXECUTED = "3 procesos ejecutados"
-    const val SLIPPAGES = "2 ligeros desfases"
-    const val ACCURACY_PROGRESS = 92
-
     val alert = CookingProcess(
         name = "Arroz",
         remaining = "05:22",
         progress = 78,
         statusLabel = "Alerta activa",
         status = ProcessStatus.ALERT,
-        summaryName = "Arroz",
-        plannedMin = 15,
-        realMin = 17,
-        deviationLabel = "+2 min desfase",
-        deviationTone = DeviationTone.CRITICAL_SOFT,
+        finished = ProcessSnapshot(
+            remaining = "00:00",
+            progress = 100,
+            statusLabel = "Completado",
+            state = SnapshotState.COMPLETED,
+        ),
     )
 
     /** The two cards that render in the compact variant, in mockup order. */
@@ -77,11 +72,14 @@ object CookingSession {
             progress = 45,
             statusLabel = "En cocción",
             status = ProcessStatus.RUNNING,
-            summaryName = "Pollo al horno",
-            plannedMin = 35,
-            realMin = 35,
-            deviationLabel = "A tiempo",
-            deviationTone = DeviationTone.SUCCESS,
+            finished = ProcessSnapshot(
+                remaining = "19:58",
+                progress = 60,
+                statusLabel = "Alerta activa",
+                state = SnapshotState.ALERT,
+                startLabel = "Inicio: 45 min",
+                remainingHint = "Faltan ~20 min",
+            ),
         ),
         CookingProcess(
             name = "Salsa",
@@ -91,14 +89,18 @@ object CookingSession {
             // system defines Chip · Warning for a reduction (§12).
             statusLabel = "Reducción",
             status = ProcessStatus.REDUCTION,
-            summaryName = "Salsa (reducción)",
-            plannedMin = 18,
-            realMin = 20,
-            deviationLabel = "Reducción +2m",
-            deviationTone = DeviationTone.CRITICAL_SOFT,
+            finished = ProcessSnapshot(
+                remaining = "12:47",
+                progress = 60,
+                statusLabel = "Reducción",
+                state = SnapshotState.REDUCTION,
+            ),
         ),
     )
 
-    /** All three, in the order the summary lists them. */
-    val summary = listOf(alert) + secondary
+    /** Banner copy. M-07 prints it uppercase; M-03 does not. */
+    const val MODE_BANNER = "Modo cocina — En curso"
+
+    /** All three in session order, for the finished view (M-07). */
+    val all = listOf(alert) + secondary
 }
