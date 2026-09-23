@@ -39,7 +39,7 @@
     max-width: 570px;
     min-height: 34px;
     padding: 0 14px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 6px;
@@ -65,6 +65,27 @@
       font-weight: 600;
     }
   }
+
+  .tc-synced__inline {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .tc-synced__separator {
+  width: 100%;
+  border-top: 1px solid var(--tc-surface-alt);
+  margin: 0 0 var(--tc-space-24);
+}
+
+tc-back-link {
+  display: block;
+  width: 100%;
+  max-width: 896px;
+  margin: 0 auto;
+  text-align: left;
+}
+
 
 .tc-synced__mark {
   display: flex;
