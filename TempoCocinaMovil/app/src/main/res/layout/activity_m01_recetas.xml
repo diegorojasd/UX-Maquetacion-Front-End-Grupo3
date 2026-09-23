@@ -82,13 +82,19 @@
                     android:orientation="horizontal">
 
                     <!-- Imagen temporal -->
-                    <View
-                        android:id="@+id/imgReceta"
+                    <androidx.cardview.widget.CardView
                         android:layout_width="74dp"
                         android:layout_height="74dp"
-                        android:background="#000000"
-                        android:layout_marginEnd="10dp"
-                        android:clipToOutline="true" />
+                        app:cardCornerRadius="16dp"
+                        app:cardElevation="0dp"
+                        android:layout_marginEnd="12dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@drawable/img_comida"
+                            android:scaleType="centerCrop"/>
+                    </androidx.cardview.widget.CardView>
 
                     <!-- Contenido textual -->
                     <LinearLayout
@@ -103,11 +109,15 @@
                             android:orientation="horizontal"
                             android:gravity="center_vertical">
 
-                            <View
-                                android:layout_width="12dp"
-                                android:layout_height="12dp"
-                                android:background="#000000"
-                                android:layout_marginEnd="@dimen/space_4"/>
+
+                            <!-- Icono -->
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_star"
+                                android:backgroundTint="#F1F5F9"
+                                android:padding="2dp"
+                                android:layout_marginEnd="4dp"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -279,8 +289,8 @@
 
                     <!-- Checkbox -->
                     <TextView
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:text="✓"
                         android:textColor="@color/surface"
                         android:textSize="16sp"
@@ -380,8 +390,8 @@
 
                     <!-- Checkbox -->
                     <TextView
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:text="✓"
                         android:textColor="@color/surface"
                         android:textSize="16sp"
@@ -481,8 +491,8 @@
 
                     <!-- Checkbox -->
                     <TextView
-                        android:layout_width="52dp"
-                        android:layout_height="52dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:text="✓"
                         android:textColor="@color/surface"
                         android:textSize="16sp"
