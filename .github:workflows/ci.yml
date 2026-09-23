@@ -74,27 +74,11 @@ jobs:
       - name: Dar permisos a gradlew
         run: chmod +x gradlew
 
-<<<<<<< HEAD:.github/workflows/ci.yml
       # app/build.gradle.kts no define signingConfigs, así que assembleRelease
       # sólo produce un APK sin firmar, que no se puede instalar. El de debug
       # va firmado con la clave de debug y sirve para revisar la maquetación.
       - name: Construir APK debug
         run: ./gradlew assembleDebug --stacktrace
-=======
-      - name: Decodificar Keystore
-        env:
-          KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
-        run: |
-          echo "$KEYSTORE_BASE64" | base64 --decode > ${{ runner.temp }}/vinilos-release-key.jks
-
-      - name: Construir APK release (firmado)
-        env:
-          KEYSTORE_PATH: ${{ runner.temp }}/vinilos-release-key.jks
-          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
-          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
-          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
-        run: ./gradlew assembleRelease --stacktrace
->>>>>>> parent of 426d23c (ci: build the APK from the movil branch and the real project path):.github:workflows/ci.yml
 
       - name: Verificar que el APK existe
         run: |
