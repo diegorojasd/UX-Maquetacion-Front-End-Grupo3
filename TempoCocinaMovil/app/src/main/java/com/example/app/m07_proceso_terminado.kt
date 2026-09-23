@@ -1,5 +1,6 @@
 package com.example.app
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
@@ -79,7 +80,9 @@ class m07_proceso_terminado : AppCompatActivity() {
             contentDescription = "Progreso de ${process.name}"
             if (done) progressTintList = getColorStateList(R.color.bar_plan)
         }
-
+        findViewById<View>(R.id.btnFinalizar).setOnClickListener {
+            startActivity(Intent(this, m08_resumen::class.java))
+        }
         // A finished process cannot be paused: the control keeps its shape and
         // only loses its ink (§8).
         card.findViewById<View>(R.id.btnPausarProceso).apply {
