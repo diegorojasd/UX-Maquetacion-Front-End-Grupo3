@@ -1,10 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    M-07 · Resumen de cocción.
+    The action zone is pinned: the ScrollView is constrained above the footer
+    rather than sitting under it, so the button never covers content (§7).
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".m07_proceso_terminado">
 
+    <ScrollView
+        android:id="@+id/scrollResumen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/footerAccion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/space_16">
+
+            <!-- Top app bar: teal kicker and a subtitle, which the other
+                 screens do not have (§9). -->
+            <TextView
+                style="@style/TextCaptionUpper"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sesión finalizada"
+                android:textColor="@color/text_primary"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginTop="@dimen/space_24" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tituloPrincipal"
+                    style="@style/TextScreenTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Resumen de coccion"
+                    android:accessibilityHeading="true"
+                    android:layout_marginStart="@dimen/margin_lateral"
+                    android:layout_marginTop="@dimen/space_4" />
+
+                <ImageView
+                    android:id="@+id/logoTempo"
+                    android:layout_width="88dp"
+                    android:layout_height="42dp"
+                    android:src="@drawable/tempo_cocina_logo"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="Tempo Cocina"
+                    android:layout_marginEnd="@dimen/margin_lateral" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/subtituloSesion"
+                style="@style/TextBodyS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginEnd="@dimen/margin_lateral"
+                tools:text="Pollo al horno con arroz · Tiempo total: 48 min" />
+
+            <!-- Metric card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card_bordered"
+                android:padding="@dimen/space_16"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginEnd="@dimen/margin_lateral"
+                android:layout_marginTop="@dimen/space_12">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextCaptionUpper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Precisión global" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="bottom"
+                            android:layout_marginTop="@dimen/space_4">
+
+                            <TextView
+                                android:id="@+id/precisionGlobal"
+                                style="@style/TextTimerSm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="92%" />
+
+                            <TextView
+                                style="@style/TextBodyS"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="efectividad"
+                                android:layout_marginStart="@dimen/space_4"
+                                android:layout_marginBottom="@dimen/space_4" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/TextCaptionUpper"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Desviación neta" />
+
+                        <TextView
+                            android:id="@+id/desviacionNeta"
+                            style="@style/TextTimerSm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/secondary"
+                            android:layout_marginTop="@dimen/space_4"
+                            tools:text="+4 min" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border"
+                    android:layout_marginTop="@dimen/space_12" />
+
+                <ProgressBar
+                    android:id="@+id/barraPrecision"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="@dimen/space_12"
+                    android:max="100"
+                    android:backgroundTint="@color/border"
+                    android:progressTint="@color/primary"
+                    tools:progress="92" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/space_12">
+
+                    <TextView
+                        android:id="@+id/procesosEjecutados"
+                        style="@style/TextBodyS"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        tools:text="3 procesos ejecutados" />
+
+                    <TextView
+                        android:id="@+id/desfases"
+                        style="@style/TextBodyS"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondary"
+                        tools:text="2 ligeros desfases" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Section header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginEnd="@dimen/margin_lateral"
+                android:layout_marginTop="@dimen/space_16">
+
+                <TextView
+                    style="@style/TextItemTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Desglose por proceso"
+                    android:accessibilityHeading="true" />
+
+                <TextView
+                    style="@style/TextCaptionUpper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Planeado vs. real" />
+            </LinearLayout>
+
+            <include
+                android:id="@+id/barrasArroz"
+                layout="@layout/item_comparative_bars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginEnd="@dimen/margin_lateral"
+                android:layout_marginTop="@dimen/space_8" />
+
+            <include
+                android:id="@+id/barrasHorno"
+                layout="@layout/item_comparative_bars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginEnd="@dimen/margin_lateral"
+                android:layout_marginTop="@dimen/space_8" />
+
+            <include
+                android:id="@+id/barrasSalsa"
+                layout="@layout/item_comparative_bars"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginEnd="@dimen/margin_lateral"
+                android:layout_marginTop="@dimen/space_8" />
+
+            <!-- Insight card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="@drawable/bg_card_insight"
+                android:padding="@dimen/space_12"
+                android:layout_marginStart="@dimen/margin_lateral"
+                android:layout_marginEnd="@dimen/margin_lateral"
+                android:layout_marginTop="@dimen/space_12">
+
+                <FrameLayout
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_circle_white">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_sparkles"
+                        app:tint="@color/primary"
+                        android:importantForAccessibility="no" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="@dimen/space_12">
+
+                    <TextView
+                        style="@style/TextItemTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Aprendizaje automático" />
+
+                    <TextView
+                        style="@style/TextBodyS"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_4"
+                        android:text="Considera calibrar tu preset de Arroz a 17 min la cocción habitual en tu receta." />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Pinned action zone -->
+    <LinearLayout
+        android:id="@+id/footerAccion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/bg_footer_bar"
+        android:paddingStart="@dimen/margin_lateral"
+        android:paddingEnd="@dimen/margin_lateral"
+        android:paddingTop="@dimen/space_12"
+        android:paddingBottom="@dimen/space_12"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btnEvaluar"
+            style="@style/TextButtonLabel"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="Evaluar"
+            android:background="@drawable/bg_btn_evaluar"
+            android:clickable="true"
+            android:focusable="true" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
