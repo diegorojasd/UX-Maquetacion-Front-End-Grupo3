@@ -1,6 +1,7 @@
 package com.example.app
 
 import android.os.Bundle
+import android.widget.LinearLayout
 import android.widget.Button
 import android.content.Intent
 import androidx.activity.enableEdgeToEdge
@@ -20,15 +21,10 @@ class m01_recetas : AppCompatActivity() {
             insets
         }
 
-        // "Modo cocina" leads to the audio-permission screen (M-02).
-        findViewById<Button>(R.id.btnModoCocina).setOnClickListener {
+        // "Modo cocina" ahora es un LinearLayout
+        val btnModoCocina = findViewById<LinearLayout>(R.id.btnModoCocina)
+        btnModoCocina.setOnClickListener {
             startActivity(Intent(this, m02_permiso_ModoCocina::class.java))
-        }
-
-        val btnEmpezar = findViewById<Button>(R.id.btnEmpezar)
-        btnEmpezar.setOnClickListener {
-            val intent = Intent(this, m13_alarma::class.java)
-            startActivity(intent)
         }
     }
 }

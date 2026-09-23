@@ -574,38 +574,88 @@
 
         </LinearLayout>
 
-        <Button
+        <LinearLayout
             android:id="@+id/btnModoCocina"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.9"
             android:layout_height="56dp"
-            android:layout_marginTop="@dimen/space_16"
-            android:text="Modo cocina"
-            android:textAllCaps="false"
-            android:textColor="@color/text_primary"
-            android:textStyle="bold"
-            android:fontFamily="@font/roboto_bold"
+            android:orientation="horizontal"
+            android:gravity="center"
             android:background="@drawable/bg_btn_opcion"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_marginTop="@dimen/space_16"
             app:layout_constraintTop_toBottomOf="@id/seccionProcesos"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <Button
+            <FrameLayout
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@android:color/transparent">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_bell"
+                    app:tint="@color/text_primary"
+                    android:importantForAccessibility="no" />
+            </FrameLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modo cocina"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginStart="@dimen/space_12" />
+        </LinearLayout>
+
+
+        <LinearLayout
             android:id="@+id/btnEmpezar"
             android:layout_width="0dp"
-            app:layout_constraintWidth_percent="0.9"
             android:layout_height="56dp"
-            android:layout_marginTop="@dimen/space_8"
-            android:text="Empezar cocción"
-            android:textAllCaps="false"
-            android:textColor="@color/surface"
-            android:textStyle="bold"
-            android:fontFamily="@font/roboto_bold"
+            android:orientation="horizontal"
+            android:gravity="center"
             android:background="@drawable/bg_btn_lineal"
-            android:backgroundTint="@null"
+            android:clickable="true"
+            android:focusable="true"
+            app:layout_constraintWidth_percent="0.9"
+            android:layout_marginTop="@dimen/space_8"
             app:layout_constraintTop_toBottomOf="@id/btnModoCocina"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <FrameLayout
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/bg_circle_secondary">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_play"
+                    app:tint="@color/surface"
+                    android:importantForAccessibility="no" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Empezar cocción"
+                android:textAllCaps="false"
+                android:textColor="@color/surface"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_marginStart="@dimen/space_12" />
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

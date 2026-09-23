@@ -446,7 +446,7 @@
                         <ImageView
                             android:layout_width="36dp"
                             android:layout_height="36dp"
-                            android:src="@drawable/ic_horno"
+                            android:src="@drawable/ic_oven"
                             android:backgroundTint="#F1F5F9"
                             android:padding="6dp"
                             android:layout_marginEnd="12dp"
@@ -752,7 +752,7 @@
                             android:layout_width="22dp"
                             android:layout_height="22dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_aprendizaje"
+                            android:src="@drawable/ic_sparkles"
                             android:adjustViewBounds="true"
                             android:scaleType="centerInside"/>
                     </FrameLayout>
