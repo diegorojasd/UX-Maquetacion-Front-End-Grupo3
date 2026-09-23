@@ -1,0 +1,368 @@
+@use 'mixins' as *;
+@use 'typography' as *;
+
+
+// ---------------------------------------------------------------------
+// Page
+// ---------------------------------------------------------------------
+
+.tc-auto {
+  @include tc-page-container;
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-space-20);
+  padding-block: var(--tc-page-block);
+}
+
+
+// ---------------------------------------------------------------------
+// Header
+// ---------------------------------------------------------------------
+
+.tc-auto__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-space-4);
+}
+
+.tc-auto__title {
+  @include tc-text-h1;
+  margin: 0;
+  color: var(--tc-text-strong);
+}
+
+.tc-auto__lead {
+  @include tc-text-lead;
+  margin: 0;
+  color: var(--tc-text-muted);
+}
+
+
+// ---------------------------------------------------------------------
+// Main card
+// ---------------------------------------------------------------------
+
+.tc-auto__card {
+  @include tc-card-surface;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+
+// ---------------------------------------------------------------------
+// Card header
+// ---------------------------------------------------------------------
+
+.tc-auto__card-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--tc-space-12);
+  padding: var(--tc-space-16) var(--tc-space-20);
+  border-bottom: 1px solid var(--tc-border);
+}
+
+.tc-auto__card-title {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700; // Bold
+  font-size: 14px;
+  margin: 0;
+  color: var(--tc-text-strong);
+}
+
+
+// ---------------------------------------------------------------------
+// Alarm
+// ---------------------------------------------------------------------
+
+.tc-auto__alarm {
+  margin: var(--tc-space-20) var(--tc-space-20) 0;
+  padding: var(--tc-space-16);
+  display: flex;
+  flex-direction: column;
+  gap: var(--tc-space-12);
+  background: #FAFBFC;
+  border: 1px solid #E5E7EB;
+  border-radius: 6px;
+}
+
+  .tc-auto__alarm:last-of-type {
+    margin-bottom: 0;
+  }
+
+
+// ---------------------------------------------------------------------
+// Alarm header
+// ---------------------------------------------------------------------
+
+.tc-auto__alarm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tc-space-8);
+  margin-bottom: var(--tc-space-4);
+}
+
+.tc-auto__alarm-left {
+  display: flex;
+  align-items: center;
+  gap: var(--tc-space-8);
+}
+
+.tc-auto__alarm-index {
+  @include tc-text-caption-lg;
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  color: var(--tc-text-secondary);
+  font-weight: 600;
+  background: var(--tc-surface-alt);
+  border-radius: var(--tc-radius-chip);
+}
+
+.tc-auto__alarm-edit {
+  @include tc-text-body-s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  color: var(--tc-text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  tc-icon {
+    margin-right: 4px;
+    color: var(--tc-text-secondary);
+  }
+
+  &:hover {
+    color: var(--tc-primary);
+  }
+
+  &:focus-visible {
+    @include tc-focus-ring;
+  }
+}
+
+.tc-auto__alarm-remove {
+  @include tc-text-body-s;
+  display: inline-flex;
+  align-items: center;
+  padding: 0;
+  color: var(--tc-error);
+  background: none;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+
+  tc-icon {
+    margin-right: 4px;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  .tc-auto__alarm &:focus-visible {
+    @include tc-focus-ring;
+  }
+}
+
+
+// ---------------------------------------------------------------------
+// Alarm body
+// ---------------------------------------------------------------------
+
+.tc-auto__alarm-body {
+  display: grid;
+  grid-template-columns: 1.4fr 0.6fr 0.7fr;
+  align-items: end;
+  gap: var(--tc-space-16);
+}
+
+
+// ---------------------------------------------------------------------
+// Fields
+// ---------------------------------------------------------------------
+
+.tc-auto__field {
+  min-width: 0;
+}
+
+.tc-auto__label {
+  @include tc-text-caption;
+  display: block;
+  margin-bottom: 5px;
+  color: var(--tc-text-secondary);
+  text-transform: uppercase;
+}
+
+
+// ---------------------------------------------------------------------
+// Inputs
+// ---------------------------------------------------------------------
+
+.tc-auto__input {
+  @include tc-text-body;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 32px;
+  padding: var(--tc-space-7) var(--tc-space-10);
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: var(--tc-radius-field);
+  color: var(--tc-text-body);
+  font-weight: 500;
+
+  &:hover:not(:disabled) {
+    border-color: var(--tc-text-disabled);
+  }
+
+  &:focus-visible {
+    @include tc-focus-ring;
+    border-color: var(--tc-primary);
+  }
+
+  &:disabled {
+    background: var(--tc-surface-alt);
+    color: var(--tc-text-disabled);
+  }
+}
+
+.tc-auto__input--minutes {
+  width: 100%;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+}
+
+
+// ---------------------------------------------------------------------
+// Time
+// ---------------------------------------------------------------------
+
+.tc-auto__time {
+  display: flex;
+  align-items: center;
+  gap: var(--tc-space-8);
+}
+
+.tc-auto__unit {
+  @include tc-text-body-s;
+  flex: 0 0 auto;
+  color: var(--tc-text-secondary);
+}
+
+
+// ---------------------------------------------------------------------
+// Select
+// ---------------------------------------------------------------------
+
+.tc-auto__select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  max-width: none;
+}
+
+.tc-auto__select-control {
+  @include tc-text-body-s;
+  appearance: none;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 32px;
+  padding: var(--tc-space-7) var(--tc-space-28) var(--tc-space-7) var(--tc-space-10);
+  background: var(--tc-surface);
+  border: 1px solid var(--tc-border);
+  border-radius: var(--tc-radius-field);
+  color: var(--tc-text-body);
+  cursor: pointer;
+
+  &:hover:not(:disabled) {
+    border-color: var(--tc-text-disabled);
+  }
+
+  &:focus-visible {
+    @include tc-focus-ring;
+    border-color: var(--tc-primary);
+  }
+
+  &:disabled {
+    background: var(--tc-surface-alt);
+    color: var(--tc-text-disabled);
+  }
+}
+
+.tc-auto__select-chevron {
+  position: absolute;
+  right: var(--tc-space-8);
+  pointer-events: none;
+  color: var(--tc-text-tertiary);
+}
+
+
+// ---------------------------------------------------------------------
+// Add alarm
+// ---------------------------------------------------------------------
+
+.tc-auto__add {
+  display: flex;
+  justify-content: flex-start;
+  padding: var(--tc-space-16) var(--tc-space-20) var(--tc-space-20);
+}
+
+  .tc-auto__add tc-button {
+    background: #FFFFFF; // Fill corregido
+    border: 1px solid #9CA3AF; // Stroke corregido
+    color: var(--tc-text-strong); // Texto oscuro y legible sobre blanco
+  }
+
+    .tc-auto__add tc-button:hover {
+      background: var(--tc-surface-alt);
+      border-color: #9CA3AF; // Mantiene el mismo stroke en hover
+      color: var(--tc-text-strong);
+    }
+
+
+
+// ---------------------------------------------------------------------
+// Bottom action bar
+// ---------------------------------------------------------------------
+
+.tc-auto__actions-bar {
+  @include tc-card-surface;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--tc-space-16);
+  padding: var(--tc-space-16);
+  // La referencia deja esta barra ligeramente más estrecha
+  // que la tarjeta principal.
+  width: 84%;
+  box-sizing: border-box;
+}
+
+.tc-auto__device {
+  @include tc-text-body-s;
+  display: block;
+  max-width: 430px;
+  margin: 0;
+  color: var(--tc-text-secondary);
+  line-height: 1.45;
+
+  strong {
+    color: var(--tc-text-strong);
+    font-weight: 700;
+  }
+}
+
+.tc-auto__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--tc-space-12);
+}
