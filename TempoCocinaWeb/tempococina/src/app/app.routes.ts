@@ -19,6 +19,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/auto-config/auto-config'),
   },
   {
+    path: 'mockups/w-15',
+    loadComponent: () => import('./features/manual-config/manual-config'),
+  },
+  {
     path: 'mockups/w-17',
     loadComponent: () => import('./features/suggested-sound/suggested-sound'),
   },
