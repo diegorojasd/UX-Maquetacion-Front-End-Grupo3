@@ -14,8 +14,7 @@
       class="tc-synced__sync"
       [deviceName]="view.device.name"
       [deviceStatus]="view.device.status"
-      [deviceIcon]="view.device.icon"
-    >
+      [deviceIcon]="view.device.icon">
       <ol class="tc-synced__timers">
         @for (step of view.recipe.steps; track step.id) {
           <li>
