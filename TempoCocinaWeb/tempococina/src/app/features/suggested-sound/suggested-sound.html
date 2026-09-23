@@ -1,0 +1,90 @@
+<main class="tc-synced">
+  <article class="tc-synced__card">
+
+    <h1 class="tc-synced__title">
+      Sonido Sugerido
+    </h1>
+
+    <p class="tc-synced__lead">
+      El sistema ha seleccionado los tonos con mejor frecuencia de alerta
+      según la etapa del proceso de cocción.
+    </p>
+
+    <div class="tc-synced__separator"></div>
+
+    <label class="tc-sound-option"
+           [class.tc-sound-option--selected]="selectedSound === 'campana'">
+
+      <input type="radio"
+             name="sound"
+             value="campana"
+             [(ngModel)]="selectedSound"
+             class="tc-sound-option__input">
+
+      <div class="tc-sound-option__media">
+        <tc-icon name="play-circle" [size]="16" />
+      </div>
+
+      <div class="tc-sound-option__content">
+        <h2 class="tc-sound-option__title">
+          Campana
+        </h2>
+
+        <p class="tc-sound-option__description">
+          Penetración acústica alta · 82 dB (Ideal para horno ruidoso)
+        </p>
+      </div>
+
+      <div class="tc-sound-option__radio"></div>
+
+    </label>
+
+    <label class="tc-sound-option"
+           [class.tc-sound-option--selected]="selectedSound === 'timbre'">
+
+      <input type="radio"
+             name="sound"
+             value="timbre"
+             [(ngModel)]="selectedSound"
+             class="tc-sound-option__input">
+
+      <div class="tc-sound-option__media">
+        <tc-icon name="play-circle" [size]="16" />
+      </div>
+
+      <div class="tc-sound-option__content">
+        <h2 class="tc-sound-option__title">
+          Timbre
+        </h2>
+
+        <p class="tc-sound-option__description">
+          Tono sostenido tradicional · 76 dB (Cadencia uniforme)
+        </p>
+      </div>
+
+      <div class="tc-sound-option__radio"></div>
+
+    </label>
+
+    <div class="tc-synced__footer">
+
+      <tc-button variant="secondary"
+                 size="md">
+        ELEGIR OTRO
+      </tc-button>
+
+      <tc-button variant="brand"
+                 size="md"
+                 icon="check">
+        CONSERVAR SONIDO
+      </tc-button>
+
+    </div>
+  </article>
+
+  <article class="tc-synced__card tc-synced__step">
+    <tc-icon name="info" [size]="12" />
+    <span>Paso 4 de 5: Configuración de alarmas de cocción · Receta: <strong>Pollo Horneado con Hierbas y Arroz</strong></span>
+  </article>
+
+</main>
