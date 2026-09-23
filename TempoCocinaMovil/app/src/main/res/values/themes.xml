@@ -25,6 +25,28 @@
     <color name="critical">#ED532A</color>
     <color name="completed">#E2E8F0</color>
 
+    <!-- Text and background per semantic family. CLAUDE.md §4 defines these
+         but the baseline only had the base color, so the layouts improvised
+         their own greens and oranges. Added as M-07 needs them. -->
+    <color name="success_text">#047857</color>
+    <color name="success_bg">#D1FAE5</color>
+    <color name="critical_text">#9A2F12</color>
+
+    <!-- Derived: peach border of the soft critical chip and the light
+         grey-blue "Plan" bar (§4 asks derived tints to be named). -->
+    <color name="critical_soft_border">#FBD5C5</color>
+    <color name="bar_plan">#CBD8DD</color>
+
+
+    <!-- TINTES DERIVADOS (M-02) — nombrados como pide CLAUDE.md §4 -->
+    <color name="tile_neutral">#E6F0F2</color>
+    <color name="tile_secondary">#FFF1EC</color>
+
+    <!-- M-03. §12 describes the active timer card's border as a soft
+         orange, not the full #ED532A, and says to take the exact value
+         from Figma; using the documented soft token meanwhile. -->
+    <color name="timer_alert_border">#FDDCCF</color>
+
     <style name="ChipEstadoActivo" parent="Widget.MaterialComponents.Chip.Action">
         <item name="chipBackgroundColor">#F1F5F9</item>
         <item name="android:textColor">#18434B</item>
@@ -78,6 +100,107 @@
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">@dimen/text_size_body</item>
         <item name="android:fontFamily">Roboto</item>
+    </style>
+
+
+    <!-- ESCALA TIPOGRÁFICA DE CLAUDE.md §5
+         Los dos estilos de arriba (TextTitle, TextBody) son del baseline y no
+         coinciden con ningún tamaño de la tabla; se dejan intactos para no
+         alterar M-01, M-08 y M-13. Estos siguen la tabla. -->
+
+    <style name="TextH2">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:lineSpacingExtra">6sp</item>
+        <item name="android:letterSpacing">-0.009</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextItemTitle">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Row description. §5 lists Body 15/22, but the mockup wraps these
+         at Body S; §2 puts the screenshot above this file. -->
+    <style name="TextBodyS">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingExtra">5sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="TextBodyM">
+        <item name="android:fontFamily">@font/roboto_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">7sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="TextCaptionUpper">
+        <item name="android:fontFamily">@font/roboto_medium</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:letterSpacing">0.073</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <!-- Top-bar screen title. The baseline sets 24sp inline; kept at the
+         same size so M-02 matches M-01, but named here. -->
+    <style name="TextScreenTitle">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Low-emphasis action: uppercase, accent, no fill (§9 "Text"). -->
+    <style name="TextActionLabel">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:letterSpacing">0.06</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/secondary</item>
+    </style>
+
+    <!-- Compact button label, for the small "Escuchar" pill. -->
+    <style name="TextButtonLabelSmall">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Remaining time inside a timer card (§5 Timer 34/38). -->
+    <style name="TextTimer">
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textSize">34sp</item>
+        <item name="android:letterSpacing">-0.015</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <!-- Compact card timer. §5 has no size for it; the mockup shows it
+         clearly smaller than the active card's. Estimated. -->
+    <style name="TextTimerSm">
+        <item name="android:fontFamily">@font/roboto_black</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:letterSpacing">-0.015</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextChip">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+
+    <style name="TextButtonLabel">
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/surface</item>
     </style>
 
     <!-- ACCESIBILIDAD -->

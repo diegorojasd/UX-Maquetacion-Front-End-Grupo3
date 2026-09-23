@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- STAND-IN: not exported from Figma. The MCP was at its plan call
+     limit, so this follows the linear-stroke family CLAUDE.md §6 describes
+     (uniform weight on a square grid). Replace with the real export. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:pathData="M8.7,4.6 A5,5 0 0,1 17,8.3 C17,13 19,15 19,15 L8,15"
+        android:strokeColor="#FF000000" android:strokeWidth="2"
+        android:strokeLineJoin="round" android:strokeLineCap="round"/>
+    <path android:pathData="M6.2,7.2 A5,5 0 0,0 7,8.3 C7,13 5,15 5,15 L15,15"
+        android:strokeColor="#FF000000" android:strokeWidth="2"
+        android:strokeLineJoin="round" android:strokeLineCap="round"/>
+    <path android:pathData="M10.3,18.5 A2,2 0 0,0 13.7,18.5"
+        android:strokeColor="#FF000000" android:strokeWidth="2" android:strokeLineCap="round"/>
+    <path android:pathData="M3.5,3.5 L20.5,20.5"
+        android:strokeColor="#FF000000" android:strokeWidth="2" android:strokeLineCap="round"/>
+</vector>

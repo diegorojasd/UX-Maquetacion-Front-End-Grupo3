@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Timer card · secundaria (M-07). Included twice, filled from the Activity.
+    Not the same anatomy as item_timer_card_compact (M-03): here the process
+    carries a status dot before its name and the progress bar runs the full
+    width of the card under the time + button row.
+    The Activity greys the whole card out when the process is completed.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card_bordered"
+    android:padding="@dimen/space_8">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/puntoEstado"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:background="@drawable/bg_dot_secondary"
+            android:importantForAccessibility="no" />
+
+        <TextView
+            android:id="@+id/nombreProceso"
+            style="@style/TextItemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/space_8"
+            tools:text="Arroz" />
+
+        <TextView
+            android:id="@+id/chipEstado"
+            style="@style/TextChip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_neutral"
+            android:textAllCaps="true"
+            android:paddingStart="@dimen/space_12"
+            android:paddingEnd="@dimen/space_12"
+            android:paddingTop="@dimen/space_4"
+            android:paddingBottom="@dimen/space_4"
+            tools:text="Completado" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/space_8">
+
+        <TextView
+            android:id="@+id/tiempoRestante"
+            style="@style/TextTimerSm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            tools:text="00:00" />
+
+        <LinearLayout
+            android:id="@+id/btnPausarProceso"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_btn_outline_pair"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16">
+
+            <ImageView
+                android:id="@+id/iconoPausar"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_pause"
+                app:tint="@color/text_primary"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:id="@+id/etiquetaPausar"
+                style="@style/TextChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pausar"
+                android:layout_marginStart="@dimen/space_8" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/barraProgreso"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="@dimen/space_8"
+        android:max="100"
+        android:backgroundTint="@color/border"
+        android:progressTint="@color/primary"
+        tools:progress="100" />
+</LinearLayout>

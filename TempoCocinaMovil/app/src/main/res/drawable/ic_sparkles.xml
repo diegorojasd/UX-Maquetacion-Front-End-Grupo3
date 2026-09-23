@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- STAND-IN: not exported from Figma (MCP at its plan call limit).
+     Linear-stroke family per CLAUDE.md §6. Replace with the real export. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp" android:height="24dp"
+    android:viewportWidth="24" android:viewportHeight="24">
+    <path android:pathData="M10,3 L11.7,8.3 L17,10 L11.7,11.7 L10,17 L8.3,11.7 L3,10 L8.3,8.3 Z"
+        android:fillColor="#FF000000"/>
+    <path android:pathData="M17.5,14 L18.4,16.6 L21,17.5 L18.4,18.4 L17.5,21 L16.6,18.4 L14,17.5 L16.6,16.6 Z"
+        android:fillColor="#FF000000"/>
+</vector>

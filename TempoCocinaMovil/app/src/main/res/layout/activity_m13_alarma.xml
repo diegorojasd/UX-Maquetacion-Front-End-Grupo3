@@ -427,7 +427,15 @@
             android:paddingEnd="@dimen/space_24"
             android:background="@drawable/bg_card">
 
-            <!-- Aca va el icono del rayo -->
+            <!-- Icono -->
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_thunder"
+                android:backgroundTint="#F1F5F9"
+                android:padding="6dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_icono_proceso"/>
 
             <LinearLayout
                 android:layout_width="0dp"

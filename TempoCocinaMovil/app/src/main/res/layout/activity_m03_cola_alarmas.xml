@@ -1,10 +1,363 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".m03_cola_Alarmas">
+    android:background="@color/background"
+    android:fillViewport="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".m03_cola_Alarmas">
+
+        <!-- Top app bar -->
+        <TextView
+            android:id="@+id/tituloModulo"
+            style="@style/TextCaptionUpper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Módulo de cocción • Modo activo"
+            android:textColor="@color/secondary"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_24"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tituloPrincipal"
+            style="@style/TextScreenTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Temp activos"
+            android:accessibilityHeading="true"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_4"
+            app:layout_constraintTop_toBottomOf="@id/tituloModulo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/logoTempo" />
+
+        <ImageView
+            android:id="@+id/logoTempo"
+            android:layout_width="88dp"
+            android:layout_height="42dp"
+            android:src="@drawable/tempo_cocina_logo"
+            android:scaleType="fitCenter"
+            android:contentDescription="Tempo Cocina"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            app:layout_constraintBottom_toBottomOf="@id/tituloPrincipal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tituloPrincipal" />
+
+        <!-- Status banner -->
+        <LinearLayout
+            android:id="@+id/bannerEstado"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_status_banner"
+            android:paddingStart="@dimen/space_16"
+            android:paddingEnd="@dimen/space_16"
+            android:paddingTop="@dimen/space_8"
+            android:paddingBottom="@dimen/space_8"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_16"
+            app:layout_constraintTop_toBottomOf="@id/tituloPrincipal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <View
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/bg_dot_secondary"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Modo cocina — En curso"
+                android:textSize="15sp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="@color/surface"
+                android:layout_marginStart="@dimen/space_12" />
+        </LinearLayout>
+
+        <!-- Recipe row -->
+        <LinearLayout
+            android:id="@+id/filaReceta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_card_bordered"
+            android:padding="@dimen/space_12"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_12"
+            app:layout_constraintTop_toBottomOf="@id/bannerEstado"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <TextView
+                android:id="@+id/nombreReceta"
+                style="@style/TextItemTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                tools:text="Pollo al horno con arroz" />
+
+            <TextView
+                android:id="@+id/chipProcesos"
+                style="@style/TextChip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_contador_procesos"
+                android:paddingStart="@dimen/space_12"
+                android:paddingEnd="@dimen/space_12"
+                android:paddingTop="@dimen/space_4"
+                android:paddingBottom="@dimen/space_4"
+                tools:text="3 procesos" />
+        </LinearLayout>
+
+        <!-- Timer card · activa -->
+        <LinearLayout
+            android:id="@+id/cardActiva"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_alert"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="Ver la alarma de Arroz"
+            android:padding="@dimen/space_12"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintTop_toBottomOf="@id/filaReceta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/nombreActivo"
+                    style="@style/TextItemTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="Arroz" />
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_pot"
+                    app:tint="@color/text_secondary"
+                    android:importantForAccessibility="no"
+                    android:layout_marginStart="@dimen/space_8" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/chipActivo"
+                    style="@style/TextChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_chip_critical"
+                    android:textColor="@color/surface"
+                    android:paddingStart="@dimen/space_12"
+                    android:paddingEnd="@dimen/space_12"
+                    android:paddingTop="@dimen/space_4"
+                    android:paddingBottom="@dimen/space_4"
+                    tools:text="Alerta activa" />
+            </LinearLayout>
+
+            <!-- Timer display -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_timer_display"
+                android:padding="@dimen/space_12"
+                android:layout_marginTop="@dimen/space_8">
+
+                <TextView
+                    style="@style/TextCaptionUpper"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiempo restante" />
+
+                <TextView
+                    android:id="@+id/tiempoActivo"
+                    style="@style/TextTimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space_4"
+                    tools:text="05:22" />
+
+                <ProgressBar
+                    android:id="@+id/barraActiva"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:layout_marginTop="@dimen/space_12"
+                    android:max="100"
+                    android:backgroundTint="@color/border"
+                    android:progressTint="@color/secondary"
+                    tools:progress="78" />
+            </LinearLayout>
+
+            <!-- Button pair -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/space_8">
+
+                <LinearLayout
+                    android:id="@+id/btnDetenerProceso"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/bg_btn_outline_pair"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_stop"
+                        app:tint="@color/text_primary"
+                        android:importantForAccessibility="no" />
+
+                    <TextView
+                        style="@style/TextChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Detener"
+                        android:textSize="15sp"
+                        android:layout_marginStart="@dimen/space_8" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnPausarActivo"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@drawable/bg_btn_filled_pair"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:layout_marginStart="@dimen/gutter_interno">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:src="@drawable/ic_pause"
+                        app:tint="@color/surface"
+                        android:importantForAccessibility="no" />
+
+                    <TextView
+                        style="@style/TextChip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Pausar"
+                        android:textSize="15sp"
+                        android:textColor="@color/surface"
+                        android:layout_marginStart="@dimen/space_8" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Two compact cards, one layout included twice -->
+        <include
+            android:id="@+id/cardHorno"
+            layout="@layout/item_timer_card_compact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintTop_toBottomOf="@id/cardActiva"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <include
+            android:id="@+id/cardSalsa"
+            layout="@layout/item_timer_card_compact"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_8"
+            app:layout_constraintTop_toBottomOf="@id/cardHorno"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Pause everything -->
+        <LinearLayout
+            android:id="@+id/btnPausarTodo"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/bg_btn_outline_block"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_12"
+            app:layout_constraintTop_toBottomOf="@id/cardSalsa"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_pause"
+                app:tint="@color/text_primary"
+                android:importantForAccessibility="no" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pausar todo"
+                android:textSize="16sp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/text_primary"
+                android:layout_marginStart="@dimen/space_12" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnFinalizar"
+            style="@style/TextActionLabel"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="Finalizar sesión de cocina"
+            android:background="@drawable/bg_btn_text"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginStart="@dimen/margin_lateral"
+            android:layout_marginEnd="@dimen/margin_lateral"
+            android:layout_marginTop="@dimen/space_8"
+            android:layout_marginBottom="@dimen/space_24"
+            app:layout_constraintTop_toBottomOf="@id/btnPausarTodo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
