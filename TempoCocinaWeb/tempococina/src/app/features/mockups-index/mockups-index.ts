@@ -123,6 +123,12 @@ export default class MockupsIndex {
       path: '/mockups/w-13',
     },
     {
+      id: 'W-17',
+      title: 'Sonido Sugerido',
+      module: 'Sonido',
+      path: '/mockups/w-17',
+    },
+    {
       id: 'W-22',
       title: 'Confirmar y enviar al móvil',
       module: 'Transferencia',
