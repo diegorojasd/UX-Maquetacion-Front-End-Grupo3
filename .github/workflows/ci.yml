@@ -1,10 +1,10 @@
-name: CI - Hogar Android
+name: CI - Tempo Cocina Android
 
 on:
   push:
     branches:
       - main
-      - develop
+      - movil
   pull_request:
     branches:
       - main
@@ -30,6 +30,11 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 60
+
+    # gradlew vive en TempoCocinaMovil/, no en la raíz del repositorio.
+    defaults:
+      run:
+        working-directory: TempoCocinaMovil
 
     steps:
       - name: Checkout código
@@ -58,6 +63,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: test-and-build
 
+    defaults:
+      run:
+        working-directory: TempoCocinaMovil
+
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
@@ -78,11 +87,11 @@ jobs:
         env:
           KEYSTORE_BASE64: ${{ secrets.KEYSTORE_BASE64 }}
         run: |
-          echo "$KEYSTORE_BASE64" | base64 --decode > ${{ runner.temp }}/vinilos-release-key.jks
+          echo "$KEYSTORE_BASE64" | base64 --decode > ${{ runner.temp }}/tempococina-release-key.jks
 
       - name: Construir APK release (firmado)
         env:
-          KEYSTORE_PATH: ${{ runner.temp }}/vinilos-release-key.jks
+          KEYSTORE_PATH: ${{ runner.temp }}/tempococina-release-key.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
@@ -101,8 +110,8 @@ jobs:
       - name: Subir APK como artefacto
         uses: actions/upload-artifact@v4
         with:
-          name: vinilos-release-apk
-          path: app/build/outputs/apk/release/*.apk
+          name: tempococina-release-apk
+          path: TempoCocinaMovil/app/build/outputs/apk/release/*.apk
           retention-days: 7
 
   # ─────────────────────────────────────────────
@@ -150,18 +159,19 @@ jobs:
         run: |
           RELEASE_BRANCH="release_$VERSION"
           echo "RELEASE_BRANCH=$RELEASE_BRANCH" >> $GITHUB_ENV
-          git checkout develop
-          git pull origin develop
+          git checkout movil
+          git pull origin movil
           git checkout -b "$RELEASE_BRANCH"
 
           # Actualizar versionName y versionCode en build.gradle.kts
-          sed -i "s/versionName = \".*\"/versionName = \"$VERSION\"/" app/build.gradle.kts
-          CURRENT_CODE=$(grep "versionCode" app/build.gradle.kts | grep -o '[0-9]*')
+          GRADLE_FILE=TempoCocinaMovil/app/build.gradle.kts
+          sed -i "s/versionName = \".*\"/versionName = \"$VERSION\"/" $GRADLE_FILE
+          CURRENT_CODE=$(grep "versionCode" $GRADLE_FILE | grep -o '[0-9]*')
           NEW_CODE=$((CURRENT_CODE + 1))
-          sed -i "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" app/build.gradle.kts
+          sed -i "s/versionCode = $CURRENT_CODE/versionCode = $NEW_CODE/" $GRADLE_FILE
 
           echo "$VERSION" > VERSION.txt
-          git add app/build.gradle.kts VERSION.txt
+          git add $GRADLE_FILE VERSION.txt
           git commit -m "release: prepare v$VERSION"
           git push -u origin "$RELEASE_BRANCH"
 
@@ -183,7 +193,7 @@ jobs:
       - name: Descargar APK del artefacto
         uses: actions/download-artifact@v4
         with:
-          name: vinilos-release-apk
+          name: tempococina-release-apk
           path: apk-release/
 
       - name: Subir APK al Release
@@ -198,12 +208,12 @@ jobs:
             exit 1
           fi
 
-      - name: Merge main -> develop
+      - name: Merge main -> movil
         run: |
-          git checkout develop
-          git pull origin develop
+          git checkout movil
+          git pull origin movil
           git merge main
-          git push origin develop
+          git push origin movil
 
       - name: Eliminar rama release
         run: git push origin --delete "$RELEASE_BRANCH"
