@@ -1,4 +1,4 @@
-name: CI - Hogar Android
+name: CI - TempoCocina Android
 
 on:
   push:
