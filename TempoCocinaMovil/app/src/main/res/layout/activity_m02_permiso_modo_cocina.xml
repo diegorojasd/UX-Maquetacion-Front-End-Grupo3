@@ -18,12 +18,10 @@
         <!-- Top app bar -->
         <TextView
             android:id="@+id/tituloModulo"
-            style="@style/TextCaptionUpper"
+            style="@style/TextScreenKicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Módulo de sincronización"
-            android:textColor="@color/secondary"
-            android:fontFamily="@font/roboto_bold"
             android:layout_marginStart="@dimen/margin_lateral"
             android:layout_marginTop="@dimen/space_24"
             app:layout_constraintTop_toTopOf="parent"
