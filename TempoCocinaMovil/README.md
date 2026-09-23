@@ -282,11 +282,9 @@ Capturas de las tres pantallas construidas en esta fase:
 
 ```
 TempoCocinaMovil/
-├── .claude/CLAUDE.md               Reglas de implementación: manda sobre el CLAUDE.md web
 ├── build.gradle.kts                Build raíz
 ├── settings.gradle.kts             Módulos y repositorios
 ├── gradle/libs.versions.toml       Catálogo de versiones
-├── docs/
 │   └── screens/                    Un reporte por pantalla + capturas renderizadas
 │       └── _baseline/              M-01, M-08 y M-13 como se veían antes de esta fase
 ├── tools/
@@ -341,14 +339,6 @@ para que un lector de pantalla no las deletree.
 `res/drawable/ic_<nombre>.xml`. Se tiñen desde el `ImageView` con `app:tint`, no desde el
 drawable.
 
-> **Los iconos se extraen de los mockups de Figma**, con su forma, grosor de trazo y
-> proporción originales. **Prohibido** Material Icons, Font Awesome, cualquier icon font,
-> emojis o caracteres Unicode usados como iconos.
->
-> ⚠️ Los 12 iconos añadidos en esta fase son **suplentes** dibujados a mano, marcados como
-> tales dentro de cada archivo, porque el MCP de Figma estuvo en el límite de llamadas de su
-> plan durante todo el trabajo. **Hay que reemplazarlos por el export real.**
-
 **Componentes.** Las piezas repetidas son shapes (`bg_*.xml`) más un layout reutilizable
 (`item_*.xml`) cuando se repite el bloque entero:
 
@@ -371,78 +361,7 @@ solo baja la tinta. El objetivo táctil mínimo de los controles nuevos es **48d
 
 ---
 
-## 8. Diferencias con el mockup y hallazgos de accesibilidad
-
-Resumen consolidado. El detalle está en cada reporte:
-[M-02](docs/screens/M-02.md) · [M-03](docs/screens/M-03.md) · [M-07](docs/screens/M-07.md) ·
-[baseline](docs/screens/_baseline.md).
-
-### Pendientes que afectan la fidelidad
-
-- **Sin geometría de Figma.** El MCP estuvo bloqueado en el límite de llamadas de su plan
-  durante toda la fase. Márgenes, radios, tintes derivados y los porcentajes de las barras
-  (Arroz 78 %, Horno 45 %, Salsa 60 %) son **lectura del mockup, no valores medidos**.
-  *(H1, I2, I3, J3, K6)*
-- **Los 12 iconos nuevos son suplentes.** Se nota sobre todo en `ic_pot`, que parece una
-  cesta. *(H5, K7)*
-- **El ritmo vertical se apretó** en M-02, M-03 y M-07 respecto al mockup: sin eso el último
-  control quedaba fuera de los 844dp. *(K5)*
-- **CLAUDE.md tenía M-07 y M-08 intercambiados.** El prototipo de Figma demostró que
-  `m07_proceso_terminado` es «Proceso terminado» y `m08_resumen` es «Resumen de cocción»,
-  como decían los nombres del baseline. Corregido, y M-07 se reconstruyó entero. *(K2)*
-- **Incoherencias que se transcribieron tal cual, sin normalizar:** M-01 escribe `RECETA
-  PREPARACIÓN` con tilde y el mockup de M-02 la quita *(H2)*; el chip «Reducción» es gris en
-  M-03 y naranja suave en M-07 para el mismo proceso *(K3)*; «Tiempo total: 48 min» no es la
-  suma de 17 + 35 + 20 porque los procesos se solapan *(J4)*.
-
-### Deuda del código base (no tocar sin acordarlo)
-
-La paleta vive en `themes.xml` y `colors.xml` está muerto; las mayúsculas están escritas
-dentro del copy en las pantallas antiguas; los textos están en los layouts y no en
-`strings.xml`; siete iconos del baseline son PNG y no se pueden teñir; la barra superior está
-copiada en cada layout en vez de ser un `<include>`; y hay hex fuera del sistema (`#94A3B8`
-aparece 19 veces). El inventario completo está en `.claude/CLAUDE.md` §14.
-
-### Accesibilidad — se implementa como está diseñado y se reporta
-
-Estos hallazgos son **del diseño**, no errores de implementación. Se construyeron tal cual y
-quedan documentados para que el equipo de UX decida:
-
-- **Contraste del naranja.** `#ED532A` sobre fondo claro ≈ 3.4–3.6:1: cumple AA solo para
-  texto grande. Se queda corto en los kickers, «Ahora no», «Finalizar sesión de cocina»,
-  «Faltan ~20 min» y los chips suaves de desviación. *(A1, A2, B2, C1, C2, D2)*
-- **Texto blanco sobre naranja** en el chip «Alerta activa» ≈ 3.6:1: también se queda corto.
-  *(B1, D1)*
-- **Las barras de progreso no muestran porcentaje visible.** El mockup no lo tiene y el valor
-  vive en el `contentDescription` de cada barra. *(B3, C3, D3)*
-- **Botones que anuncian una acción sin ejecutarla**: «Escuchar» en M-02 y «Evaluar» en M-08
-  confunden con lector de pantalla. Es lo que pide esta fase. *(A4, C5)*
-
-Y lo que **sí** se cumple: ningún estado se comunica solo por color —cada chip lleva
-etiqueta—, los iconos decorativos están marcados como no importantes, los títulos y
-encabezados llevan `accessibilityHeading`, y el «Pausar» de un proceso completado queda
-`enabled=false` y fuera del foco para no anunciar una acción imposible. *(B4, D4, D5, D6)*
-
----
-
-## 9. Documentación y fuentes
-
-| Fuente | Dónde |
-|---|---|
-| **Mockups de Figma (móvil)** | https://www.figma.com/design/3ckGVFDTfe53VKggdmjxmK/Mobil---Mockups |
-| **Reglas de implementación** | [`.claude/CLAUDE.md`](.claude/CLAUDE.md) — lenguaje, fuentes de verdad, protocolo por pantalla, sistema de diseño, accesibilidad y verificación |
-| **Reportes por pantalla** | [`docs/screens/`](docs/screens/) — uno por pantalla, en español |
-| **Auditoría del código base** | [`docs/screens/_baseline.md`](docs/screens/_baseline.md) |
-| **Capturas renderizadas** | `docs/screens/M-0X.render.png` y `docs/screens/_baseline/M-0X.before.png` |
-
-> **Faltan en el repositorio** dos fuentes que `.claude/CLAUDE.md` da por hechas:
-> `docs/design/TempoCocina-SystemDesign-Mockups-Movil-final.pdf` (el System Design de 26
-> páginas) y `docs/mockups/M-XX.png` (los mockups exportados a 4×). Mientras no estén, la
-> única fuente de verdad visual es Figma y las capturas que el equipo comparte por chat.
-
----
-
-## 10. Tareas de Gradle
+## 8. Tareas de Gradle
 
 No hay `package.json` ni scripts de npm. Las tareas útiles del wrapper:
 
