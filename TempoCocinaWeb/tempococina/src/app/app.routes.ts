@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'mockups' },
+  { path: '', pathMatch: 'full', redirectTo: 'mockups/w-02' },
   {
     path: 'mockups',
     loadComponent: () => import('./features/mockups-index/mockups-index'),

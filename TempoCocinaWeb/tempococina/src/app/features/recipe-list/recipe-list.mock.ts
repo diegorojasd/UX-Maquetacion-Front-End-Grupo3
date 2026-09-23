@@ -37,5 +37,5 @@ export const RECIPE_LIST_VIEW: RecipeListView = {
   stepsTotalValue: '4 temporizadores encadenados',
   secondaryAction: 'Modificar Receta',
   startAction: 'Preparar receta',
-  startTarget: '/mockups/w-24',
+  startTarget: '/mockups/w-06',
 };

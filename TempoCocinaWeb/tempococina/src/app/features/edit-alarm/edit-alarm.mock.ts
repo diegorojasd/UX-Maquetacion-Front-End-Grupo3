@@ -21,7 +21,8 @@ export interface EditAlarmView {
   readonly stepsTotalValue: string;
   readonly secondaryAction: string;
   readonly startAction: string;
-  readonly startTarget: string;
+  readonly safeTarget: string;
+  readonly soundTarget: string;
 }
 
 export const EDIT_ALARM_VIEW: EditAlarmView = {
@@ -39,5 +40,6 @@ export const EDIT_ALARM_VIEW: EditAlarmView = {
   stepsTotalValue: '4 temporizadores encadenados',
   secondaryAction: 'Modificar Receta',
   startAction: 'Preparar receta',
-  startTarget: '/mockups/w-24',
+  safeTarget: '/mockups/w-15',
+  soundTarget: '/mockups/w-17',
 };

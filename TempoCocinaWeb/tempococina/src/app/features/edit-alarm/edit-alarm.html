@@ -250,19 +250,21 @@
 
           <div class="tc-alarm-editor__actions-secondary">
 
-            <tc-button variant="secondary">
+            <tc-button variant="secondary" [link]="view.safeTarget">
               Cancelar
             </tc-button>
 
             <tc-button variant="secondary"
-                       icon="music">
+                       icon="music"
+                       [link]="view.soundTarget">
               Ver sonido sugerido
             </tc-button>
 
           </div>
 
           <tc-button variant="brand"
-                     icon="check">
+                     icon="check"
+                     [link]="view.safeTarget">
             Guardar cambios de alarma
           </tc-button>
 
