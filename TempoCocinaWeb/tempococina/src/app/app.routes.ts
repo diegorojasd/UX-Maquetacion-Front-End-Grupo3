@@ -7,6 +7,10 @@ export const routes: Routes = [
     loadComponent: () => import('./features/mockups-index/mockups-index'),
   },
   {
+    path: 'mockups/w-02',
+    loadComponent: () => import('./features/recipe-list/recipe-list'),
+  },
+  {
     path: 'mockups/w-06',
     loadComponent: () => import('./features/recipe-detail/recipe-detail'),
   },
