@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    List item con icono (M-02). Pulled in three times with <include>, so the
+    row is written once. The icon tile and the texts are overridden per row
+    from the including layout.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_card_bordered"
+    android:paddingStart="@dimen/space_16"
+    android:paddingEnd="@dimen/space_16"
+    android:paddingTop="@dimen/space_8"
+    android:paddingBottom="@dimen/space_8">
+
+    <FrameLayout
+        android:id="@+id/tilePermiso"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/bg_tile_44">
+
+        <ImageView
+            android:id="@+id/iconPermiso"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            app:tint="@color/text_primary"
+            android:importantForAccessibility="no"
+            tools:src="@drawable/ic_volume" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/space_12">
+
+        <TextView
+            android:id="@+id/tituloPermiso"
+            style="@style/TextItemTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Alarma a volumen constante" />
+
+        <TextView
+            android:id="@+id/descripcionPermiso"
+            style="@style/TextBodyS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_4"
+            tools:text="Se eleva automáticamente al sonar para vencer el ruido de campana y sartenes." />
+    </LinearLayout>
+</LinearLayout>
