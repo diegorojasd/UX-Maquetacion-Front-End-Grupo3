@@ -25,6 +25,18 @@
     <color name="critical">#ED532A</color>
     <color name="completed">#E2E8F0</color>
 
+    <!-- Text and background per semantic family. CLAUDE.md §4 defines these
+         but the baseline only had the base color, so the layouts improvised
+         their own greens and oranges. Added as M-07 needs them. -->
+    <color name="success_text">#047857</color>
+    <color name="success_bg">#D1FAE5</color>
+    <color name="critical_text">#9A2F12</color>
+
+    <!-- Derived: peach border of the soft critical chip and the light
+         grey-blue "Plan" bar (§4 asks derived tints to be named). -->
+    <color name="critical_soft_border">#FBD5C5</color>
+    <color name="bar_plan">#CBD8DD</color>
+
 
     <!-- TINTES DERIVADOS (M-02) — nombrados como pide CLAUDE.md §4 -->
     <color name="tile_neutral">#E6F0F2</color>
