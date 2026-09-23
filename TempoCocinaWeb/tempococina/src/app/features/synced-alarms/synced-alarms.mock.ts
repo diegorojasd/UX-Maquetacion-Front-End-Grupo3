@@ -27,5 +27,5 @@ export const SYNCED_ALARMS_VIEW: SyncedAlarmsView = {
   leadAfter: ' se han transferido correctamente a tu dispositivo móvil.',
   note: 'El control activo de la cocción y el monitoreo de tiempos ahora se ejecutan de forma concurrente en la app móvil. Cualquier ajuste manual en tu teléfono se reflejará aquí en tiempo real.',
   backAction: 'Volver al recetario',
-  backTarget: '/mockups',
+  backTarget: '/mockups/w-02',
 };

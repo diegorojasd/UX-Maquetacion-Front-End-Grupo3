@@ -17,11 +17,12 @@
     <div class="tc-auto__alarm">
       <div class="tc-auto__alarm-header">
         <div class="tc-auto__alarm-left">
-          <span class="tc-auto__alarm-index">ALARMA 01</span>
-          <button class="tc-auto__alarm-edit">
+          <span class="tc-auto__alarm-index">ALARMA 02</span>
+          <button class="tc-auto__alarm-edit" [routerLink]="view.editTarget">
             <tc-icon name="pencil" [size]="14"></tc-icon> Editar alarma
           </button>
         </div>
+
         <button class="tc-auto__alarm-remove">
           <tc-icon name="trash" [size]="14"></tc-icon> Quitar alarma
         </button>
@@ -59,10 +60,11 @@
       <div class="tc-auto__alarm-header">
         <div class="tc-auto__alarm-left">
           <span class="tc-auto__alarm-index">ALARMA 02</span>
-          <button class="tc-auto__alarm-edit">
+          <button class="tc-auto__alarm-edit" [routerLink]="view.editTarget">
             <tc-icon name="pencil" [size]="14"></tc-icon> Editar alarma
           </button>
         </div>
+
         <button class="tc-auto__alarm-remove">
           <tc-icon name="trash" [size]="14"></tc-icon> Quitar alarma
         </button>
@@ -107,8 +109,8 @@
     </p>
 
     <div class="tc-auto__actions">
-      <tc-button variant="secondary" size="md">DESCARTAR Y CANCELAR</tc-button>
-      <tc-button variant="brand" size="md">GUARDAR Y SINCRONIZAR CON EL MÓVIL</tc-button>
+      <tc-button variant="secondary" size="md" [link]="view.backTarget">DESCARTAR Y CANCELAR</tc-button>
+      <tc-button variant="brand" size="md" [link]="view.confirmTarget">GUARDAR Y SINCRONIZAR CON EL MÓVIL</tc-button>
     </div>
   </div>
 </main>

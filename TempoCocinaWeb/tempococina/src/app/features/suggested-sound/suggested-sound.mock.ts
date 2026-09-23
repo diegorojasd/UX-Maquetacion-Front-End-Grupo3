@@ -14,8 +14,8 @@ export interface SuggestedSoundView {
   readonly leadAfter: string;
   readonly note: string;
   readonly backAction: string;
-  /** W-02 (Lista de recetas comunes) is not implemented yet. */
   readonly backTarget: string;
+  readonly safeTarget: string;
 }
 
 export const SUGGESTER_SOUND: SuggestedSoundView = {
@@ -27,5 +27,7 @@ export const SUGGESTER_SOUND: SuggestedSoundView = {
   leadAfter: ' se han transferido correctamente a tu dispositivo móvil.',
   note: 'El control activo de la cocción y el monitoreo de tiempos ahora se ejecutan de forma concurrente en la app móvil. Cualquier ajuste manual en tu teléfono se reflejará aquí en tiempo real.',
   backAction: 'Volver al recetario',
-  backTarget: '/mockups',
+  backTarget: '/mockups/w-16',
+  safeTarget: '/mockups/w-16',
+
 };

@@ -22,6 +22,7 @@ export interface RecipeDetailView {
   readonly secondaryAction: string;
   readonly startAction: string;
   readonly startTarget: string;
+  readonly nextTarget: string;
 }
 
 export const RECIPE_DETAIL_VIEW: RecipeDetailView = {
@@ -40,4 +41,5 @@ export const RECIPE_DETAIL_VIEW: RecipeDetailView = {
   secondaryAction: 'Modificar Receta',
   startAction: 'Preparar receta',
   startTarget: '/mockups/w-24',
+  nextTarget: '/mockups/w-13'
 };
