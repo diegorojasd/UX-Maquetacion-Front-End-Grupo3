@@ -1,0 +1,400 @@
+<main class="tc-alarm-editor">
+
+  <header class="tc-alarm-editor__header">
+    <div>
+      <h1 class="tc-alarm-editor__title">
+        Editar alarma individual
+      </h1>
+
+      <p class="tc-alarm-editor__description">
+        Modifica los parámetros de duración, denominación de la tarea de cocción
+        o el tono asignado para esta fase.
+      </p>
+    </div>
+  </header>
+
+  <div class="tc-alarm-editor__grid">
+
+    <section class="tc-alarm-editor__main">
+
+      <article class="tc-alarm-editor__card">
+
+        <div class="tc-alarm-editor__field">
+
+          <div class="tc-alarm-editor__field-header">
+
+            <label class="tc-alarm-editor__label"
+                   for="alarm-name">
+              Nombre del proceso / Tarea
+            </label>
+
+            <span class="tc-alarm-editor__id">
+              ID: ALM-0492-F3
+            </span>
+
+          </div>
+
+          <input id="alarm-name"
+                 class="tc-alarm-editor__input"
+                 type="text"
+                 value="Pollo al horno — Sellado y dorado" />
+
+          <p class="tc-alarm-editor__field-hint">
+            <tc-icon name="info" [size]="12" />
+            Identificador legible en pantalla y vocalizado en notificaciones sonoras.
+          </p>
+
+        </div>
+
+        <div class="tc-alarm-editor__field tc-alarm-editor__field--duration">
+
+          <div class="tc-alarm-editor__field-header">
+
+            <div>
+              <label class="tc-alarm-editor__label"
+                     for="alarm-duration">
+                Duración / Tiempo (minutos)
+              </label>
+
+              <p class="tc-alarm-editor__field-description">
+                Introduce el cómputo total estimado para este segmento térmico.
+              </p>
+            </div>
+
+            <div class="tc-alarm-editor__visual-time">
+              <span class="tc-alarm-editor__visual-time-label">
+                FORMATO VISOR
+              </span>
+
+              <span class="tc-alarm-editor__visual-time-value">
+                00:35:00
+              </span>
+            </div>
+
+          </div>
+
+
+          <div class="tc-alarm-editor__duration-control">
+
+            <!-- Stepper -->
+            <div class="tc-alarm-editor__stepper">
+
+              <button type="button"
+                      class="tc-alarm-editor__stepper-button"
+                      aria-label="Reducir tiempo">
+                −
+              </button>
+
+              <div id="alarm-duration"
+                   class="tc-alarm-editor__stepper-value"
+                   aria-live="polite">
+                <strong>35</strong>
+                <span>MIN</span>
+              </div>
+
+              <button type="button"
+                      class="tc-alarm-editor__stepper-button"
+                      aria-label="Aumentar tiempo">
+                +
+              </button>
+
+            </div>
+
+
+            <!-- Ajustes rápidos -->
+            <div class="tc-alarm-editor__quick-adjustments">
+
+              <span class="tc-alarm-editor__quick-label">
+                AJUSTE RÁPIDO:
+              </span>
+
+              <button type="button">
+                +1 min
+              </button>
+
+              <button type="button">
+                +5 min
+              </button>
+
+              <button type="button">
+                +10 min
+              </button>
+
+              <button type="button">
+                15m
+              </button>
+
+              <button type="button">
+                30m
+              </button>
+
+              <button type="button">
+                60m
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="tc-alarm-editor__field">
+
+          <label class="tc-alarm-editor__label"
+                 for="alarm-sound">
+            Selector de sonido y timbre acústico
+          </label>
+
+          <div class="tc-alarm-editor__sound-control">
+
+            <div class="tc-alarm-editor__select-wrapper">
+
+              <tc-icon name="bell"
+                       [size]="16" />
+
+              <select id="alarm-sound"
+                      class="tc-alarm-editor__select">
+                <option selected>
+                  Timbre clásico (Campana doble campana — 82 dB)
+                </option>
+
+                <option>
+                  Campana doble
+                </option>
+
+                <option>
+                  Toque cerámico
+                </option>
+              </select>
+
+            </div>
+
+            <tc-button variant="secondary"
+                       icon="volume"
+                       class="tc-alarm-editor__test-sound-button">
+              Probar tono
+            </tc-button>
+
+          </div>
+
+        </div>
+
+        <section class="tc-alarm-editor__notification-settings">
+
+          <h2 class="tc-alarm-editor__section-label">
+            AJUSTES ADICIONALES DE NOTIFICACIÓN
+          </h2>
+
+
+          <div class="tc-alarm-editor__notification-grid">
+
+            <div class="tc-alarm-editor__notification-option">
+
+              <div>
+                <h3 class="tc-alarm-editor__option-title">
+                  Repetición de aviso cada 45 seg
+                </h3>
+
+                <p class="tc-alarm-editor__option-description">
+                  Emite pulsos secundarios si la alarma no es desactivada
+                  manualmente en cocina.
+                </p>
+              </div>
+
+              <button type="button"
+                      class="tc-alarm-editor__toggle"
+                      role="switch"
+                      aria-checked="true"
+                      aria-label="Activar repetición de aviso">
+                <span></span>
+              </button>
+
+            </div>
+
+            <div class="tc-alarm-editor__notification-option">
+
+              <div class="tc-alarm-editor__volume-header">
+
+                <h3 class="tc-alarm-editor__option-title">
+                  Volumen relativo en estación
+                </h3>
+
+                <span class="tc-alarm-editor__volume-value">
+                  85%
+                </span>
+
+              </div>
+
+              <div class="tc-alarm-editor__range">
+
+                <input type="range"
+                       min="0"
+                       max="100"
+                       value="85"
+                       aria-label="Volumen relativo en estación" />
+
+              </div>
+
+              <div class="tc-alarm-editor__range-labels">
+                <span>Moderado</span>
+                <span>Fuerte (Cocina ruidosa)</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+        <footer class="tc-alarm-editor__actions">
+
+          <div class="tc-alarm-editor__actions-secondary">
+
+            <tc-button variant="secondary">
+              Cancelar
+            </tc-button>
+
+            <tc-button variant="secondary"
+                       icon="music">
+              Ver sonido sugerido
+            </tc-button>
+
+          </div>
+
+          <tc-button variant="brand"
+                     icon="check">
+            Guardar cambios de alarma
+          </tc-button>
+
+        </footer>
+
+      </article>
+
+    </section>
+
+
+    <aside class="tc-alarm-editor__sidebar">
+
+      <section class="tc-alarm-editor__context">
+
+        <span class="tc-alarm-editor__context-eyebrow">
+          CONTEXTO DE EJECUCIÓN
+        </span>
+
+        <h2 class="tc-alarm-editor__context-title">
+          Pollo Rustido con Verduras de Raíz
+        </h2>
+
+        <dl class="tc-alarm-editor__context-list">
+
+          <div class="tc-alarm-editor__context-row">
+            <dt>Fase general:</dt>
+            <dd>
+              3 de 5 programadas
+            </dd>
+          </div>
+
+          <div class="tc-alarm-editor__context-row">
+            <dt>Tiempo acumulado:</dt>
+            <dd>
+              1h 15m transcurridos
+            </dd>
+          </div>
+
+          <div class="tc-alarm-editor__context-row">
+            <dt>Estación activa:</dt>
+            <dd>
+              <span class="tc-alarm-editor__station-status"></span>
+              Principal #01
+            </dd>
+          </div>
+
+          <div class="tc-alarm-editor__context-row">
+            <dt>Alarma siguiente:</dt>
+            <dd>
+              Reposo y trinchado
+              <span>(10 min)</span>
+            </dd>
+          </div>
+
+        </dl>
+
+      </section>
+
+      <section class="tc-alarm-editor__acoustic-rule">
+
+        <div class="tc-alarm-editor__acoustic-header">
+
+          <span class="tc-alarm-editor__acoustic-indicator"
+                aria-hidden="true"></span>
+
+          <h2 class="tc-alarm-editor__acoustic-title">
+            Regla acústica de cocina
+          </h2>
+
+        </div>
+
+        <p class="tc-alarm-editor__acoustic-description">
+          Se recomienda asociar timbres metálicos de alta frecuencia a
+          las etapas críticas de horneado para diferenciarlas de las
+          alertas de hervor lento.
+        </p>
+
+        <div class="tc-alarm-editor__suggestion">
+
+          <strong>
+            <tc-icon name="zap"
+                     [size]="13" />
+            SUGERENCIA ALGORÍTMICA:
+          </strong>
+
+          <p>
+            "Campana doble o Toque cerámico" reduce la colisión
+            perceptual con la alarma de reducción de salsas.
+          </p>
+
+        </div>
+
+      </section>
+
+      <section class="tc-alarm-editor__history">
+
+        <h2 class="tc-alarm-editor__history-title">
+          Registro de modificaciones
+        </h2>
+
+        <ol class="tc-alarm-editor__history-list">
+
+          <li class="tc-alarm-editor__history-item">
+
+            <time datetime="14:20">
+              14:20
+            </time>
+
+            <p>
+              Creada por plantilla estándar (30m iniciales).
+            </p>
+
+          </li>
+
+          <li class="tc-alarm-editor__history-item">
+
+            <time datetime="14:32">
+              14:32
+            </time>
+
+            <p>
+              Aumento manual +5 min por revisión de dorado térmico.
+            </p>
+
+          </li>
+
+        </ol>
+
+      </section>
+
+    </aside>
+
+  </div>
+
+</main>

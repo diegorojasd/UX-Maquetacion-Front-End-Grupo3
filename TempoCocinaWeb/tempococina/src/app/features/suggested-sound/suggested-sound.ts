@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'; // <-- IMPORTAR ESTO
+import { FormsModule } from '@angular/forms';
+import { BackLink } from '../../shared/ui/back-link/back-link';
 import { Button } from '../../shared/ui/button/button';
 import { Icon } from '../../shared/ui/icon/icon';
 import { InfoNote } from '../../shared/ui/info-note/info-note';
@@ -12,7 +13,8 @@ import { SUGGESTER_SOUND } from './suggested-sound.mock';
   selector: 'tc-synced-alarms',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    FormsModule, // <-- NECESARIO para ngModel
+    FormsModule,
+    BackLink,
     Button,
     Icon,
     InfoNote,
