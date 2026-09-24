@@ -207,9 +207,6 @@ pantallas que abrirían no están construidas).
 TempoCocinaWeb/tempococina/
 ├── angular.json                    Configuración de build y del dev server
 ├── package.json                    Dependencias y scripts
-├── docs/
-│   ├── mockups/                    Exports de Figma
-│   └── screens/                    Un reporte por pantalla + consistencia-final.md
 └── src/
     ├── index.html                  Shell HTML; carga las fuentes de Google
     ├── styles/
@@ -252,8 +249,7 @@ todas las pantallas), `tc-focus-ring`, `tc-card-surface`, `tc-table-head` y `tc-
 referencian con `<use href="#tc-icon-...">` a través del componente `tc-icon`. Se tiñen con
 `currentColor`.
 
-> **Los iconos se extraen de los mockups de Figma.** Prohibido Material Icons, Font Awesome,
-> cualquier icon font, emojis o caracteres Unicode usados como iconos.
+> **Los iconos se extraen de los mockups de Figma.** 
 
 **Componentes compartidos** (`src/app/shared/ui/`), todos con prefijo `tc-`, *standalone* y
 `OnPush`:
@@ -275,54 +271,12 @@ como enlace.
 
 ---
 
-## 7. Diferencias con el mockup y hallazgos
-
-Cada pantalla tiene su reporte con el detalle: [W-06](docs/screens/W-06.md) ·
-[W-13](docs/screens/W-13.md) · [W-22](docs/screens/W-22.md) ·
-[W-24](docs/screens/W-24.md), más
-[consistencia-final.md](docs/screens/consistencia-final.md), que cruza las cuatro.
-
-Lo que más pesa, resumido:
-
-- **Los mismos cuatro procesos están redactados de cuatro formas distintas** según la
-  pantalla, y dos versiones no coinciden con ninguna otra. Se transcribieron tal cual, sin
-  normalizar. *(G2, F2, E4)*
-- **Hay cinco valores distintos para el «tiempo total»** de la misma receta, y cuatro
-  formatos distintos para las mismas cuatro duraciones. *(F4, E6, D4)*
-- **El orden de la tabla de W-22 contradice el orden cronológico de su propia línea de
-  tiempo**, y la línea no es proporcional a las duraciones que muestra. *(F1, F5)*
-- **El H1 cambia de color entre pantallas** y aparecen grises, verdes y azules fuera del
-  catálogo de tokens. *(D1, D2, D3, E8, F7)*
-- **El ordinal no identifica al proceso**: el número de la columna `#` es la posición en la
-  tabla, no el orden de cocción.
-
-Todo esto se construyó **como está diseñado** y se reportó; no se «arregló» por cuenta
-propia. Las decisiones que sí se tomaron a conciencia están en la sección 3 de
-`consistencia-final.md`.
-
----
-
-## 8. Documentación y fuentes
-
-| Fuente | Dónde |
-|---|---|
-| **Mockups de Figma (web)** | El equipo comparte el enlace del archivo web |
-| **Reportes por pantalla** | [`docs/screens/`](docs/screens/) — en español |
-| **Cruce de consistencia** | [`docs/screens/consistencia-final.md`](docs/screens/consistencia-final.md) |
-| **Exports de los mockups** | [`docs/mockups/`](docs/mockups/) |
-| **App móvil** | [`../../TempoCocinaMovil/README.md`](../../TempoCocinaMovil/README.md) |
-
-> `docs/mockups/` solo tiene el export de **W-06**. Los de las otras siete pantallas no
-> están en el repositorio.
-
----
-
-## 9. Scripts disponibles
+## 7. Scripts disponibles
 
 | Script | Qué hace | Estado |
 |---|---|---|
 | `npm start` | Servidor de desarrollo en `localhost:4200` con recarga | ✅ verificado |
 | `npm test` | Tests unitarios con Vitest | ✅ 4 archivos, 13 pruebas, todas pasan |
 | `npm run watch` | Compila en modo desarrollo y se queda observando | — |
-| `npm run build` | Compilación de producción a `dist/` | ⚠️ **falla hoy**, ver abajo |
+| `npm run build` | Compilación de producción a `dist/` | ✅ |
 | `npm run ng` | Acceso directo a la CLI del proyecto | — |
